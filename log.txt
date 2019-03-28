@@ -1,0 +1,58 @@
+Configuration file: /Users/robke04/Documents/Git_projects/RSPQLStar/rspqlstar-store/config.properties
+{node-dictionary=HashNodeDictionary, base-uri=file://base/, reference-dictionary=HashReferenceDictionary, data=event-mini, data-directory=data/, queries=t1, index=TreeIndex, use-query-heuristic=false, interactive=true, query-directory=queries/, query-timeout=10}
+Configuration file: /Users/robke04/Documents/Git_projects/RSPQLStar/rspqlstar-store/config.properties
+{node-dictionary=HashNodeDictionary, base-uri=file://base/, reference-dictionary=HashReferenceDictionary, data=event-mini, data-directory=data/, queries=t1, index=TreeIndex, use-query-heuristic=false, interactive=true, query-directory=queries/, query-timeout=10}
+Loading data...
+Configuration file: /Users/robke04/Documents/Git_projects/RSPQLStar/rspqlstar-store/config.properties
+{node-dictionary=HashNodeDictionary, base-uri=file://base/, reference-dictionary=HashReferenceDictionary, data=test, data-directory=data/, queries=t1, index=TreeIndex, use-query-heuristic=false, interactive=true, query-directory=queries/, query-timeout=10}
+Loading data...
+Configuration file: /Users/robke04/Documents/Git_projects/RSPQLStar/rspqlstar-store/config.properties
+{node-dictionary=HashNodeDictionary, base-uri=file://base/, reference-dictionary=HashReferenceDictionary, data=test, data-directory=data/, queries=t1, index=TreeIndex, use-query-heuristic=false, interactive=true, query-directory=queries/, query-timeout=10}
+Configuration file: /Users/robke04/Documents/Git_projects/RSPQLStar/rspqlstar-store/config.properties
+{node-dictionary=HashNodeDictionary, base-uri=file://base/, reference-dictionary=HashReferenceDictionary, data=test, data-directory=data/, queries=t1, index=TreeIndex, use-query-heuristic=false, interactive=true, query-directory=queries/, query-timeout=10}
+Configuration file: /Users/robke04/Documents/Git_projects/RSPQLStar/rspqlstar-store/config.properties
+{node-dictionary=HashNodeDictionary, base-uri=file://base/, reference-dictionary=HashReferenceDictionary, data=test, data-directory=data/, queries=t1, index=TreeIndex, use-query-heuristic=false, interactive=true, query-directory=queries/, query-timeout=10}
+Encountered " <LANGTAG> "@base "" at line 1, column 1.
+Was expecting one of:
+    "\ufeff" ...
+    "base" ...
+    "prefix" ...
+    "select" ...
+    "describe" ...
+    "construct" ...
+    "ask" ...
+    
+Configuration file: /Users/robke04/Documents/Git_projects/RSPQLStar/rspqlstar-store/config.properties
+{node-dictionary=HashNodeDictionary, base-uri=file://base/, reference-dictionary=HashReferenceDictionary, data=test, data-directory=data/, queries=t1, index=TreeIndex, use-query-heuristic=false, interactive=true, query-directory=queries/, query-timeout=10}
+Configuration file: /Users/robke04/Documents/Git_projects/RSPQLStar/rspqlstar-store/config.properties
+{node-dictionary=HashNodeDictionary, base-uri=file://base/, reference-dictionary=HashReferenceDictionary, data=test, data-directory=data/, queries=t1, index=TreeIndex, use-query-heuristic=false, interactive=true, query-directory=queries/, query-timeout=10}
+Configuration file: /Users/robke04/Documents/Git_projects/RSPQLStar/rspqlstar-store/config.properties
+{node-dictionary=HashNodeDictionary, base-uri=file://base/, reference-dictionary=HashReferenceDictionary, data=test, data-directory=data/, queries=t1, index=TreeIndex, use-query-heuristic=false, interactive=true, query-directory=queries/, query-timeout=10}
+Configuration file: /Users/robke04/Documents/Git_projects/RSPQLStar/rspqlstar-store/config.properties
+{node-dictionary=HashNodeDictionary, base-uri=file://base/, reference-dictionary=HashReferenceDictionary, data=test, data-directory=data/, queries=t1, index=TreeIndex, use-query-heuristic=false, interactive=true, query-directory=queries/, query-timeout=10}
+Configuration file: /Users/robke04/Documents/Git_projects/RSPQLStar/rspqlstar-store/config.properties
+{node-dictionary=HashNodeDictionary, base-uri=file://base/, reference-dictionary=HashReferenceDictionary, data=test, data-directory=data/, queries=t1, index=TreeIndex, use-query-heuristic=false, interactive=true, query-directory=queries/, query-timeout=10}
+Configuration file: /Users/robke04/Documents/Git_projects/RSPQLStar/rspqlstar-store/config.properties
+{node-dictionary=HashNodeDictionary, base-uri=file://base/, reference-dictionary=HashReferenceDictionary, data=test, data-directory=data/, queries=t1, index=TreeIndex, use-query-heuristic=false, interactive=true, query-directory=queries/, query-timeout=10}
+Configuration file: /Users/robke04/Documents/Git_projects/RSPQLStar/rspqlstar-store/config.properties
+{node-dictionary=HashNodeDictionary, base-uri=file://base/, reference-dictionary=HashReferenceDictionary, data=test, data-directory=data/, queries=t1, index=TreeIndex, use-query-heuristic=false, interactive=true, query-directory=queries/, query-timeout=10}
+Configuration file: /Users/robke04/Documents/Git_projects/RSPQLStar/rspqlstar-store/config.properties
+{node-dictionary=HashNodeDictionary, base-uri=file://base/, reference-dictionary=HashReferenceDictionary, data=test, data-directory=data/, queries=t1, index=TreeIndex, use-query-heuristic=false, interactive=true, query-directory=queries/, query-timeout=10}
+Configuration file: /Users/robke04/Documents/Git_projects/RSPQLStar/rspqlstar-store/config.properties
+{node-dictionary=HashNodeDictionary, base-uri=file://base/, reference-dictionary=HashReferenceDictionary, data=test, data-directory=data/, queries=t1, index=TreeIndex, use-query-heuristic=false, interactive=true, query-directory=queries/, query-timeout=10}
+Configuration file: /Users/robke04/Documents/Git_projects/RSPQLStar/rspqlstar-store/config.properties
+{node-dictionary=HashNodeDictionary, base-uri=file://base/, reference-dictionary=HashReferenceDictionary, data=test, data-directory=data/, queries=t1, index=TreeIndex, use-query-heuristic=false, interactive=true, query-directory=queries/, query-timeout=10}
+Configuration file: /Users/robke04/Documents/Git_projects/RSPQLStar/rspqlstar-store/config.properties
+{node-dictionary=HashNodeDictionary, base-uri=file://base/, reference-dictionary=HashReferenceDictionary, data=test, data-directory=data/, queries=t1, index=TreeIndex, use-query-heuristic=false, interactive=true, query-directory=queries/, query-timeout=10}
+Configuration file: /Users/robke04/Documents/Git_projects/RSPQLStar/rspqlstar-store/config.properties
+{node-dictionary=HashNodeDictionary, base-uri=file://base/, reference-dictionary=HashReferenceDictionary, data=test, data-directory=data/, queries=t1, index=TreeIndex, use-query-heuristic=false, interactive=true, query-directory=queries/, query-timeout=10}
+Configuration file: /Users/robke04/Documents/Git_projects/RSPQLStar/rspqlstar-store/config.properties
+{node-dictionary=HashNodeDictionary, base-uri=file://base/, reference-dictionary=HashReferenceDictionary, data=test, data-directory=data/, queries=t1, index=TreeIndex, use-query-heuristic=false, interactive=true, query-directory=queries/, query-timeout=10}
+Configuration file: /Users/robke04/Documents/Git_projects/RSPQLStar/rspqlstar-store/config.properties
+{node-dictionary=HashNodeDictionary, base-uri=file://base/, reference-dictionary=HashReferenceDictionary, data=test, data-directory=data/, queries=t1, index=TreeIndex, use-query-heuristic=false, interactive=true, query-directory=queries/, query-timeout=10}
+Configuration file: /Users/robke04/Documents/Git_projects/RSPQLStar/rspqlstar-store/config.properties
+{node-dictionary=HashNodeDictionary, base-uri=file://base/, reference-dictionary=HashReferenceDictionary, data=test, data-directory=data/, queries=t1, index=TreeIndex, use-query-heuristic=false, interactive=true, query-directory=queries/, query-timeout=10}
+Configuration file: /Users/robke04/Documents/Git_projects/RSPQLStar/rspqlstar-store/config.properties
+{node-dictionary=HashNodeDictionary, base-uri=file://base/, reference-dictionary=HashReferenceDictionary, data=test, data-directory=data/, queries=t1, index=TreeIndex, use-query-heuristic=false, interactive=true, query-directory=queries/, query-timeout=10}
+Configuration file: /Users/robke04/Documents/Git_projects/RSPQLStar/rspqlstar-store/config.properties
+{node-dictionary=HashNodeDictionary, base-uri=file://base/, reference-dictionary=HashReferenceDictionary, data=test, data-directory=data/, queries=t1, index=TreeIndex, use-query-heuristic=false, interactive=true, query-directory=queries/, query-timeout=10}
