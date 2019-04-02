@@ -14,9 +14,9 @@ import se.liu.ida.rspqlstar.store.dictionary.nodedictionary.NodeDictionaryFactor
 public class QuadPatternBuilder {
 
     private Element graph = null;
-    private Element subject;
-    private Element predicate;
-    private Element object;
+    private Element subject = null;
+    private Element predicate = null;
+    private Element object = null;
 
     static private VarDictionary varDict = VarDictionary.get();
     static private NodeDictionary nd = NodeDictionaryFactory.get();
@@ -25,14 +25,18 @@ public class QuadPatternBuilder {
         return new QuadStarPattern(graph, subject, predicate, object);
     }
 
-    // TODO Provide active graph
     private QuadStarPattern createEmbeddedPattern(Node_Triple node) {
         final QuadPatternBuilder builder = new QuadPatternBuilder();
         final Triple t = node.get();
+        builder.setGraph(graph);
         builder.setSubject(t.getSubject());
         builder.setPredicate(t.getPredicate());
         builder.setObject(t.getObject());
         return builder.createQuadPattern();
+    }
+
+    public void setGraph(Element graph) {
+        this.graph = graph;
     }
 
     public void setGraph(Node node) {
@@ -44,7 +48,7 @@ public class QuadPatternBuilder {
         }
     }
 
-    public void setSubject( Node node) {
+    public void setSubject(Node node) {
         if (node.isConcrete()) {
             if (node instanceof Node_Triple) {
                 subject = createEmbeddedPattern((Node_Triple) node);

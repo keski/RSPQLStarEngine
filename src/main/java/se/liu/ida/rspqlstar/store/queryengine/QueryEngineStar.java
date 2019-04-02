@@ -16,7 +16,7 @@ import org.apache.jena.sparql.engine.main.QC;
 import org.apache.jena.sparql.engine.main.QueryEngineMain;
 import org.apache.jena.sparql.util.Context;
 import se.liu.ida.rspqlstar.store.dictionary.VarDictionary;
-import se.liu.ida.rspqlstar.store.graph.DatasetStarGraph;
+import se.liu.ida.rspqlstar.store.dataset.DatasetGraphStar;
 import se.liu.ida.rspqlstar.store.transform.MyTransform;
 
 /**
@@ -49,7 +49,7 @@ public class QueryEngineStar extends QueryEngineMain {
         }
 
         private boolean isIdBased(DatasetGraph ds) {
-            return (ds.getDefaultGraph() instanceof DatasetStarGraph);
+            return (ds.getDefaultGraph() instanceof DatasetGraphStar);
         }
     };
 

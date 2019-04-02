@@ -6,8 +6,8 @@ import org.apache.jena.sparql.engine.QueryExecutionBase;
 import se.liu.ida.rdfstar.tools.parser.lang.LangTrigStar;
 import se.liu.ida.rdfstar.tools.sparqlstar.lang.SPARQLStar;
 import se.liu.ida.rdfstar.tools.sparqlstar.resultset.ResultSetWritersSPARQLStar;
-import se.liu.ida.rspqlstar.store.graph.DatasetStarGraph;
-import se.liu.ida.rspqlstar.store.queryengine.QueryEngineStar;
+import se.liu.ida.rspqlstar.store.engine.RSPQLStarEngine;
+import se.liu.ida.rspqlstar.store.dataset.DatasetGraphStar;
 import se.liu.ida.rspqlstar.store.utils.Configuration;
 
 import java.io.IOException;
@@ -29,11 +29,12 @@ public class Main {
     public void start() throws InterruptedException {
         LangTrigStar.init();
         SPARQLStar.init();
-        QueryEngineStar.register();
+        //QueryEngineStar.register();
+        RSPQLStarEngine.register();
         ResultSetWritersSPARQLStar.init();
 
         // Create dataset
-        DatasetStarGraph dsg = new DatasetStarGraph();
+        DatasetGraphStar dsg = new DatasetGraphStar();
         Dataset ds = DatasetFactory.wrap(dsg);
 
         // Load base data
@@ -42,15 +43,15 @@ public class Main {
                 .base(Configuration.baseUri)
                 .source(dataPath)
                 .checking(false)
-                .parse(dsg.getStore());
+                .parse(dsg);
 
         // Execute query
         Query query = QueryFactory.create("" +
                 "SELECT DISTINCT * WHERE { " +
-                "   ?a ?b ?c" +
+                "   GRAPH <g> { ?a ?b ?c }" +
+                "   ?a ?b ?c " +
                 "}", "file://base/", SPARQLStar.syntax);
         QueryExecution qexec = QueryExecutionFactory.create(query, ds);
-
         System.out.println(qexec.getClass());
         System.out.println(((QueryExecutionBase) qexec).getPlan());
         if(true) { return; }

@@ -2,7 +2,7 @@ package se.liu.ida.rspqlstar.store.queryengine;
 
 import org.apache.jena.atlas.lib.Closeable;
 import org.apache.jena.sparql.engine.ExecutionContext;
-import se.liu.ida.rspqlstar.store.graph.DatasetStarGraph;
+import se.liu.ida.rspqlstar.store.dataset.DatasetGraphStar;
 import se.liu.ida.rspqlstar.store.triple.IdBasedQuad;
 import se.liu.ida.rspqlstar.store.triplepattern.Element;
 import se.liu.ida.rspqlstar.store.triplepattern.Key;
@@ -46,7 +46,7 @@ public class QuadPatternQueryIter implements Iterator<SolutionMapping> {//}, Clo
                 return false;
             }
 
-            final DatasetStarGraph dsg = (DatasetStarGraph) execCxt.getDataset();
+            final DatasetGraphStar dsg = (DatasetGraphStar) execCxt.getDataset();
             solMap = input.next();
             currentQueryPattern = tryToSubstitute(pattern, solMap);
 

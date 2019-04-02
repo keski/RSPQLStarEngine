@@ -1,14 +1,12 @@
 package se.liu.ida.rspqlstar.store.dictionary.nodedictionary;
 
-import java.util.*;
-
-import it.unimi.dsi.fastutil.longs.Long2ObjectOpenHashMap;
-import it.unimi.dsi.fastutil.objects.Object2LongOpenHashMap;
-import se.liu.ida.rspqlstar.store.dictionary.nodedictionary.idnodes.Node_WithID;
-import se.liu.ida.rspqlstar.store.dictionary.nodedictionary.idnodes.NodeWithIDFactory;
-import se.liu.ida.rspqlstar.store.triple.IdFactory;
 import org.apache.jena.graph.Node;
-import se.liu.ida.rspqlstar.store.utils.Configuration;
+import se.liu.ida.rspqlstar.store.dictionary.nodedictionary.idnodes.NodeWithIDFactory;
+import se.liu.ida.rspqlstar.store.dictionary.nodedictionary.idnodes.Node_WithID;
+import se.liu.ida.rspqlstar.store.triple.IdFactory;
+
+import java.util.ArrayList;
+import java.util.concurrent.ConcurrentHashMap;
 
 /**
  * The node dictionary keeps track of the mappings between nodes and their respective IDs.
@@ -16,11 +14,7 @@ import se.liu.ida.rspqlstar.store.utils.Configuration;
 
 public class HashNodeDictionary implements NodeDictionary {
     final private ArrayList<Node> idToNode = new ArrayList<>();
-    final private Map<Node, Long> nodeToId = new Object2LongOpenHashMap<>();
-
-    public HashNodeDictionary() {
-        super();
-    }
+    final private ConcurrentHashMap<Node, Long> nodeToId = new ConcurrentHashMap<>();
 
     @Override
     public Node getNode(long id) {
@@ -34,8 +28,8 @@ public class HashNodeDictionary implements NodeDictionary {
             return id;
         }
 
-        final long newId = IdFactory.nextNodeId();
-        final Node n = NodeWithIDFactory.createNode(node, newId);
+        long newId = IdFactory.nextNodeId();
+        Node n = NodeWithIDFactory.createNode(node, newId);
         return addNode(n, newId);
     }
 

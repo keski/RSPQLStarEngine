@@ -23,7 +23,7 @@ public class QuadStarPattern extends Element {
     }
 
     public boolean isMatchable() {
-        return subject != null && predicate != null && object != null;
+        return graph != null && subject != null && predicate != null && object != null;
     }
 
     public boolean isFieldConcrete(Field field) {

@@ -1,32 +1,22 @@
 package se.liu.ida.rspqlstar.store.dictionary.referencedictionary;
 
-import it.unimi.dsi.fastutil.longs.Long2ObjectOpenHashMap;
-import it.unimi.dsi.fastutil.objects.Object2LongOpenHashMap;
 import se.liu.ida.rspqlstar.store.triple.IdBasedQuad;
 import se.liu.ida.rspqlstar.store.triple.IdFactory;
 
 import java.util.ArrayList;
-import java.util.Map;
+import java.util.concurrent.ConcurrentHashMap;
 
 public class HashReferenceDictionary implements ReferenceDictionary {
-    final private ArrayList<IdBasedQuad> idToNodeQuad;
-    final private Map<Long, IdBasedQuad> idToNodeQuadOverflow;
-    final private Map<IdBasedQuad, Long> nodeQuadToId;
-
-    public HashReferenceDictionary() {
-        idToNodeQuad = new ArrayList<>();
-        idToNodeQuadOverflow = new Long2ObjectOpenHashMap<>();
-        nodeQuadToId = new Object2LongOpenHashMap<>();
-    }
+    final private ArrayList<IdBasedQuad> idToNodeQuad = new ArrayList<>();
+    final private ConcurrentHashMap<IdBasedQuad, Long> nodeQuadToId = new ConcurrentHashMap();
 
     @Override
     public IdBasedQuad getIdBasedQuad(long id) {
         final long body = IdFactory.getReferenceIdBody(id);
         if (body <= idToNodeQuad.size()) {
             return idToNodeQuad.get((int) (body - 1));
-        } else {
-            return idToNodeQuadOverflow.get(body);
         }
+        return null;
     }
 
     @Override
@@ -35,19 +25,20 @@ public class HashReferenceDictionary implements ReferenceDictionary {
         if (id != null) {
             return id;
         }
+        return addNode(idBasedQuad);
+    }
 
-        final long newId = IdFactory.nextReferenceKeyId();
-        final long body = IdFactory.getReferenceIdBody(newId);
+    public long addNode(IdBasedQuad idBasedQuad){
+        long id = IdFactory.nextReferenceKeyId();
+        long body = IdFactory.getReferenceIdBody(id);
 
-        if (body <= idToNodeQuad.size()) {
-            idToNodeQuad.set((int) (body - 1), idBasedQuad); // replace existing value
-        } else if (body <= Integer.MAX_VALUE) {
-            idToNodeQuad.add((int) (body - 1), idBasedQuad); // add value to end
+        if (body < idToNodeQuad.size()) {
+            idToNodeQuad.set((int) body, idBasedQuad); // replace existing value
         } else {
-            idToNodeQuadOverflow.put(body, idBasedQuad); // add to overflow map
+            idToNodeQuad.add(idBasedQuad);
         }
-        nodeQuadToId.put(idBasedQuad, newId);
-        return newId;
+        nodeQuadToId.put(idBasedQuad, id);
+        return id;
     }
 
     @Override

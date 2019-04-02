@@ -1,24 +1,14 @@
 package se.liu.ida.rspqlstar.store.dictionary.referencedictionary;
 
-import se.liu.ida.rspqlstar.store.utils.Configuration;
-
 public class ReferenceDictionaryFactory {
-    static private ReferenceDictionary dictionary = null;
+    static private ReferenceDictionary singleton = null;
 
     static public ReferenceDictionary get() {
-        if (dictionary == null) {
-            init();
-        }
-        return dictionary;
+        if (singleton == null) init();
+        return singleton;
     }
 
     static public void init() {
-        switch (Configuration.referenceDictionaryType) {
-            case "HashReferenceDictionary":
-                dictionary = new HashReferenceDictionary();
-                break;
-            default:
-                throw new IllegalArgumentException("Unknown dictionary type " + Configuration.referenceDictionaryType);
-        }
+        singleton = new HashReferenceDictionary();
     }
 }
