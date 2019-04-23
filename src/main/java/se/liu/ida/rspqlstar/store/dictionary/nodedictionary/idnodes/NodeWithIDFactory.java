@@ -2,7 +2,6 @@ package se.liu.ida.rspqlstar.store.dictionary.nodedictionary.idnodes;
 
 import org.apache.jena.graph.*;
 import org.apache.jena.graph.impl.LiteralLabel;
-import se.liu.ida.rspqlstar.store.utils.Configuration;
 
 public class NodeWithIDFactory {
 

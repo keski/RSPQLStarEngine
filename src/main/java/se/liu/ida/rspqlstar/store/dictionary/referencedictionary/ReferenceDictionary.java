@@ -1,14 +1,14 @@
 package se.liu.ida.rspqlstar.store.dictionary.referencedictionary;
 
-import se.liu.ida.rspqlstar.store.triple.IdBasedQuad;
+import se.liu.ida.rspqlstar.store.index.IdBasedTriple;
 
 public interface ReferenceDictionary {
 
-    IdBasedQuad getIdBasedQuad(long id);
+    IdBasedTriple getIdBasedTriple(long id);
 
-    long addIfNecessary(IdBasedQuad idBasedQuad);
+    long addIfNecessary(IdBasedTriple idBasedTriple);
 
-    Long getId(IdBasedQuad idBasedQuad);
+    Long getId(IdBasedTriple idBasedTriple);
 
     long size();
 

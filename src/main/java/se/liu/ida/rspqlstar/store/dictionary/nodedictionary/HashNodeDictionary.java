@@ -3,7 +3,7 @@ package se.liu.ida.rspqlstar.store.dictionary.nodedictionary;
 import org.apache.jena.graph.Node;
 import se.liu.ida.rspqlstar.store.dictionary.nodedictionary.idnodes.NodeWithIDFactory;
 import se.liu.ida.rspqlstar.store.dictionary.nodedictionary.idnodes.Node_WithID;
-import se.liu.ida.rspqlstar.store.triple.IdFactory;
+import se.liu.ida.rspqlstar.store.dictionary.IdFactory;
 
 import java.util.ArrayList;
 import java.util.concurrent.ConcurrentHashMap;

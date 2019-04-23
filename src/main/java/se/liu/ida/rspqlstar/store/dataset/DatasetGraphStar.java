@@ -10,13 +10,13 @@ import se.liu.ida.rspqlstar.store.dictionary.nodedictionary.NodeDictionaryFactor
 import se.liu.ida.rspqlstar.store.dictionary.referencedictionary.ReferenceDictionary;
 import se.liu.ida.rspqlstar.store.dictionary.referencedictionary.ReferenceDictionaryFactory;
 import se.liu.ida.rspqlstar.store.engine.DecodingQuadsIterator;
-import se.liu.ida.rspqlstar.store.queryengine.FilteredTripleIterator;
-import se.liu.ida.rspqlstar.store.triple.IdBasedQuad;
-import se.liu.ida.rspqlstar.store.triplepattern.QuadPatternBuilder;
-import se.liu.ida.rspqlstar.store.triplepattern.QuadStarPattern;
-import se.liu.ida.rspqlstar.store.triplestore.Field;
-import se.liu.ida.rspqlstar.store.triplestore.Index;
-import se.liu.ida.rspqlstar.store.triplestore.treeindex.TreeIndex;
+import se.liu.ida.rspqlstar.store.engine.main.iterator.FilteredTripleIterator;
+import se.liu.ida.rspqlstar.store.index.IdBasedQuad;
+import se.liu.ida.rspqlstar.store.engine.main.quadpattern.QuadPatternBuilder;
+import se.liu.ida.rspqlstar.store.engine.main.quadpattern.QuadStarPattern;
+import se.liu.ida.rspqlstar.store.index.Field;
+import se.liu.ida.rspqlstar.store.index.Index;
+import se.liu.ida.rspqlstar.store.index.TreeIndex;
 
 import java.util.Collections;
 import java.util.Iterator;
@@ -28,19 +28,16 @@ import java.util.Iterator;
  */
 
 public class DatasetGraphStar extends AbstractDatasetGraph { //implements DatasetGraph {
-    final private Index GSPO;
-    final private Index GPOS;
-    final private Index GOSP;
-    final private Index SPOG;
-    final private Index POSG;
-    final private Index OSPG;
+    final public Index GSPO;
+    final public Index GPOS;
+    final public Index GOSP;
+    final public Index SPOG;
+    final public Index POSG;
+    final public Index OSPG;
     final NodeDictionary nd = NodeDictionaryFactory.get();
     final ReferenceDictionary refT = ReferenceDictionaryFactory.get();
 
-
-    Graph graphWrapper = new GraphMem(); // This is just a dummy... How do we get rid of it?
-
-    public DatasetGraphStar(){
+    public DatasetGraphStar() {
         GSPO = new TreeIndex(Field.G, Field.S, Field.P, Field.O);
         GPOS = new TreeIndex(Field.G, Field.P, Field.O, Field.S);
         GOSP = new TreeIndex(Field.G, Field.O, Field.S, Field.P);
@@ -49,13 +46,17 @@ public class DatasetGraphStar extends AbstractDatasetGraph { //implements Datase
         OSPG = new TreeIndex(Field.O, Field.S, Field.P, Field.G);
     }
 
-    public boolean contains(QuadStarPattern quad) {
-        return find(quad).hasNext();
+    public boolean contains(QuadStarPattern pattern) {
+        return GSPO.contains(pattern);
+    }
+
+    public boolean contains(IdBasedQuad idBasedQuad) {
+        return GSPO.contains(idBasedQuad);
     }
 
     @Override
     public Iterator<Quad> find(Node g, Node s, Node p, Node o) {
-        QuadStarPattern quadPattern = getQuadPattern(g, s, p, o);
+        final QuadStarPattern quadPattern = getQuadPattern(g, s, p, o);
         return new DecodingQuadsIterator(find(quadPattern), quadPattern);
     }
 
@@ -67,7 +68,7 @@ public class DatasetGraphStar extends AbstractDatasetGraph { //implements Datase
 
     @Override
     public Graph getDefaultGraph() {
-        return graphWrapper;
+        return null;
     }
 
     @Override
@@ -85,18 +86,18 @@ public class DatasetGraphStar extends AbstractDatasetGraph { //implements Datase
         final long p = nd.addNodeIfNecessary(predicate);
 
         final long s;
-        if(subject instanceof Node_Triple){
+        if (subject instanceof Node_Triple) {
             final Quad q = new Quad(graph, ((Node_Triple) subject).get());
             IdBasedQuad idBasedQuad = addQuad(q);
-            s = refT.addIfNecessary(idBasedQuad);
+            s = refT.addIfNecessary(idBasedQuad.getIdBasedTriple());
         } else {
             s = nd.addNodeIfNecessary(subject);
         }
 
         final long o;
-        if(object instanceof Node_Triple){
+        if (object instanceof Node_Triple) {
             IdBasedQuad idBasedQuad = addQuad(new Quad(graph, ((Node_Triple) object).get()));
-            o= refT.addIfNecessary(idBasedQuad);
+            o = refT.addIfNecessary(idBasedQuad.getIdBasedTriple());
         } else {
             o = nd.addNodeIfNecessary(object);
         }
@@ -121,6 +122,7 @@ public class DatasetGraphStar extends AbstractDatasetGraph { //implements Datase
 
     /**
      * Identifies the correct index to query and returns an iterator over the quad pattern.
+     *
      * @param pattern
      * @return
      */
@@ -137,20 +139,35 @@ public class DatasetGraphStar extends AbstractDatasetGraph { //implements Datase
         // SP, OS, PO, S, O, P
 
         final Iterator<IdBasedQuad> iter;
-        if (g && s && p) iter = GSPO.iterator(pattern);
-        else if(g && o && s) iter = GOSP.iterator(pattern);
-        else if(g && p && o) iter = GPOS.iterator(pattern);
-        else if(g && s) iter = GSPO.iterator(pattern);
-        else if(g && o) iter = GOSP.iterator(pattern);
-        else if(g && p) iter = GPOS.iterator(pattern);
-        else if(g) iter = GSPO.iterator(pattern); // its probably less selective than this...
-        else if (s && p && o) iter = SPOG.iterator(pattern);
-        else if(o && s) iter = OSPG.iterator(pattern);
-        else if(p && o) iter = POSG.iterator(pattern);
-        else if(s) iter = SPOG.iterator(pattern);
-        else if(o) iter = OSPG.iterator(pattern);
-        else if(p) iter = POSG.iterator(pattern);
-        else iter = GSPO.iterateAll();
+        if (g && s && p) {
+            iter = GSPO.iterator(pattern);
+        } else if (g && o && s) {
+            iter = GOSP.iterator(pattern);
+        } else if (g && p && o) {
+            iter = GPOS.iterator(pattern);
+        } else if (g && s) {
+            iter = GSPO.iterator(pattern);
+        } else if (g && o) {
+            iter = GOSP.iterator(pattern);
+        } else if (g && p) {
+            iter = GPOS.iterator(pattern);
+        } else if (g) {
+            iter = GSPO.iterator(pattern); // its probably less selective than this...
+        } else if (s && p && o) {
+            iter = SPOG.iterator(pattern);
+        } else if (o && s) {
+            iter = OSPG.iterator(pattern);
+        } else if (p && o) {
+            iter = POSG.iterator(pattern);
+        } else if (s) {
+            iter = SPOG.iterator(pattern);
+        } else if (o) {
+            iter = OSPG.iterator(pattern);
+        } else if (p) {
+            iter = POSG.iterator(pattern);
+        } else {
+            iter = GSPO.iterateAll();
+        }
 
         return new FilteredTripleIterator(iter, pattern);
     }
@@ -162,6 +179,10 @@ public class DatasetGraphStar extends AbstractDatasetGraph { //implements Datase
         builder.setPredicate(p);
         builder.setObject(o);
         return builder.createQuadPattern();
+    }
+
+    public String toString(){
+        return String.format("DatasetGraphStar(size: %s)", GSPO.size());
     }
 
 }

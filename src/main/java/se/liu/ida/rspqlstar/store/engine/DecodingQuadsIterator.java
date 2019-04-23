@@ -1,14 +1,13 @@
 package se.liu.ida.rspqlstar.store.engine;
 
 import org.apache.jena.graph.Node;
-import org.apache.jena.graph.Triple;
 import org.apache.jena.sparql.core.Quad;
 import org.apache.jena.util.iterator.ExtendedIterator;
 import org.apache.jena.util.iterator.NiceIterator;
 import se.liu.ida.rspqlstar.store.dictionary.nodedictionary.NodeDictionary;
 import se.liu.ida.rspqlstar.store.dictionary.nodedictionary.NodeDictionaryFactory;
-import se.liu.ida.rspqlstar.store.triple.IdBasedQuad;
-import se.liu.ida.rspqlstar.store.triplepattern.QuadStarPattern;
+import se.liu.ida.rspqlstar.store.index.IdBasedQuad;
+import se.liu.ida.rspqlstar.store.engine.main.quadpattern.QuadStarPattern;
 
 import java.util.Iterator;
 

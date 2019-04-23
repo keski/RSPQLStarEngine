@@ -6,15 +6,13 @@ import java.util.Map;
 
 import org.apache.jena.sparql.core.Var;
 
-import se.liu.ida.rspqlstar.store.triplepattern.Variable;
-
-// TODO This is the most likely cause of the leak!
+import se.liu.ida.rspqlstar.store.engine.main.quadpattern.Variable;
 
 /**
  * This dictionary creates and contains the mappings from a jena Var {@link Var} to an integer.
  * This integer is used to represent and compare variables.
  * <p>
- * It is implemented as a singleton class.
+ * It is implemented as a singleton class. Correct variable scoping has not been verified.
  */
 public class VarDictionary {
     static private ArrayList<Var> dictId2Var = new ArrayList<>();

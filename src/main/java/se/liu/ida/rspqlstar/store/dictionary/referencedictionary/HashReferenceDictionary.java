@@ -1,54 +1,54 @@
 package se.liu.ida.rspqlstar.store.dictionary.referencedictionary;
 
-import se.liu.ida.rspqlstar.store.triple.IdBasedQuad;
-import se.liu.ida.rspqlstar.store.triple.IdFactory;
+import se.liu.ida.rspqlstar.store.dictionary.IdFactory;
+import se.liu.ida.rspqlstar.store.index.IdBasedTriple;
 
 import java.util.ArrayList;
 import java.util.concurrent.ConcurrentHashMap;
 
 public class HashReferenceDictionary implements ReferenceDictionary {
-    final private ArrayList<IdBasedQuad> idToNodeQuad = new ArrayList<>();
-    final private ConcurrentHashMap<IdBasedQuad, Long> nodeQuadToId = new ConcurrentHashMap();
+    final private ArrayList<IdBasedTriple> idToNodeTriple = new ArrayList<>();
+    final private ConcurrentHashMap<IdBasedTriple, Long> nodeTripleToId = new ConcurrentHashMap();
 
     @Override
-    public IdBasedQuad getIdBasedQuad(long id) {
+    public IdBasedTriple getIdBasedTriple(long id) {
         final long body = IdFactory.getReferenceIdBody(id);
-        if (body <= idToNodeQuad.size()) {
-            return idToNodeQuad.get((int) (body - 1));
+        if (body <= idToNodeTriple.size()) {
+            return idToNodeTriple.get((int) (body - 1));
         }
         return null;
     }
 
     @Override
-    public long addIfNecessary(IdBasedQuad idBasedQuad) {
-        final Long id = getId(idBasedQuad);
+    public long addIfNecessary(IdBasedTriple idBasedTriple) {
+        final Long id = getId(idBasedTriple);
         if (id != null) {
             return id;
         }
-        return addNode(idBasedQuad);
+        return addNode(idBasedTriple);
     }
 
-    public long addNode(IdBasedQuad idBasedQuad){
+    public long addNode(IdBasedTriple idBasedTriple){
         long id = IdFactory.nextReferenceKeyId();
         long body = IdFactory.getReferenceIdBody(id);
 
-        if (body < idToNodeQuad.size()) {
-            idToNodeQuad.set((int) body, idBasedQuad); // replace existing value
+        if (body < idToNodeTriple.size()) {
+            idToNodeTriple.set((int) body, idBasedTriple); // replace existing value
         } else {
-            idToNodeQuad.add(idBasedQuad);
+            idToNodeTriple.add(idBasedTriple);
         }
-        nodeQuadToId.put(idBasedQuad, id);
+        nodeTripleToId.put(idBasedTriple, id);
         return id;
     }
 
     @Override
-    public Long getId(IdBasedQuad idBasedQuad) {
-        return nodeQuadToId.get(idBasedQuad);
+    public Long getId(IdBasedTriple idBasedTriple) {
+        return nodeTripleToId.get(idBasedTriple);
     }
 
     @Override
     public long size() {
-        return nodeQuadToId.size();
+        return nodeTripleToId.size();
     }
 
     @Override
@@ -56,15 +56,14 @@ public class HashReferenceDictionary implements ReferenceDictionary {
         final StringBuilder sb = new StringBuilder();
         sb.append("Reference Dictionary\n");
 
-        if (idToNodeQuad.size() == 0) {
+        if (idToNodeTriple.size() == 0) {
             sb.append(">>> empty <<<\n");
         }
-        for (int i = 1; i <= idToNodeQuad.size() && i < limit; i++) {
-            final IdBasedQuad node = getIdBasedQuad(i);
+        for (int i = 1; i <= idToNodeTriple.size() && i < limit; i++) {
+            final IdBasedTriple node = getIdBasedTriple(i);
             long id = i + IdFactory.REFERENCE_BIT;
             sb.append(String.format("%s (id: %s) : %s\n", i, id, node));
         }
-
         System.out.println(sb.toString());
     }
 }

@@ -1,117 +1,93 @@
 package main;
 
+import org.apache.jena.graph.Node;
+import org.apache.jena.graph.Node_Triple;
+import org.apache.jena.graph.Triple;
 import org.apache.jena.query.*;
-import org.apache.jena.riot.RDFParser;
-import org.apache.jena.sparql.engine.QueryExecutionBase;
-import se.liu.ida.rdfstar.tools.parser.lang.LangTrigStar;
-import se.liu.ida.rdfstar.tools.sparqlstar.lang.SPARQLStar;
-import se.liu.ida.rdfstar.tools.sparqlstar.resultset.ResultSetWritersSPARQLStar;
+import org.apache.jena.rdf.model.Model;
+import org.apache.jena.rdf.model.ModelFactory;
+import org.apache.jena.rdf.model.ResourceFactory;
+import org.apache.jena.riot.ResultSetMgr;
+import org.apache.jena.riot.resultset.ResultSetLang;
+import org.apache.jena.sparql.core.DatasetGraph;
+import org.apache.jena.sparql.core.Quad;
+import org.apache.jena.vocabulary.RDF;
+import se.liu.ida.rspqlstar.lang.RSPQLStar;
+import se.liu.ida.rspqlstar.query.RSPQLStarQuery;
+import se.liu.ida.rspqlstar.store.dataset.StreamingDatasetGraph;
+import se.liu.ida.rspqlstar.store.dictionary.nodedictionary.NodeDictionary;
+import se.liu.ida.rspqlstar.store.dictionary.nodedictionary.NodeDictionaryFactory;
+import se.liu.ida.rspqlstar.store.engine.RSPQLQueryExecution;
 import se.liu.ida.rspqlstar.store.engine.RSPQLStarEngine;
-import se.liu.ida.rspqlstar.store.dataset.DatasetGraphStar;
-import se.liu.ida.rspqlstar.store.utils.Configuration;
-
-import java.io.IOException;
-import java.lang.management.GarbageCollectorMXBean;
-import java.lang.management.ManagementFactory;
-import java.nio.charset.Charset;
-import java.nio.file.Files;
-import java.nio.file.Paths;
 
 public class Main {
 
-    public static void main(String[] args) throws InterruptedException {
-        final String configFile = System.getProperty("user.dir") + "/config.properties";
-        Configuration.init(configFile);
-
-        new Main().start();
-    }
-
-    public void start() throws InterruptedException {
-        LangTrigStar.init();
-        SPARQLStar.init();
-        //QueryEngineStar.register();
+    public static void main(String[] args) {
         RSPQLStarEngine.register();
-        ResultSetWritersSPARQLStar.init();
+        //RSPQLStar.init();
+        //ResultSetWritersSPARQLStar.init();
 
-        // Create dataset
-        DatasetGraphStar dsg = new DatasetGraphStar();
-        Dataset ds = DatasetFactory.wrap(dsg);
+        ARQ.init();
 
-        // Load base data
-        String dataPath = System.getProperty("user.dir") + "/data/test.trigs";
-        RDFParser.create()
-                .base(Configuration.baseUri)
-                .source(dataPath)
-                .checking(false)
-                .parse(dsg);
+        // Limitation: Projecting Node_Triple is currently not supported
 
-        // Execute query
-        Query query = QueryFactory.create("" +
-                "SELECT DISTINCT * WHERE { " +
-                "   GRAPH <g> { ?a ?b ?c }" +
-                "   ?a ?b ?c " +
-                "}", "file://base/", SPARQLStar.syntax);
-        QueryExecution qexec = QueryExecutionFactory.create(query, ds);
-        System.out.println(qexec.getClass());
-        System.out.println(((QueryExecutionBase) qexec).getPlan());
-        if(true) { return; }
+        RSPQLStarQuery query = (RSPQLStarQuery) QueryFactory.create("" +
+                "BASE <http://base/> " +
+                "PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> "+
+                "PREFIX xsd: <http://www.w3.org/2001/XMLSchema#> " +
+                "" +
+                "REGISTER STREAM <output> COMPUTED EVERY PT10S " +
+                "AS " +
+                "SELECT ?a ?b ?c " +
+                "WHERE { " +
+                //"   ?a ?b ?c ." +
+                //"   WINDOW :w { " +
+                //"      GRAPH ?g { ?a ?b ?c } . ?a ?b ?c " +
+                //"   } " +
+                //"   ?sensor a <Sensor> . " +
+                //"   ?sensor <hasValue> ?value . " +
+                "   GRAPH <g> { <<?a ?b ?c>> <hasSource> ?source . } " +
+                //"   GRAPH <g> { ?sensor <hasValue> ?value2 . } " +
+                //"   FILTER (?value > 1)" +
+                "}", RSPQLStar.syntax);
+
+        // Print algebra tree
+        // System.err.println(MyAlgebra.compile(query));
+
+        StreamingDatasetGraph sdg = new StreamingDatasetGraph();
+        addData(sdg);
+        Dataset dataset = DatasetFactory.wrap(sdg);
+        QueryExecution qexec = new RSPQLQueryExecution(query, dataset);
+
+
+
         ResultSet rs = qexec.execSelect();
-        org.apache.jena.sparql.engine.QueryExecutionBase q;
-        String s = "";
-        while (rs.hasNext()){
-            s += rs.next() + "\n";
+        System.out.println("\n");
+        ResultSetMgr.write(System.out, rs, ResultSetLang.SPARQLResultSetText);
+    }
+
+    private static void addData(StreamingDatasetGraph dsg) {
+        String base = "http://base/";
+
+        Node sensor1 = ResourceFactory.createResource(base + "sensor1").asNode();
+        Node sensor = ResourceFactory.createResource(base + "Sensor").asNode();
+        Node hasValue = ResourceFactory.createProperty(base + "hasValue").asNode();
+
+        Node hasSource = ResourceFactory.createProperty(base + "hasSource").asNode();
+        Node producer = ResourceFactory.createProperty(base + "wikipedia").asNode();
+
+        Node g0 = Quad.defaultGraphNodeGenerated;
+        Node g1 = ResourceFactory.createResource(base + "g").asNode();
+        dsg.add(new Quad(g0, sensor1, RDF.type.asNode(), sensor));
+
+        for(int i=0; i < 10; i++) {
+            dsg.add(new Quad(g0, sensor1, hasValue, ResourceFactory.createTypedLiteral(i).asNode()));
         }
-        Thread.sleep(500);
-        System.out.println(s);
 
-    }
-
-    private String readFile(String filePath){
-        String content = null;
-        try {
-            content = new String(Files.readAllBytes(Paths.get(filePath)), Charset.forName("UTF-8"));
-        } catch (IOException e) {
-            e.printStackTrace();
+        for(int i=0; i < 10; i++) {
+            Triple triple = new Triple(sensor1, hasValue, ResourceFactory.createTypedLiteral(i*100).asNode());
+            dsg.add(new Quad(g1, triple));
+            dsg.add(new Quad(g1, new Node_Triple(triple), hasSource, producer));
         }
-        return content;
-    }
-
-    /**
-     * Read a results set from beginning to end. Returns null if query times out.
-     * @param rs
-     * @return
-     */
-    private String readResultSet(ResultSet rs) {
-        String result = null;
-        try {
-            while (rs.hasNext()) {
-                QuerySolution qs = rs.next();
-                result += qs.toString();
-            }
-        } catch(QueryCancelledException e){
-            e.printStackTrace();
-        }
-        return result;
-    }
-
-
-    public static long getGcCount() {
-        long sum = 0;
-        for (GarbageCollectorMXBean b : ManagementFactory.getGarbageCollectorMXBeans()) {
-            long count = b.getCollectionCount();
-            if (count != -1) { sum += count; }
-        }
-        return sum;
-    }
-    public static long getReallyUsedMemory() {
-        long before = getGcCount();
-        System.gc();
-        while (getGcCount() == before);
-        return getCurrentlyAllocatedMemory();
-    }
-
-    public static long getCurrentlyAllocatedMemory() {
-        final Runtime runtime = Runtime.getRuntime();
-        return (runtime.totalMemory() - runtime.freeMemory()) / (1024 * 1024);
     }
 }

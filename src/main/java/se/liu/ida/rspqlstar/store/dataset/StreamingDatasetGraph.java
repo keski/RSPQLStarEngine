@@ -1,17 +1,21 @@
 package se.liu.ida.rspqlstar.store.dataset;
 
 import org.apache.commons.collections4.iterators.IteratorChain;
+import org.apache.commons.lang3.NotImplementedException;
+import org.apache.jena.graph.Graph;
 import org.apache.jena.graph.Node;
 import org.apache.jena.sparql.core.Quad;
-import se.liu.ida.rspqlstar.store.triple.IdBasedQuad;
+import se.liu.ida.rspqlstar.store.dictionary.nodedictionary.NodeDictionary;
+import se.liu.ida.rspqlstar.store.dictionary.nodedictionary.NodeDictionaryFactory;
+import se.liu.ida.rspqlstar.store.index.IdBasedQuad;
 
 import java.util.HashMap;
 import java.util.Iterator;
 import java.util.Map;
 
 /**
- * For each query, a StreamingDatasetGraph is defined. Before query evaluation takes place the execution time
- * is set and it remains fixed static throughout the entire evaluation
+ * StreamingDatasetGraph it a wrapper for all datasets to be queried. The execution time is set
+ * and it remains fixed static throughout each execution.
  */
 public class StreamingDatasetGraph extends AbstractDatasetGraph {
     private DatasetGraphStar baseDataset = new DatasetGraphStar();
@@ -39,12 +43,22 @@ public class StreamingDatasetGraph extends AbstractDatasetGraph {
         activeDataset = dataset;
     }
 
-    public WindowDatasetGraph getWindow(String iri){
+    public WindowDatasetGraph getWindowDataset(String iri){
         return windows.get(iri);
     }
 
     public void setTime(long time){
         this.time = time;
+    }
+
+    @Override
+    public Graph getDefaultGraph() {
+        return activeDataset.getDefaultGraph();
+    }
+
+    @Override
+    public void add(Quad quad){
+        activeDataset.add(quad);
     }
 
     @Override

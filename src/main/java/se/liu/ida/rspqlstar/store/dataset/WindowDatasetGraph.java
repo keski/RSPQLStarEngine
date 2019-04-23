@@ -1,6 +1,6 @@
 package se.liu.ida.rspqlstar.store.dataset;
 
-import se.liu.ida.rspqlstar.store.triple.IdBasedQuad;
+import se.liu.ida.rspqlstar.store.index.IdBasedQuad;
 
 import java.util.Iterator;
 

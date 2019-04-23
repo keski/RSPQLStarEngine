@@ -3,33 +3,50 @@ package main;
 import org.apache.jena.graph.Node;
 import org.apache.jena.graph.Node_Triple;
 import org.apache.jena.graph.Triple;
+import org.apache.jena.query.*;
 import org.apache.jena.rdf.model.ResourceFactory;
 import org.apache.jena.riot.RDFParser;
-import org.apache.jena.sparql.core.DatasetGraph;
 import org.apache.jena.sparql.core.Quad;
-import se.liu.ida.rdfstar.tools.parser.lang.LangTrigStar;
-import se.liu.ida.rdfstar.tools.parser.lang.LangTurtleStar;
-import se.liu.ida.rdfstar.tools.sparqlstar.lang.SPARQLStar;
-import se.liu.ida.rdfstar.tools.sparqlstar.resultset.ResultSetWritersSPARQLStar;
-import se.liu.ida.rspqlstar.store.dataset.*;
+import se.liu.ida.rspqlstar.lang.RSPQLStar;
+import se.liu.ida.rspqlstar.query.RSPQLStarQuery;
+import se.liu.ida.rspqlstar.store.dataset.DatasetGraphStar;
+import se.liu.ida.rspqlstar.store.dataset.RDFStream;
+import se.liu.ida.rspqlstar.store.dataset.StreamingDatasetGraph;
+import se.liu.ida.rspqlstar.store.dataset.TimestampedGraph;
 import se.liu.ida.rspqlstar.store.engine.RSPQLStarEngine;
-import se.liu.ida.rspqlstar.store.triple.IdBasedQuad;
-import se.liu.ida.rspqlstar.store.utils.Configuration;
 
-import java.util.Iterator;
 import java.util.Random;
 
 public class TestQueryEval {
     static Random r = new Random(0);
 
-    public static void main(String[] args) throws InterruptedException {
-        LangTrigStar.init();
-        LangTurtleStar.init();
-        SPARQLStar.init();
+    public static void main(String[] args) {
         RSPQLStarEngine.register();
-        ResultSetWritersSPARQLStar.init();
+        ARQ.init();
 
+        RSPQLStarQuery query = (RSPQLStarQuery) QueryFactory.create("" +
+                "PREFIX : <http://example.org#> " +
+                "REGISTER STREAM :output COMPUTED EVERY PT10S " +
+                "AS " +
+                "SELECT * " +
+                "FROM NAMED WINDOW :w ON :s [RANGE PT10S STEP PT5S] " +
+                "WHERE { " +
+                "   WINDOW :w { " +
+                "      GRAPH ?g { ?a ?b ?c } " +
+                //"      ?a ?b ?c ." +
+                "   } " +
+                //"   GRAPH ?g2 { ?d ?e ?f } " +
+                //"   ?g ?h ?j ." +
+                "}", RSPQLStar.syntax);
 
+        StreamingDatasetGraph sdg = new StreamingDatasetGraph();
+        Dataset dataset = DatasetFactory.wrap(sdg);
+
+        QueryExecution qexec = QueryExecutionFactory.create(query, dataset);
+
+        ResultSet rs = qexec.execSelect();
+
+/*
         long t0 = System.currentTimeMillis();
 
         StreamingDatasetGraph sdg = new StreamingDatasetGraph();
@@ -68,8 +85,8 @@ public class TestQueryEval {
             System.out.printf("Total: %s quads\n", count);
 
         }
+        */
     }
-
 
     private static void runStream(RDFStream stream, long delay) {
         new Thread(() -> {
@@ -96,18 +113,16 @@ public class TestQueryEval {
     }
 
     public static void main2(String[] args){
-        LangTrigStar.init();
-        SPARQLStar.init();
         RSPQLStarEngine.register();
-        ResultSetWritersSPARQLStar.init();
+        ARQ.init();
 
         // Create dataset
-        DatasetGraph baseDataset = new DatasetGraphStar();
+        org.apache.jena.sparql.core.DatasetGraph baseDataset = new DatasetGraphStar();
 
         // Load base data
         String dataPath = "./data/test.trigs";
         RDFParser.create()
-                .base(Configuration.baseUri)
+                .base("file://base/")
                 .source(dataPath)
                 .checking(false)
                 .parse(baseDataset);

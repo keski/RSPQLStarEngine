@@ -1,7 +1,7 @@
 package se.liu.ida.rspqlstar.store.dataset;
 
 import org.apache.commons.collections4.iterators.IteratorChain;
-import se.liu.ida.rspqlstar.store.triple.IdBasedQuad;
+import se.liu.ida.rspqlstar.store.index.IdBasedQuad;
 
 import java.util.Iterator;
 import java.util.concurrent.ConcurrentLinkedQueue;
