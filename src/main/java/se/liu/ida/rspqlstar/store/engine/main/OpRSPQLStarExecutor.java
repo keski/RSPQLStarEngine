@@ -1,7 +1,5 @@
 package se.liu.ida.rspqlstar.store.engine.main;
 
-import org.apache.commons.lang3.NotImplementedException;
-import org.apache.jena.atlas.iterator.Iter;
 import org.apache.jena.graph.Node;
 import org.apache.jena.graph.Node_Triple;
 import org.apache.jena.graph.Triple;
@@ -14,21 +12,26 @@ import org.apache.jena.sparql.engine.QueryIterator;
 import org.apache.jena.sparql.engine.main.OpExecutor;
 import org.apache.jena.sparql.engine.main.OpExecutorFactory;
 import org.apache.jena.sparql.expr.Expr;
+import org.apache.jena.sparql.expr.ExprVar;
 import org.apache.jena.sparql.expr.NodeValue;
+import org.apache.log4j.Logger;
+import se.liu.ida.rspqlstar.algebra.op.OpExtendQuad;
+import se.liu.ida.rspqlstar.algebra.op.OpWindow;
+import se.liu.ida.rspqlstar.store.dataset.StreamingDatasetGraph;
 import se.liu.ida.rspqlstar.store.dictionary.VarDictionary;
 import se.liu.ida.rspqlstar.store.dictionary.nodedictionary.NodeDictionary;
 import se.liu.ida.rspqlstar.store.dictionary.nodedictionary.NodeDictionaryFactory;
 import se.liu.ida.rspqlstar.store.engine.main.iterator.*;
-import se.liu.ida.rspqlstar.store.engine.main.quadpattern.*;
+import se.liu.ida.rspqlstar.store.engine.main.pattern.*;
 
+import java.util.Collections;
 import java.util.Iterator;
 
 public class OpRSPQLStarExecutor extends OpExecutor {
-
+    final private Logger logger = Logger.getLogger(OpRSPQLStarExecutor.class);
     static final public OpExecutorFactory factory = execCxt -> new OpRSPQLStarExecutor(execCxt);
     final private VarDictionary varDict = VarDictionary.get();
     final private NodeDictionary nd = NodeDictionaryFactory.get();
-    public Key activeGraph;
 
     /**
      * Creates an operator compiler.
@@ -45,9 +48,7 @@ public class OpRSPQLStarExecutor extends OpExecutor {
      */
     @Override
     protected QueryIterator execute(OpJoin opJoin, QueryIterator input) {
-        // Encode incoming iterator into ID based bindings
-        Iterator<SolutionMapping> iter = new EncodeBindingsIterator(input, execCxt);
-        // Return a decoded standard iterator
+        final Iterator<SolutionMapping> iter = new EncodeBindingsIterator(input, execCxt);
         return new DecodeBindingsIterator(execute(opJoin, iter), execCxt);
     }
 
@@ -58,10 +59,8 @@ public class OpRSPQLStarExecutor extends OpExecutor {
      * @return
      */
     @Override
-    protected QueryIterator execute(OpSequence opSequence, QueryIterator input) {
-        // Encode incoming iterator into ID based bindings
-        Iterator<SolutionMapping> iter = new EncodeBindingsIterator(input, execCxt);
-        // Return a decoded standard iterator
+    protected QueryIterator execute(final OpSequence opSequence, final QueryIterator input) {
+        final Iterator<SolutionMapping> iter = new EncodeBindingsIterator(input, execCxt);
         return new DecodeBindingsIterator(execute(opSequence, iter), execCxt);
     }
 
@@ -72,11 +71,30 @@ public class OpRSPQLStarExecutor extends OpExecutor {
      * @return
      */
     @Override
-    protected QueryIterator execute(OpExtend opExtend, QueryIterator input) {
-        // Encode incoming iterator into ID based bindings
+    protected QueryIterator execute(final OpExtend opExtend, final QueryIterator input) {
+        return super.execute(opExtend, input);
+        // TODO
+        // Fork here
+        // 1) Regular, use simple
+        // 2) Node_Triple, map
+        //final Expr expr = opExtend.getVarExprList().getExprs().values().iterator().next();
+        //if(expr instanceof ExprVar){
+
+        //}
+        //final Iterator<SolutionMapping> iter = new EncodeBindingsIterator(input, execCxt);
+        //return new DecodeBindingsIterator(execute(opExtend, iter), execCxt);
+    }
+
+    /**
+     * Map to ID based OpQuad.
+     * @param opQuad
+     * @param input
+     * @return
+     */
+    @Override
+    protected QueryIterator execute(final OpQuad opQuad, final QueryIterator input) {
         final Iterator<SolutionMapping> iter = new EncodeBindingsIterator(input, execCxt);
-        // Return a decoded standard iterator
-        return new DecodeBindingsIterator(execute(opExtend, iter), execCxt);
+        return new DecodeBindingsIterator(execute(opQuad, iter), execCxt);
     }
 
     //////////////////////////////////////////////////////////////////////////////////
@@ -135,33 +153,51 @@ public class OpRSPQLStarExecutor extends OpExecutor {
      * @return
      */
     protected Iterator<SolutionMapping> execute(OpFilter opFilter, Iterator<SolutionMapping> input){
-        //return input;
         final QueryIterator iter = new DecodeBindingsIterator(input, execCxt);
         return new EncodeBindingsIterator(execute(opFilter, iter), execCxt);
     }
 
-
     private Iterator<SolutionMapping> execute(OpExtend opExtend, Iterator<SolutionMapping> input) {
+        return execute(new OpExtendQuad(opExtend, null), input);
+    }
+
+    private Iterator<SolutionMapping> execute(OpExtendQuad opExtendQuad, Iterator<SolutionMapping> input) {
+        final OpExtend opExtend = opExtendQuad.getSubOp();
         final Expr expr = opExtend.getVarExprList().getExprs().values().iterator().next();
+
+        if(expr instanceof ExprVar){
+            return Collections.emptyIterator();
+        }
+
         final Node node = ((NodeValue) expr).asNode();
-        final Var var = opExtend.getVarExprList().getVars().get(0);
+        final Var var = expr.getExprVar().asVar();
+        // OLD:
+        // final Var var = opExtend.getVarExprList().getVars().get(0);
 
         if (node instanceof Node_Triple) {
+            // Get the graph context from the original opExtendQuad
+            final Element g = encodeAsElement(opExtendQuad.getGraph());
             // Embedded triple extend
             final Triple t = ((Node_Triple) node).get();
             final Element s = encodeAsElement(t.getSubject());
             final Element p = encodeAsElement(t.getPredicate());
             final Element o = encodeAsElement(t.getObject());
-            final QuadStarPattern pattern = new QuadStarPattern(activeGraph, s, p, o);
-            return new IdBasedExtendWithEmbeddedTriplePattern(encode(var), pattern, input, execCxt);
+            final QuadStarPattern pattern = new QuadStarPattern(g, s, p, o);
+            return new IdBasedEmbeddedTriplePatternExtend(encode(var), pattern, input, execCxt);
         } else {
             // regular extend
             final Long id = encode(node);
             final Key key = id != null ? new Key(id) : new NodeWrapperKey(node);
             return new IdBasedExtendIterator(encode(var), key, input, execCxt);
         }
+    }
 
-        //throw new IllegalStateException("The opExtend does not seem to contain any expression: " + opExtend.getVarExprList());
+    private Iterator<SolutionMapping> execute(OpWindow opWindow, Iterator<SolutionMapping> input) {
+        final StreamingDatasetGraph sdg = (StreamingDatasetGraph) execCxt.getDataset();
+        sdg.useWindowDataset(opWindow.getNode().toString());
+        final Iterator<SolutionMapping> iter = executeIdBasedOp(opWindow.getSubOp(), input);
+        sdg.useBaseDataset();
+        return iter;
     }
 
     public Iterator<SolutionMapping> executeIdBasedOp(final Op op, final Iterator<SolutionMapping> input){
@@ -173,14 +209,17 @@ public class OpRSPQLStarExecutor extends OpExecutor {
         } else if (op instanceof OpSequence) {
             iterator = execute((OpSequence) op, input);
         } else if (op instanceof OpExtend) {
-            iterator = execute((OpExtend) op, input);
+            iterator = execute(new OpExtendQuad((OpExtend) op, null), input);
+        } else if (op instanceof OpExtendQuad) {
+            iterator = execute((OpExtendQuad) op, input);
         } else if (op instanceof OpFilter) {
             iterator = execute((OpFilter) op, input);
         } else if(op instanceof OpTable) {
             iterator = execute((OpTable) op, input);
+        }  else if(op instanceof OpWindow) {
+            iterator = execute((OpWindow) op, input);
         } else {
-            System.err.println("There is no id-based iterator implemented for " + op);
-            System.err.println("Defaulting to decode/encode");
+            logger.info("There is no id-based iterator implemented for " + op + ", defaulting to decode/encode");
             QueryIterator iter = exec(op, new DecodeBindingsIterator(input, execCxt));
             return new EncodeBindingsIterator(iter, execCxt);
         }

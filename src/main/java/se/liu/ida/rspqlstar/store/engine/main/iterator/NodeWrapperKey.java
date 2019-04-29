@@ -1,7 +1,7 @@
 package se.liu.ida.rspqlstar.store.engine.main.iterator;
 
 import org.apache.jena.graph.Node;
-import se.liu.ida.rspqlstar.store.engine.main.quadpattern.Key;
+import se.liu.ida.rspqlstar.store.engine.main.pattern.Key;
 
 public class NodeWrapperKey extends Key {
     final public Node node;

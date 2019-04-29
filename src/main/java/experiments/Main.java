@@ -1,74 +1,87 @@
-package main;
+package experiments;
 
 import org.apache.jena.graph.Node;
+import org.apache.jena.graph.NodeFactory;
 import org.apache.jena.graph.Node_Triple;
 import org.apache.jena.graph.Triple;
 import org.apache.jena.query.*;
-import org.apache.jena.rdf.model.Model;
-import org.apache.jena.rdf.model.ModelFactory;
-import org.apache.jena.rdf.model.ResourceFactory;
+import org.apache.jena.rdf.model.*;
 import org.apache.jena.riot.ResultSetMgr;
 import org.apache.jena.riot.resultset.ResultSetLang;
-import org.apache.jena.sparql.core.DatasetGraph;
 import org.apache.jena.sparql.core.Quad;
+import org.apache.jena.sparql.engine.iterator.QueryIteratorCheck;
 import org.apache.jena.vocabulary.RDF;
+import org.apache.jena.vocabulary.RDFS;
 import se.liu.ida.rspqlstar.lang.RSPQLStar;
 import se.liu.ida.rspqlstar.query.RSPQLStarQuery;
+import se.liu.ida.rspqlstar.store.dataset.RDFStream;
 import se.liu.ida.rspqlstar.store.dataset.StreamingDatasetGraph;
-import se.liu.ida.rspqlstar.store.dictionary.nodedictionary.NodeDictionary;
-import se.liu.ida.rspqlstar.store.dictionary.nodedictionary.NodeDictionaryFactory;
-import se.liu.ida.rspqlstar.store.engine.RSPQLQueryExecution;
+import se.liu.ida.rspqlstar.store.dataset.TimestampedGraph;
+import se.liu.ida.rspqlstar.store.engine.RSPQLStarQueryExecution;
 import se.liu.ida.rspqlstar.store.engine.RSPQLStarEngine;
+import se.liu.ida.rspqlstar.store.engine.main.pattern.QuadStarPattern;
+
+import java.util.*;
 
 public class Main {
+    static String base = "http://base/";
 
     public static void main(String[] args) {
         RSPQLStarEngine.register();
-        //RSPQLStar.init();
-        //ResultSetWritersSPARQLStar.init();
-
         ARQ.init();
-
-        // Limitation: Projecting Node_Triple is currently not supported
 
         RSPQLStarQuery query = (RSPQLStarQuery) QueryFactory.create("" +
                 "BASE <http://base/> " +
                 "PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> "+
                 "PREFIX xsd: <http://www.w3.org/2001/XMLSchema#> " +
                 "" +
-                "REGISTER STREAM <output> COMPUTED EVERY PT10S " +
+                "REGISTER STREAM <output> COMPUTED EVERY PT1S " +
                 "AS " +
-                "SELECT ?a ?b ?c " +
+                "SELECT (COUNT(DISTINCT ?g) AS ?count) " +
+                "FROM NAMED WINDOW <w> ON <breathing> [RANGE PT5S STEP PT1S] " +
                 "WHERE { " +
-                //"   ?a ?b ?c ." +
-                //"   WINDOW :w { " +
-                //"      GRAPH ?g { ?a ?b ?c } . ?a ?b ?c " +
-                //"   } " +
+                "   WINDOW <w> { " +
+                "      GRAPH ?g { ?a ?b ?c } " +
+                //"      ?g ?hasTime ?time . " +
+                "   } " +
+                //"?a ?b ?c ." +
                 //"   ?sensor a <Sensor> . " +
                 //"   ?sensor <hasValue> ?value . " +
-                "   GRAPH <g> { <<?a ?b ?c>> <hasSource> ?source . } " +
-                //"   GRAPH <g> { ?sensor <hasValue> ?value2 . } " +
-                //"   FILTER (?value > 1)" +
+                //"   GRAPH <g> { ?sensor ?b ?value . } " +
+                //"   GRAPH ?g { <<?a ?b ?c>> <hasSource> ?source . } " +
+                //"   FILTER (?c > 0)" +
                 "}", RSPQLStar.syntax);
 
-        // Print algebra tree
-        // System.err.println(MyAlgebra.compile(query));
+        // Add data
 
-        StreamingDatasetGraph sdg = new StreamingDatasetGraph();
+        // Breathing stream
+        final RDFStream breathing = new RDFStream("http://base/breathing");
+        new Thread(new BreathingStream(breathing, 100)).start();
+
+        // Map of streams
+        Map<String, RDFStream> rdfStreams = new HashMap<>();
+        rdfStreams.put(breathing.iri, breathing);
+
+        // Defined streaming dataset
+        StreamingDatasetGraph sdg = new StreamingDatasetGraph(query, rdfStreams);
+        sdg.setTime(new Date());
+
+        // Create execution
+        RSPQLStarQueryExecution qexec = new RSPQLStarQueryExecution(query, sdg);
+
+        // add data
         addData(sdg);
-        Dataset dataset = DatasetFactory.wrap(sdg);
-        QueryExecution qexec = new RSPQLQueryExecution(query, dataset);
 
+        // execute continuous select
+        qexec.execContinuousSelect(System.out);
+        //qexec.execContinuousSelectTest(System.out);
 
-
-        ResultSet rs = qexec.execSelect();
-        System.out.println("\n");
-        ResultSetMgr.write(System.out, rs, ResultSetLang.SPARQLResultSetText);
+        //ResultSet rs = qexec.execSelect();
+        //ResultSetMgr.write(System.out, rs, ResultSetLang.SPARQLResultSetText);
     }
 
     private static void addData(StreamingDatasetGraph dsg) {
         String base = "http://base/";
-
         Node sensor1 = ResourceFactory.createResource(base + "sensor1").asNode();
         Node sensor = ResourceFactory.createResource(base + "Sensor").asNode();
         Node hasValue = ResourceFactory.createProperty(base + "hasValue").asNode();
@@ -90,4 +103,5 @@ public class Main {
             dsg.add(new Quad(g1, new Node_Triple(triple), hasSource, producer));
         }
     }
+
 }

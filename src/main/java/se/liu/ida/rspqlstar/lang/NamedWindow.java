@@ -1,5 +1,8 @@
 package se.liu.ida.rspqlstar.lang;
 
+import org.apache.jena.sparql.core.NamedGraph;
+import se.liu.ida.rspqlstar.store.engine.main.pattern.Element;
+
 import java.time.Duration;
 
 public class NamedWindow {
@@ -13,6 +16,7 @@ public class NamedWindow {
         this.streamIri = streamIri;
         this.range = range;
         this.step = step;
+
     }
 
     public String getWindowName() {

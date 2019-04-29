@@ -3,6 +3,7 @@ package se.liu.ida.rspqlstar.store.dictionary.referencedictionary;
 import se.liu.ida.rspqlstar.store.dictionary.IdFactory;
 import se.liu.ida.rspqlstar.store.index.IdBasedTriple;
 
+import java.io.PrintStream;
 import java.util.ArrayList;
 import java.util.concurrent.ConcurrentHashMap;
 
@@ -52,7 +53,7 @@ public class HashReferenceDictionary implements ReferenceDictionary {
     }
 
     @Override
-    public void print(int limit) {
+    public void print(PrintStream out, int limit) {
         final StringBuilder sb = new StringBuilder();
         sb.append("Reference Dictionary\n");
 
@@ -64,6 +65,6 @@ public class HashReferenceDictionary implements ReferenceDictionary {
             long id = i + IdFactory.REFERENCE_BIT;
             sb.append(String.format("%s (id: %s) : %s\n", i, id, node));
         }
-        System.out.println(sb.toString());
+        out.println(sb.toString());
     }
 }

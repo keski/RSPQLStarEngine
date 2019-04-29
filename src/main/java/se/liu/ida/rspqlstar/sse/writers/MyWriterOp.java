@@ -3,15 +3,18 @@ package se.liu.ida.rspqlstar.sse.writers;
 import org.apache.jena.atlas.io.IndentedWriter;
 import org.apache.jena.sparql.algebra.Op;
 import org.apache.jena.sparql.algebra.op.*;
+import org.apache.jena.sparql.core.Var;
+import org.apache.jena.sparql.core.VarExprList;
+import org.apache.jena.sparql.expr.Expr;
 import org.apache.jena.sparql.pfunction.PropFuncArg;
 import org.apache.jena.sparql.serializer.SerializationContext;
-import org.apache.jena.sparql.sse.writers.WriterBasePrefix;
+import org.apache.jena.sparql.sse.writers.*;
 import org.apache.jena.sparql.sse.writers.WriterBasePrefix.Fmt;
-import org.apache.jena.sparql.sse.writers.WriterLib;
-import org.apache.jena.sparql.sse.writers.WriterNode;
-import org.apache.jena.sparql.sse.writers.WriterOp;
+import se.liu.ida.rspqlstar.algebra.op.OpExtendQuad;
 import se.liu.ida.rspqlstar.algebra.op.OpWindow;
 import se.liu.ida.rspqlstar.util.MyFmtUtils;
+
+import java.util.Iterator;
 
 public class MyWriterOp extends WriterOp {
 
@@ -20,11 +23,7 @@ public class MyWriterOp extends WriterOp {
             throw new IllegalStateException("SerializationContext cannot be null");
         }
 
-        Fmt fmt = new Fmt() {
-            public void format() {
-                op.visit(new MyWriterOp.OpWriterWorker(iWriter, sCxt));
-            }
-        };
+        Fmt fmt = () -> op.visit(new OpWriterWorker(iWriter, sCxt));
         WriterBasePrefix.output(iWriter, fmt, sCxt.getPrologue());
     }
 
@@ -83,13 +82,15 @@ public class MyWriterOp extends WriterOp {
 
 
         /**
-         * OpExt is visited for extendsions. Add new ops here to make them appear
+         * OpExt is visited for extensions. Add new ops here to make them appear
          * in the algebra tree.
          * @param opExt
          */
         public void visit(OpExt opExt) {
             if(opExt instanceof OpWindow){
                 visit((OpWindow) opExt);
+            } else if(opExt instanceof OpExtendQuad){
+                visit((OpExtendQuad) opExt);
             } else {
                 opExt.output(this.out, this.sContext);
             }
@@ -101,6 +102,16 @@ public class MyWriterOp extends WriterOp {
             opWindow.getSubOp().visit(this);
             this.finish(opWindow);
         }
+
+        public void visit(OpExtendQuad opExtendQuad) {
+            this.start(opExtendQuad, -1);
+            this.out.printf("%s ", opExtendQuad.getGraph());
+            this.writeNamedExprList(opExtendQuad.getSubOp().getVarExprList());
+            this.out.println();
+            this.printOp(opExtendQuad.getSubOp().getSubOp());
+            this.finish(opExtendQuad);
+        }
+
 
         public void visit(OpLabel opLabel) {
             String x = MyFmtUtils.stringForString(opLabel.getObject().toString());
@@ -132,7 +143,41 @@ public class MyWriterOp extends WriterOp {
             } else {
                 op.visit(this);
             }
+        }
 
+        private void writeNamedExprList(VarExprList project) {
+            this.start();
+            boolean first = true;
+            Iterator var3 = project.getVars().iterator();
+
+            while(var3.hasNext()) {
+                Var v = (Var)var3.next();
+                if (!first) {
+                    this.out.print(" ");
+                }
+
+                first = false;
+                Expr expr = project.getExpr(v);
+                if (expr != null) {
+                    this.start();
+                    this.out.print(v.toString());
+                    this.out.print(" ");
+                    WriterExpr.output(this.out, expr, this.sContext);
+                    this.finish();
+                } else {
+                    this.out.print(v.toString());
+                }
+            }
+
+            this.finish();
+        }
+
+        private void start() {
+            WriterLib.start(this.out);
+        }
+
+        private void finish() {
+            WriterLib.finish(this.out);
         }
     }
 }

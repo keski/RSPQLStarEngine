@@ -79,7 +79,6 @@ public class SelectivityMap {
     public static int getSelectivityScore(OpFilter opFilter, List<Var> vars) {
         // Return static value if heuristics is disabled
         if(!useHeuristics){
-            System.err.println("Selectivity 0");
             return 0;
         }
 

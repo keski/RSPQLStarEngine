@@ -1,10 +1,7 @@
 package se.liu.ida.rspqlstar.store.index;
 
-import it.unimi.dsi.fastutil.objects.ObjectAVLTreeSet;
-import org.apache.jena.sparql.core.Quad;
-import se.liu.ida.rspqlstar.store.engine.main.quadpattern.QuadStarPattern;
+import se.liu.ida.rspqlstar.store.engine.main.pattern.QuadStarPattern;
 
-import java.util.Arrays;
 import java.util.Iterator;
 import java.util.TreeSet;
 
@@ -115,8 +112,15 @@ public class TreeIndex extends AbstractIndex implements Index {
     }
 
     @Override
-    public boolean contains(QuadStarPattern pattern) {
-        return iterator(pattern).hasNext();
+    public boolean contains(QuadStarPattern p) {
+        if(!p.isConcrete()) throw new IllegalStateException("Pattern is not concrete, call iterator instead: " + p);
+        final long f1 = p.getField(field1).asKey().id;
+        final long f2 = p.getField(field2).asKey().id;
+        final long f3 = p.getField(field3).asKey().id;
+        final long f4 = p.getField(field4).asKey().id;
+
+        final IdBasedQuad key = makeIndexKey(f1, f2, f3, f4, Long.MIN_VALUE);
+        return index.contains(key);
     }
 
     @Override
@@ -126,6 +130,8 @@ public class TreeIndex extends AbstractIndex implements Index {
 
     @Override
     public Iterator<IdBasedQuad> iterator(QuadStarPattern p) {
+        if(p.isConcrete()) throw new IllegalStateException("Patterns is concrete, call contains instead");
+
         final Long f1 = p.isFieldConcrete(field1) ? p.getField(field1).asKey().id : null;
         final Long f2 = p.isFieldConcrete(field2) ? p.getField(field2).asKey().id : null;
         final Long f3 = p.isFieldConcrete(field3) ? p.getField(field3).asKey().id : null;

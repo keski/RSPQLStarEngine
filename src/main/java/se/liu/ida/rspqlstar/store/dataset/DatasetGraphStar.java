@@ -3,17 +3,15 @@ package se.liu.ida.rspqlstar.store.dataset;
 import org.apache.jena.graph.Graph;
 import org.apache.jena.graph.Node;
 import org.apache.jena.graph.Node_Triple;
-import org.apache.jena.mem.GraphMem;
 import org.apache.jena.sparql.core.Quad;
 import se.liu.ida.rspqlstar.store.dictionary.nodedictionary.NodeDictionary;
 import se.liu.ida.rspqlstar.store.dictionary.nodedictionary.NodeDictionaryFactory;
 import se.liu.ida.rspqlstar.store.dictionary.referencedictionary.ReferenceDictionary;
 import se.liu.ida.rspqlstar.store.dictionary.referencedictionary.ReferenceDictionaryFactory;
-import se.liu.ida.rspqlstar.store.engine.DecodingQuadsIterator;
-import se.liu.ida.rspqlstar.store.engine.main.iterator.FilteredTripleIterator;
+import se.liu.ida.rspqlstar.store.engine.main.iterator.DecodingQuadsIterator;
 import se.liu.ida.rspqlstar.store.index.IdBasedQuad;
-import se.liu.ida.rspqlstar.store.engine.main.quadpattern.QuadPatternBuilder;
-import se.liu.ida.rspqlstar.store.engine.main.quadpattern.QuadStarPattern;
+import se.liu.ida.rspqlstar.store.engine.main.pattern.QuadPatternBuilder;
+import se.liu.ida.rspqlstar.store.engine.main.pattern.QuadStarPattern;
 import se.liu.ida.rspqlstar.store.index.Field;
 import se.liu.ida.rspqlstar.store.index.Index;
 import se.liu.ida.rspqlstar.store.index.TreeIndex;
@@ -169,7 +167,10 @@ public class DatasetGraphStar extends AbstractDatasetGraph { //implements Datase
             iter = GSPO.iterateAll();
         }
 
-        return new FilteredTripleIterator(iter, pattern);
+        return iter;
+        // for quad patterns where the same var appears more than once, we need
+        // to filter the results
+        //return new FilteredQuadIterator(iter, pattern);
     }
 
     private QuadStarPattern getQuadPattern(Node g, Node s, Node p, Node o) {

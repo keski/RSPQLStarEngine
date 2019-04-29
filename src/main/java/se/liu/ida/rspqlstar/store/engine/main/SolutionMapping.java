@@ -1,6 +1,6 @@
 package se.liu.ida.rspqlstar.store.engine.main;
 
-import se.liu.ida.rspqlstar.store.engine.main.quadpattern.Key;
+import se.liu.ida.rspqlstar.store.engine.main.pattern.Key;
 
 /**
  * This class represents the solution mappings (variable bindings)

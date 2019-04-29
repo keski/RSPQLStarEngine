@@ -8,10 +8,10 @@ import se.liu.ida.rspqlstar.store.dictionary.IdFactory;
 import se.liu.ida.rspqlstar.store.dictionary.referencedictionary.ReferenceDictionary;
 import se.liu.ida.rspqlstar.store.dictionary.referencedictionary.ReferenceDictionaryFactory;
 import se.liu.ida.rspqlstar.store.engine.main.SolutionMapping;
-import se.liu.ida.rspqlstar.store.engine.main.quadpattern.Element;
-import se.liu.ida.rspqlstar.store.engine.main.quadpattern.Key;
-import se.liu.ida.rspqlstar.store.engine.main.quadpattern.QuadStarPattern;
-import se.liu.ida.rspqlstar.store.engine.main.quadpattern.Variable;
+import se.liu.ida.rspqlstar.store.engine.main.pattern.Element;
+import se.liu.ida.rspqlstar.store.engine.main.pattern.Key;
+import se.liu.ida.rspqlstar.store.engine.main.pattern.QuadStarPattern;
+import se.liu.ida.rspqlstar.store.engine.main.pattern.Variable;
 import se.liu.ida.rspqlstar.store.index.IdBasedQuad;
 import se.liu.ida.rspqlstar.store.index.IdBasedTriple;
 
@@ -19,15 +19,14 @@ import java.util.Collections;
 import java.util.Iterator;
 
 /**
- * Iterator for the bind operator.
+ * Iterator for the bind operator for embedded triple.
  *
  * If concrete, add var -> refT to solMap and return, else
  * iterate all quads in pattern, and bind.
  */
-public class IdBasedExtendWithEmbeddedTriplePattern implements Iterator<SolutionMapping>, Closeable {
-    final private ExecutionContext execCxt;
+public class IdBasedEmbeddedTriplePatternExtend implements Iterator<SolutionMapping>, Closeable {
     final private QuadStarPattern pattern;
-    final private DatasetGraphStar datasetGraph;
+    final private DatasetGraphStar dsg;
     final private Iterator<SolutionMapping> input;
     private SolutionMapping currentInputMapping = null;
     private QuadStarPattern currentQueryPattern = null;
@@ -36,26 +35,30 @@ public class IdBasedExtendWithEmbeddedTriplePattern implements Iterator<Solution
     final private int var;
     static private ReferenceDictionary refT = ReferenceDictionaryFactory.get();
 
-    public IdBasedExtendWithEmbeddedTriplePattern(int var, QuadStarPattern pattern, Iterator<SolutionMapping> input,
-                                                  ExecutionContext execCxt) {
+    public IdBasedEmbeddedTriplePatternExtend(int var, QuadStarPattern pattern, Iterator<SolutionMapping> input,
+                                              ExecutionContext execCxt) {
         this.var = var;
         this.pattern = pattern;
         this.input = input;
-        this.execCxt = execCxt;
-        this.datasetGraph = ((StreamingDatasetGraph) execCxt.getDataset()).getActiveDataset();
+        this.dsg = ((StreamingDatasetGraph) execCxt.getDataset()).getActiveDataset();
     }
 
     public boolean hasNext() {
+
         while (currentMatches == null || !currentMatches.hasNext()) {
             if (!input.hasNext() || !pattern.isMatchable()) {
                 return false;
             }
+
             currentInputMapping = input.next();
             currentQueryPattern = substitute(pattern, currentInputMapping);
-            //currentQueryPattern = reproduce(var, currentQueryPattern, currentInputMapping);
+            currentQueryPattern = reproduce(var, currentQueryPattern, currentInputMapping);
+            if(currentQueryPattern == null){
+                continue;
+            }
 
             if (currentQueryPattern.isConcrete()) {
-                if (datasetGraph.contains(currentQueryPattern)) {
+                if (dsg.contains(currentQueryPattern)) {
                     currentMatches = Collections.singleton(new IdBasedQuad(
                             currentQueryPattern.graph.asKey().id,
                             currentQueryPattern.subject.asKey().id,
@@ -65,7 +68,7 @@ public class IdBasedExtendWithEmbeddedTriplePattern implements Iterator<Solution
                     currentMatches = Collections.<IdBasedQuad>emptyList().iterator();
                 }
             } else {
-                currentMatches = datasetGraph.find(currentQueryPattern);
+                currentMatches = dsg.find(currentQueryPattern);
             }
         }
         return true;
@@ -75,7 +78,6 @@ public class IdBasedExtendWithEmbeddedTriplePattern implements Iterator<Solution
         if (!hasNext()) {
             throw new IllegalStateException();
         }
-
         // Create the next solution mapping
         // i) copy the mapping currently consumed from the input iterator, and
         // ii) bind the variables in the copy corresponding to the currently matching triple
@@ -141,7 +143,7 @@ public class IdBasedExtendWithEmbeddedTriplePattern implements Iterator<Solution
      * @param solMap
      * @returnsy
      */
-    static public QuadStarPattern reproduce(int var, QuadStarPattern tp, SolutionMapping solMap) {
+     public QuadStarPattern reproduce(int var, QuadStarPattern tp, SolutionMapping solMap) {
         final Key tripleKey = solMap.get(var);
         if (tripleKey == null) {
             // nothing to reproduce
@@ -167,7 +169,7 @@ public class IdBasedExtendWithEmbeddedTriplePattern implements Iterator<Solution
             return null;
         }
 
-        // Wrap ID as keys
+        // Wrap IDs as keys
         final Key sKey = new Key(s);
         final Key pKey = new Key(p);
         final Key oKey = new Key(o);
@@ -183,8 +185,7 @@ public class IdBasedExtendWithEmbeddedTriplePattern implements Iterator<Solution
             solMap.set(tp.object.asVariable().varId, oKey);
         }
 
-        // TODO
-        return new QuadStarPattern(null, sKey, pKey, oKey);
+        return new QuadStarPattern(pattern.graph, sKey, pKey, oKey);
     }
 
     private static Key getTripleKey(long s, long p, long o) {

@@ -1,17 +1,16 @@
 package se.liu.ida.rspqlstar.store.dataset;
 
 import org.apache.commons.collections4.iterators.IteratorChain;
-import org.apache.commons.lang3.NotImplementedException;
 import org.apache.jena.graph.Graph;
 import org.apache.jena.graph.Node;
 import org.apache.jena.sparql.core.Quad;
-import se.liu.ida.rspqlstar.store.dictionary.nodedictionary.NodeDictionary;
-import se.liu.ida.rspqlstar.store.dictionary.nodedictionary.NodeDictionaryFactory;
+import se.liu.ida.rspqlstar.lang.NamedWindow;
+import se.liu.ida.rspqlstar.query.RSPQLStarQuery;
 import se.liu.ida.rspqlstar.store.index.IdBasedQuad;
 
-import java.util.HashMap;
-import java.util.Iterator;
-import java.util.Map;
+import java.time.Duration;
+import java.time.temporal.TemporalUnit;
+import java.util.*;
 
 /**
  * StreamingDatasetGraph it a wrapper for all datasets to be queried. The execution time is set
@@ -21,7 +20,29 @@ public class StreamingDatasetGraph extends AbstractDatasetGraph {
     private DatasetGraphStar baseDataset = new DatasetGraphStar();
     private Map<String, WindowDatasetGraph> windows = new HashMap<>();
     private DatasetGraphStar activeDataset = baseDataset;
-    private long time = -1;
+    private Date time = new Date();
+
+    /**
+     * Create a StreamingDatasetGraph.
+     */
+    public StreamingDatasetGraph(){}
+
+    /**
+     * Create a StreamingDatasetGraph from a query and a set of RDFStreams. The constructor
+     * creates a WindowDatasetGraph for each named window mentioned in the query.
+     */
+
+    public StreamingDatasetGraph(RSPQLStarQuery query, Map<String, RDFStream> streams){
+        TemporalUnit t;
+
+        for(NamedWindow w : query.getNamedWindows().values()){
+            final String name = w.getWindowName();
+            final Duration range = w.getRange();
+            final Duration step = w.getStep();
+            final RDFStream rdfStream = streams.get(w.getStreamName());
+            addWindow(new WindowDatasetGraph(name, range, step, time, rdfStream));
+        }
+    }
 
     public void setBaseDataset(DatasetGraphStar dataset){
         baseDataset = dataset;
@@ -32,23 +53,20 @@ public class StreamingDatasetGraph extends AbstractDatasetGraph {
     }
 
     public void addWindow(WindowDatasetGraph window){
-        windows.put(window.iri, window);
+        windows.put(window.name, window);
     }
 
     public DatasetGraphStar getActiveDataset(){
         return activeDataset;
     }
 
-    public void setActiveDataset(DatasetGraphStar dataset){
-        activeDataset = dataset;
-    }
-
-    public WindowDatasetGraph getWindowDataset(String iri){
-        return windows.get(iri);
-    }
-
-    public void setTime(long time){
+    public void setTime(Date time){
         this.time = time;
+        windows.values().forEach(w -> w.getDataset(time.getTime()));
+    }
+
+    public Date getTime(){
+        return time;
     }
 
     @Override
@@ -74,10 +92,35 @@ public class StreamingDatasetGraph extends AbstractDatasetGraph {
         return getActiveDataset().find(g, s, p , o);
     }
 
+    /**
+     * Iterate all quads in all datasets associated with this StreamingDatasetGraph.
+     *
+     * @return
+     */
     public Iterator<IdBasedQuad> iterator(){
         final IteratorChain<IdBasedQuad> iteratorChain = new IteratorChain<>();
         iteratorChain.addIterator(baseDataset.iterateAll());
-        windows.forEach((iri, w) -> iteratorChain.addIterator(w.iterateAll(time)));
+        windows.forEach((iri, w) -> iteratorChain.addIterator(w.iterate(time)));
         return iteratorChain;
+    }
+
+    public void useWindowDataset(String name) {
+        final WindowDatasetGraph dsg = windows.get(name);
+        if(dsg == null){
+            throw new IllegalStateException("The named window " + name + " does not exist.");
+        }
+        activeDataset = dsg.getDataset(time.getTime());
+    }
+
+    public void useBaseDataset() {
+        activeDataset = baseDataset;
+    }
+
+    public DatasetGraphStar getWindowDataset(String name) {
+        final WindowDatasetGraph dsg = windows.get(name);
+        if(dsg == null){
+            throw new IllegalStateException("The named window " + name + " does not exist.");
+        }
+        return dsg.getDataset(time.getTime());
     }
 }

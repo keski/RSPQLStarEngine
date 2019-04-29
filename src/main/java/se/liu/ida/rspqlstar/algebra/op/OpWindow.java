@@ -3,11 +3,14 @@ package se.liu.ida.rspqlstar.algebra.op;
 import org.apache.jena.atlas.io.IndentedWriter;
 import org.apache.jena.atlas.lib.NotImplemented;
 import org.apache.jena.graph.Node;
+import org.apache.jena.sparql.algebra.Algebra;
 import org.apache.jena.sparql.algebra.Op;
 import org.apache.jena.sparql.algebra.OpVisitor;
 import org.apache.jena.sparql.algebra.Transform;
 import org.apache.jena.sparql.algebra.op.OpExt;
 import org.apache.jena.sparql.algebra.op.OpGraph;
+import org.apache.jena.sparql.algebra.op.OpJoin;
+import org.apache.jena.sparql.algebra.op.OpQuadPattern;
 import org.apache.jena.sparql.engine.ExecutionContext;
 import org.apache.jena.sparql.engine.QueryIterator;
 import org.apache.jena.sparql.serializer.SerializationContext;
@@ -18,7 +21,7 @@ import se.liu.ida.rspqlstar.sse.writers.MyWriterOp;
 public class OpWindow extends OpExt {
 
     private final Node node;
-    private final Op subOp;
+    private Op subOp;
 
     public OpWindow(Node name, Op subOp) {
         super("window");
@@ -31,7 +34,7 @@ public class OpWindow extends OpExt {
     }
 
     public Op effectiveOp(){
-        throw new  NotImplemented();
+        return subOp;
     }
 
     public QueryIterator eval(QueryIterator var1, ExecutionContext var2){
@@ -53,7 +56,7 @@ public class OpWindow extends OpExt {
 
     @Override
     public boolean equalTo(Op other, NodeIsomorphismMap labelMap) {
-        if (!(other instanceof OpGraph)) {
+        if (!(other instanceof OpWindow)) {
             return false;
         } else {
             OpWindow opWindow = (OpWindow) other;
@@ -74,8 +77,8 @@ public class OpWindow extends OpExt {
     }
 
     public Op apply(Transform transform) {
-        RSPQLStarTransform t = (RSPQLStarTransform) transform;
-        return t.transform(this);
+        subOp = Algebra.toQuadForm(subOp);
+        return this;
     }
 
     public void outputArgs(IndentedWriter var1, SerializationContext var2){

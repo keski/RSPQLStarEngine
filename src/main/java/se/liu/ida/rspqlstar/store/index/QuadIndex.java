@@ -10,9 +10,9 @@ import se.liu.ida.rspqlstar.store.dictionary.nodedictionary.NodeDictionaryFactor
 import se.liu.ida.rspqlstar.store.dictionary.nodedictionary.idnodes.Node_Placeholder;
 import se.liu.ida.rspqlstar.store.dictionary.referencedictionary.ReferenceDictionary;
 import se.liu.ida.rspqlstar.store.dictionary.referencedictionary.ReferenceDictionaryFactory;
-import se.liu.ida.rspqlstar.store.engine.main.iterator.FilteredTripleIterator;
+import se.liu.ida.rspqlstar.store.engine.main.iterator.FilteredQuadIterator;
 import se.liu.ida.rspqlstar.store.dictionary.IdFactory;
-import se.liu.ida.rspqlstar.store.engine.main.quadpattern.QuadStarPattern;
+import se.liu.ida.rspqlstar.store.engine.main.pattern.QuadStarPattern;
 
 import java.util.Collections;
 import java.util.Iterator;
@@ -141,7 +141,7 @@ public class QuadIndex implements StreamRDF {
             iter = GSPO.iterateAll();
         }
 
-        return new FilteredTripleIterator(iter, quadPattern);
+        return new FilteredQuadIterator(iter, quadPattern);
     }
 
     @Override

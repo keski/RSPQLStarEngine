@@ -2,6 +2,8 @@ package se.liu.ida.rspqlstar.store.dictionary.nodedictionary;
 
 import org.apache.jena.graph.Node;
 
+import java.io.PrintStream;
+
 /**
  * An implementation of {@link NodeDictionary} that simply wraps another
  * {@link NodeDictionary}. Subclasses may override some of the functionality.
@@ -29,8 +31,8 @@ public class NodeDictionaryWrapper implements NodeDictionary {
     public long size() { return wrappedDict.size(); }
 
 	@Override
-	public void print(int limit) {
-		wrappedDict.print(limit);
+	public void print(PrintStream out, int limit) {
+		wrappedDict.print(out, limit);
 	}
 
 }

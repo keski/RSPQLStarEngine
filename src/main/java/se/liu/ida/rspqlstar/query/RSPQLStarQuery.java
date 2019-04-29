@@ -1,7 +1,6 @@
 package se.liu.ida.rspqlstar.query;
 
 import org.apache.jena.atlas.io.IndentedWriter;
-import org.apache.jena.atlas.logging.Log;
 import org.apache.jena.graph.Node;
 import org.apache.jena.query.Query;
 import org.apache.jena.query.QueryVisitor;
@@ -13,6 +12,7 @@ import org.apache.jena.sparql.syntax.PatternVars;
 import se.liu.ida.rspqlstar.lang.NamedWindow;
 import se.liu.ida.rspqlstar.lang.RSPQLStar;
 import se.liu.ida.rspqlstar.serializer.RSPQLStarQueryVisitor;
+import se.liu.ida.rspqlstar.syntax.MyPatternVars;
 
 import java.time.Duration;
 import java.util.*;
@@ -28,12 +28,18 @@ public class RSPQLStarQuery extends Query {
         setSyntax(RSPQLStar.syntax);
     }
 
+    public List<String> getResultVars() {
+        if(isQueryResultStar())
+            findAndAddEmbeddedNamedVars();
+        return Var.varNames(this.projectVars.getVars());
+    }
+
     public void setOutputStream(String outputStream){
         this.outputStream = outputStream;
     }
 
     public void setComputedEvery(String interval){
-        computedEvery = asDuration(interval);
+        computedEvery = stringAsDuration(interval);
     }
 
     public String getOutputStream() {
@@ -49,11 +55,11 @@ public class RSPQLStarQuery extends Query {
     }
 
     public void addNamedWindow(String windowIri, String streamIri, String range, String step){
-        final NamedWindow window = new NamedWindow(windowIri, streamIri, asDuration(range), asDuration(step));
+        final NamedWindow window = new NamedWindow(windowIri, streamIri, stringAsDuration(range), stringAsDuration(step));
         namedWindows.put(windowIri, window);
     }
 
-    public Duration asDuration(String duration){
+    public Duration stringAsDuration(String duration){
         return Duration.parse(duration);
     }
 
@@ -96,5 +102,12 @@ public class RSPQLStarQuery extends Query {
     @Override
     public List<Var> getValuesVariables() {
         return this.valuesDataBlock == null ? null : this.valuesDataBlock.getVars();
+    }
+
+    public void findAndAddEmbeddedNamedVars() {
+        for(Var var : MyPatternVars.vars(new ArrayList<>(), this.getQueryPattern())){
+            addResultVar(var);
+        }
+        // add window ref explicitly!
     }
 }

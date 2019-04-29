@@ -46,8 +46,7 @@ public class OpWrapper {
         } else if (op instanceof OpFilter) {
             extractVariables((OpFilter) op);
         } else {
-            System.err.println("Failed to split op: " + op);
-            //throw new NotImplementedException("Support of op " + op.getClass() + " has not been implemented");
+            throw new NotImplementedException("Support of op " + op.getClass() + " has not been implemented");
         }
     }
 

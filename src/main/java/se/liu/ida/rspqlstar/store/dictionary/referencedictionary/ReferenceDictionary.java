@@ -2,6 +2,8 @@ package se.liu.ida.rspqlstar.store.dictionary.referencedictionary;
 
 import se.liu.ida.rspqlstar.store.index.IdBasedTriple;
 
+import java.io.PrintStream;
+
 public interface ReferenceDictionary {
 
     IdBasedTriple getIdBasedTriple(long id);
@@ -12,5 +14,5 @@ public interface ReferenceDictionary {
 
     long size();
 
-    void print(int limit);
+    void print(PrintStream out, int limit);
 }

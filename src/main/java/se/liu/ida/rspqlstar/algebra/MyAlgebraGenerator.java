@@ -17,11 +17,11 @@ import se.liu.ida.rspqlstar.syntax.ElementNamedWindow;
 import java.util.Deque;
 
 public class MyAlgebraGenerator extends AlgebraGenerator {
-    protected static Transform simplify = new RSPQLStarTransform();
+    protected static Transform simplify = new RSPQLStarTransformSimple();
 
     private Op compileElementNamedWindow(ElementNamedWindow elt) {
-        Node windowNode = elt.getWindowNameNode();
-        Op sub = compileElement(elt.getElement());
+        final Node windowNode = elt.getWindowNameNode();
+        final Op sub = compileElement(elt.getElement());
         return new OpWindow(windowNode, sub);
     }
 
@@ -101,7 +101,7 @@ public class MyAlgebraGenerator extends AlgebraGenerator {
     }
 
     protected static Op simplify(Op op) {
-        return Transformer.transform(simplify, op);
+        return Transformer.transform(simplify, MyAlgebra.toQuadForm(op));
     }
 
 }

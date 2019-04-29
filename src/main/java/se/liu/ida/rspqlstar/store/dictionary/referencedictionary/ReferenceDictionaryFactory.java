@@ -1,7 +1,7 @@
 package se.liu.ida.rspqlstar.store.dictionary.referencedictionary;
 
 public class ReferenceDictionaryFactory {
-    static private ReferenceDictionary singleton = null;
+    static private ReferenceDictionary singleton = new HashReferenceDictionary();
 
     static public ReferenceDictionary get() {
         if (singleton == null) init();

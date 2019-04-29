@@ -5,15 +5,19 @@ import se.liu.ida.rspqlstar.store.dictionary.nodedictionary.idnodes.NodeWithIDFa
 import se.liu.ida.rspqlstar.store.dictionary.nodedictionary.idnodes.Node_WithID;
 import se.liu.ida.rspqlstar.store.dictionary.IdFactory;
 
+import java.io.PrintStream;
 import java.util.ArrayList;
+import java.util.Collections;
+import java.util.List;
 import java.util.concurrent.ConcurrentHashMap;
+import java.util.concurrent.ConcurrentLinkedDeque;
 
 /**
  * The node dictionary keeps track of the mappings between nodes and their respective IDs.
  */
 
 public class HashNodeDictionary implements NodeDictionary {
-    final private ArrayList<Node> idToNode = new ArrayList<>();
+    final private List<Node> idToNode =  new ArrayList<>();
     final private ConcurrentHashMap<Node, Long> nodeToId = new ConcurrentHashMap<>();
 
     @Override
@@ -35,11 +39,7 @@ public class HashNodeDictionary implements NodeDictionary {
 
     @Override
     public long addNode(Node node, long id){
-        if (id < idToNode.size()) {
-            idToNode.set((int) id, node); // replace existing value
-        } else {
-            idToNode.add(node);
-        }
+        idToNode.add(node);
         nodeToId.put(node, id);
         return id;
     }
@@ -59,7 +59,7 @@ public class HashNodeDictionary implements NodeDictionary {
     }
 
     @Override
-    public void print(int limit) {
+    public void print(PrintStream out, int limit) {
         StringBuilder sb = new StringBuilder();
         sb.append("Node Dictionary\n");
 
@@ -67,6 +67,6 @@ public class HashNodeDictionary implements NodeDictionary {
             Node node = getNode(id);
             sb.append(id + " : " + node + "\n");
         }
-        System.out.println(sb.toString());
+        out.println(sb.toString());
     }
 }

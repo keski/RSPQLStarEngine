@@ -2,7 +2,6 @@ package se.liu.ida.rspqlstar.syntax;
 
 import org.apache.jena.graph.Node;
 import org.apache.jena.sparql.syntax.Element;
-import org.apache.jena.sparql.syntax.ElementService;
 import org.apache.jena.sparql.syntax.ElementVisitor;
 import org.apache.jena.sparql.util.NodeIsomorphismMap;
 

@@ -57,7 +57,7 @@ public class ParserRSPQLStar extends SPARQLParser
         	throw new QueryException(e.getMessage(), e);
         }
         catch (Error e) {
-        	System.err.println(e.getMessage());
+        	Log.warn(ParserRSPQLStar.class, e.getMessage());
             throw new QueryParseException(e.getMessage(), e, -1, -1);
         }
         catch (Throwable t) {

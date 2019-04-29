@@ -6,8 +6,7 @@ import se.liu.ida.rspqlstar.store.dictionary.nodedictionary.NodeDictionary;
 import se.liu.ida.rspqlstar.store.dictionary.nodedictionary.NodeDictionaryFactory;
 import se.liu.ida.rspqlstar.store.dictionary.referencedictionary.ReferenceDictionary;
 import se.liu.ida.rspqlstar.store.dictionary.referencedictionary.ReferenceDictionaryFactory;
-import se.liu.ida.rspqlstar.store.index.IdBasedQuad;
-import se.liu.ida.rspqlstar.store.engine.main.quadpattern.Key;
+import se.liu.ida.rspqlstar.store.engine.main.pattern.Key;
 import se.liu.ida.rspqlstar.store.dictionary.IdFactory;
 import org.apache.jena.atlas.lib.Closeable;
 import org.apache.jena.sparql.engine.ExecutionContext;
@@ -64,7 +63,7 @@ public class DecodeBindingsIterator extends QueryIter {
         final Node node;
         try {
             if (key instanceof NodeWrapperKey) {
-                // We ignore the graph node for the DummyKey, since this will
+                // We ignore the graph node for the TripleWrapperKey, since this will
                 // be implicit from the context of the Node_Triple
                 final IdBasedTriple idBasedQuad = ((TripleWrapperKey) key).idBasedTriple;
                 final Node s = getNode(new Key(idBasedQuad.subject));
@@ -88,6 +87,7 @@ public class DecodeBindingsIterator extends QueryIter {
                 return ((Node_Concrete_WithID) node).asJenaNode();
             }
         } catch (Exception e){
+            e.printStackTrace();
             return null;
         }
         return node;

@@ -1,13 +1,13 @@
-package se.liu.ida.rspqlstar.store.engine.main.quadpattern;
+package se.liu.ida.rspqlstar.store.engine.main.pattern;
 
 import org.apache.jena.reasoner.IllegalParameterException;
 import se.liu.ida.rspqlstar.store.index.IdBasedQuad;
 import se.liu.ida.rspqlstar.store.index.Field;
-import se.liu.ida.rspqlstar.store.index.IdBasedTriple;
 
 /**
- * A triple star pattern . The subject, predicate, or object can be a Key, a Variable, or another TripleStarPattern.
- * Note that it is vulnerable to circular references.
+ * The graph, subject, predicate, or object can be a Key, a Variable, or another QuadStarPattern.
+ *
+ * Note: This is vulnerable to circular references.
  */
 public class QuadStarPattern extends Element {
 

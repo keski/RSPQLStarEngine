@@ -1,4 +1,4 @@
-package se.liu.ida.rspqlstar.store.engine.main.quadpattern;
+package se.liu.ida.rspqlstar.store.engine.main.pattern;
 
 import java.io.Serializable;
 

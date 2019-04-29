@@ -3,13 +3,11 @@ package se.liu.ida.rspqlstar.store.engine.main.iterator;
 import org.apache.jena.sparql.engine.ExecutionContext;
 import se.liu.ida.rspqlstar.store.dataset.DatasetGraphStar;
 import se.liu.ida.rspqlstar.store.dataset.StreamingDatasetGraph;
-import se.liu.ida.rspqlstar.store.dictionary.nodedictionary.NodeDictionary;
-import se.liu.ida.rspqlstar.store.dictionary.nodedictionary.NodeDictionaryFactory;
-import se.liu.ida.rspqlstar.store.engine.main.quadpattern.Variable;
+import se.liu.ida.rspqlstar.store.engine.main.pattern.Variable;
 import se.liu.ida.rspqlstar.store.index.IdBasedQuad;
-import se.liu.ida.rspqlstar.store.engine.main.quadpattern.Element;
-import se.liu.ida.rspqlstar.store.engine.main.quadpattern.Key;
-import se.liu.ida.rspqlstar.store.engine.main.quadpattern.QuadStarPattern;
+import se.liu.ida.rspqlstar.store.engine.main.pattern.Element;
+import se.liu.ida.rspqlstar.store.engine.main.pattern.Key;
+import se.liu.ida.rspqlstar.store.engine.main.pattern.QuadStarPattern;
 import se.liu.ida.rspqlstar.store.engine.main.SolutionMapping;
 
 import java.util.Collections;
@@ -20,21 +18,17 @@ import java.util.Iterator;
  * Iterator for quad pattern
  */
 public class IdBasedQuadPatternIterator implements Iterator<SolutionMapping> {
-    final private ExecutionContext execCxt;
-
     final private Iterator<SolutionMapping> input;
     final private QuadStarPattern pattern;
     private SolutionMapping currentInputMapping = null;
     private QuadStarPattern currentQueryPattern;
     private Iterator<? extends IdBasedQuad> currentMatches;
-    private NodeDictionary nd = NodeDictionaryFactory.get();
-    private DatasetGraphStar datasetGraph;
+    private DatasetGraphStar dsg;
 
     public IdBasedQuadPatternIterator(QuadStarPattern pattern, Iterator<SolutionMapping> solMapIter, ExecutionContext execCxt) {
         this.pattern = pattern;
         this.input = solMapIter;
-        this.execCxt = execCxt;
-        this.datasetGraph = ((StreamingDatasetGraph) execCxt.getDataset()).getActiveDataset();
+        this.dsg = ((StreamingDatasetGraph) execCxt.getDataset()).getActiveDataset();
     }
 
     public boolean hasNext() {
@@ -45,11 +39,10 @@ public class IdBasedQuadPatternIterator implements Iterator<SolutionMapping> {
 
             currentInputMapping = input.next();
             currentQueryPattern = substitute(pattern, currentInputMapping);
-            //System.err.println(currentQueryPattern);
 
-            // If tp contains no variables, contains is invoked instead.
+            // If tp is concrete, contains is invoked
             if (currentQueryPattern.isConcrete()) {
-                boolean match = datasetGraph.contains(currentQueryPattern);
+                boolean match = dsg.contains(currentQueryPattern);
                 if (match) {
                     currentMatches = Collections.singleton(new IdBasedQuad(
                             currentQueryPattern.graph.asKey().id,
@@ -60,7 +53,7 @@ public class IdBasedQuadPatternIterator implements Iterator<SolutionMapping> {
                     currentMatches = Collections.<IdBasedQuad>emptyList().iterator();
                 }
             } else {
-                currentMatches = datasetGraph.find(currentQueryPattern);
+                currentMatches = dsg.find(currentQueryPattern);
             }
         }
         return true;

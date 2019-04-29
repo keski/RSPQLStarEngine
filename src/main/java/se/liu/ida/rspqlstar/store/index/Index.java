@@ -2,7 +2,7 @@ package se.liu.ida.rspqlstar.store.index;
 
 import java.util.Iterator;
 
-import se.liu.ida.rspqlstar.store.engine.main.quadpattern.QuadStarPattern;
+import se.liu.ida.rspqlstar.store.engine.main.pattern.QuadStarPattern;
 
 /**
  * An index is the physical storage of the quads.

@@ -12,7 +12,7 @@ import org.apache.jena.sparql.engine.binding.Binding;
 import se.liu.ida.rspqlstar.store.dictionary.nodedictionary.NodeDictionary;
 import se.liu.ida.rspqlstar.store.dictionary.nodedictionary.NodeDictionaryFactory;
 import se.liu.ida.rspqlstar.store.dictionary.VarDictionary;
-import se.liu.ida.rspqlstar.store.engine.main.quadpattern.Key;
+import se.liu.ida.rspqlstar.store.engine.main.pattern.Key;
 import se.liu.ida.rspqlstar.store.engine.main.SolutionMapping;
 
 
@@ -37,7 +37,7 @@ public class EncodeBindingsIterator implements Iterator<SolutionMapping>, Closea
         final Binding curInput = input.next();
 
         if (!curInput.isEmpty()) {
-            throw new IllegalStateException("curInput is not empty!");
+            //throw new IllegalStateException("curInput is not empty!");
         }
 
         final SolutionMapping curOutput = new SolutionMapping(varDict.size());

@@ -4,18 +4,21 @@ import org.apache.jena.graph.Triple;
 import org.apache.jena.riot.system.StreamRDF;
 import org.apache.jena.sparql.core.Quad;
 
+import java.io.PrintStream;
+import java.util.Date;
+
 
 public class TimestampedGraph implements StreamRDF {
-    public DatasetGraphStar datasetGraph = new DatasetGraphStar();
+    public DatasetGraphStar dgs = new DatasetGraphStar();
     public long time;
 
-    public TimestampedGraph(long time){
-        this.time = time;
+    public TimestampedGraph(Date time){
+        this.time = time.getTime();
     }
 
     @Override
     public void start() {
-        datasetGraph = new DatasetGraphStar(); // override this to provide a more streamlined implementation
+        dgs = new DatasetGraphStar(); // override this to provide a more streamlined implementation
     }
 
     @Override
@@ -25,7 +28,12 @@ public class TimestampedGraph implements StreamRDF {
 
     @Override
     public void quad(Quad quad) {
-        datasetGraph.add(quad);
+        dgs.add(quad);
+    }
+
+    public TimestampedGraph addQuad(Quad quad) {
+        quad(quad);
+        return this;
     }
 
     @Override
@@ -36,4 +44,9 @@ public class TimestampedGraph implements StreamRDF {
 
     @Override
     public void finish() {}
+
+    public void print(PrintStream out){
+        out.println("TG: " + time);
+        dgs.GSPO.iterateAll().forEachRemaining(x -> { out.println(x); });
+    }
 }

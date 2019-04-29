@@ -1,7 +1,12 @@
 package se.liu.ida.rspqlstar.store.dataset;
 
+import org.apache.commons.collections4.iterators.IteratorChain;
+import org.apache.log4j.Logger;
+import se.liu.ida.rspqlstar.store.engine.main.pattern.QuadStarPattern;
 import se.liu.ida.rspqlstar.store.index.IdBasedQuad;
 
+import java.time.Duration;
+import java.util.Date;
 import java.util.Iterator;
 
 /**
@@ -10,7 +15,8 @@ import java.util.Iterator;
  */
 
 public class WindowDatasetGraph extends DatasetGraphStar {
-    public String iri;
+    public Logger logger = Logger.getLogger(WindowDatasetGraph.class);
+    public String name;
     public long width;
     public long step;
     public long startTime;
@@ -19,11 +25,11 @@ public class WindowDatasetGraph extends DatasetGraphStar {
     public long cachedUpperBound = -1;
     public DatasetGraphStar cachedDatasetGraph;
 
-    public WindowDatasetGraph(String name, long width, long step, long startTime, RDFStream rdfStream){
-        this.iri = name;
-        this.width = width;
-        this.step = step;
-        this.startTime = startTime;
+    public WindowDatasetGraph(String name, Duration width, Duration step, Date startTime, RDFStream rdfStream){
+        this.name = name;
+        this.width = width.toMillis();
+        this.step = step.toMillis();
+        this.startTime = startTime.getTime();
         this.rdfStream = rdfStream;
     }
 
@@ -31,12 +37,13 @@ public class WindowDatasetGraph extends DatasetGraphStar {
         final long upperBound = getUpperBound(time);
         // use cached dataset
         if(cachedUpperBound == upperBound) {
+            logger.debug("Using cached dataset for window: " + name);
             return cachedDatasetGraph;
         }
+        logger.debug("Not using cached dataset for window: " + name);
 
         final DatasetGraphStar ds = new DatasetGraphStar();
-        rdfStream.iterator(upperBound - width, upperBound)
-                .forEachRemaining(ds::addToIndex);
+        rdfStream.iterator(upperBound - width, upperBound).forEachRemaining(ds::addToIndex);
         cachedDatasetGraph = ds;
         cachedUpperBound = upperBound;
         return cachedDatasetGraph;
@@ -47,7 +54,22 @@ public class WindowDatasetGraph extends DatasetGraphStar {
         return startTime + width + n * step;
     }
 
-    public Iterator<IdBasedQuad> iterateAll(long time){
-        return getDataset(time).iterateAll();
+    public Iterator<IdBasedQuad> find(long time, QuadStarPattern pattern){
+        final long upperBound = getUpperBound(time);
+
+        final IteratorChain<IdBasedQuad> iteratorChain = new IteratorChain<>();
+        rdfStream.iterateElements(upperBound - width, upperBound).forEach(x -> {
+            iteratorChain.addIterator(x.dgs.find(pattern));
+        });
+
+        return iteratorChain;
+    }
+
+    public Iterator<IdBasedQuad> iterate(Date time){
+        return getDataset(time.getTime()).iterateAll();
+    }
+
+    public String toString(){
+        return String.format("WindowDatasetGraph(size: %s)", GSPO.size());
     }
 }

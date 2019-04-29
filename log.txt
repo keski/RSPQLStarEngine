@@ -1,0 +1,1327 @@
+Failed to split op: (table unit)
+
+Failed to split op: (bgp (triple ?a ?b ?c))
+
+Failed to split op: (table unit)
+
+Failed to split op: (table unit)
+
+Failed to split op: (bgp (triple ?a ?b ?c))
+
+Failed to split op: (table unit)
+
+Failed to split op: (table unit)
+
+Failed to split op: (bgp (triple ?a ?b ?c))
+
+Failed to split op: (table unit)
+
+Failed to split op: (table unit)
+
+Failed to split op: (bgp (triple ?a ?b ?c))
+
+Failed to split op: (table unit)
+
+Failed to split op: (table unit)
+
+Failed to split op: (bgp (triple ?a ?b ?c))
+
+Failed to split op: (table unit)
+
+Failed to split op: (table unit)
+
+Failed to split op: (bgp (triple ?a ?b ?c))
+
+Failed to split op: (table unit)
+
+Failed to split op: (table unit)
+
+Failed to split op: (bgp (triple ?a ?b ?c))
+
+Failed to split op: (table unit)
+
+Failed to split op: (table unit)
+
+Failed to split op: (bgp (triple ?a ?b ?c))
+
+Failed to split op: (table unit)
+
+Failed to split op: (table unit)
+
+Failed to split op: (bgp (triple ?a ?b ?c))
+
+Failed to split op: (table unit)
+
+Failed to split op: (table unit)
+
+Failed to split op: (bgp (triple ?a ?b ?c))
+
+Failed to split op: (table unit)
+
+Failed to split op: (bgp (triple ?a ?b ?c))
+
+Failed to split op: (table unit)
+
+Failed to split op: (bgp (triple ?a ?b ?c))
+
+Failed to split op: (table unit)
+
+Failed to split op: (bgp (triple ?a ?b ?c))
+
+Failed to split op: (table unit)
+
+Failed to split op: (table unit)
+
+Failed to split op: (table unit)
+
+Failed to split op: (table unit)
+
+Failed to split op: (table unit)
+
+Failed to split op: (table unit)
+
+Failed to split op: (table unit)
+
+Failed to split op: (table unit)
+
+Failed to split op: (table unit)
+
+Failed to split op: (table unit)
+
+Failed to split op: (table unit)
+
+Failed to split op: (table unit)
+
+Failed to split op: (table unit)
+
+Failed to split op: (table unit)
+
+Failed to split op: (table unit)
+
+Failed to split op: (table unit)
+
+Failed to split op: (table unit)
+
+Failed to split op: (table unit)
+
+Failed to split op: (table unit)
+
+Failed to split op: (table unit)
+
+Failed to split op: (table unit)
+
+Failed to split op: (table unit)
+
+Failed to split op: (table unit)
+
+Failed to split op: (table unit)
+
+Failed to split op: (table unit)
+
+Failed to split op: (table unit)
+
+Failed to split op: (table unit)
+
+Failed to split op: (table unit)
+
+Failed to split op: (table unit)
+
+Failed to split op: (table unit)
+
+Failed to split op: (table unit)
+
+Failed to split op: (table unit)
+
+Failed to split op: (table unit)
+
+Failed to split op: (table unit)
+
+Failed to split op: (table unit)
+
+Failed to split op: (table unit)
+
+Failed to split op: (table unit)
+
+Failed to split op: (table unit)
+
+Failed to split op: (table unit)
+
+Failed to split op: (table unit)
+
+Failed to split op: (table unit)
+
+Failed to split op: (table unit)
+
+Failed to split op: (table unit)
+
+Failed to split op: (table unit)
+
+Failed to split op: (table unit)
+
+Failed to split op: (table unit)
+
+Failed to split op: (table unit)
+
+Failed to split op: (table unit)
+
+Failed to split op: (table unit)
+
+Failed to split op: (table unit)
+
+Failed to split op: (table unit)
+
+Failed to split op: (table unit)
+
+Failed to split op: (table unit)
+
+Failed to split op: (table unit)
+
+Failed to split op: (table unit)
+
+Failed to split op: (table unit)
+
+Failed to split op: (table unit)
+
+Failed to split op: (table unit)
+
+Failed to split op: (table unit)
+
+Failed to split op: (table unit)
+
+Failed to split op: (table unit)
+
+Failed to split op: (table unit)
+
+Failed to split op: (table unit)
+
+Failed to split op: (table unit)
+
+Failed to split op: (table unit)
+
+Failed to split op: (table unit)
+
+Failed to split op: (table unit)
+
+Failed to split op: (table unit)
+
+Failed to split op: (table unit)
+
+Failed to split op: (table unit)
+
+Failed to split op: (table unit)
+
+Failed to split op: (table unit)
+
+Failed to split op: (table unit)
+
+Failed to split op: (table unit)
+
+Failed to split op: (table unit)
+
+Failed to split op: (table unit)
+
+Failed to split op: (table unit)
+
+Failed to split op: (table unit)
+
+Failed to split op: (table unit)
+
+Failed to split op: (table unit)
+
+Failed to split op: (table unit)
+
+Failed to split op: (table unit)
+
+Failed to split op: (table unit)
+
+Failed to split op: (table unit)
+
+Failed to split op: (table unit)
+
+Failed to split op: (table unit)
+
+Failed to split op: (table unit)
+
+Failed to split op: (table unit)
+
+Failed to split op: (table unit)
+
+Failed to split op: (table unit)
+
+Failed to split op: (table unit)
+
+Failed to split op: (table unit)
+
+Failed to split op: (table unit)
+
+Failed to split op: (table unit)
+
+Failed to split op: (table unit)
+
+Failed to split op: (table unit)
+
+Failed to split op: (table unit)
+
+Failed to split op: (table unit)
+
+Failed to split op: (table unit)
+
+Failed to split op: (table unit)
+
+Failed to split op: (table unit)
+
+Failed to split op: (table unit)
+
+Failed to split op: (table unit)
+
+Failed to split op: (table unit)
+
+Failed to split op: (table unit)
+
+Failed to split op: (table unit)
+
+Failed to split op: (table unit)
+
+Failed to split op: (table unit)
+
+Failed to split op: (table unit)
+
+Failed to split op: (table unit)
+
+Failed to split op: (table unit)
+
+Failed to split op: (table unit)
+
+Failed to split op: (table unit)
+
+Failed to split op: (table unit)
+
+Failed to split op: (table unit)
+
+Failed to split op: (table unit)
+
+Failed to split op: (table unit)
+
+Failed to split op: (table unit)
+
+Failed to split op: (table unit)
+
+Failed to split op: (table unit)
+
+Failed to split op: (table unit)
+
+Failed to split op: (table unit)
+
+Failed to split op: (table unit)
+
+Failed to split op: (table unit)
+
+Failed to split op: (table unit)
+
+Failed to split op: (table unit)
+
+Failed to split op: (table unit)
+
+Failed to split op: (table unit)
+
+Failed to split op: (table unit)
+
+Failed to split op: (table unit)
+
+Failed to split op: (table unit)
+
+Failed to split op: (table unit)
+
+Failed to split op: (table unit)
+
+Failed to split op: (table unit)
+
+Failed to split op: (table unit)
+
+Failed to split op: (table unit)
+
+Failed to split op: (table unit)
+
+Failed to split op: (table unit)
+
+Failed to split op: (table unit)
+
+Failed to split op: (table unit)
+
+Failed to split op: (table unit)
+
+Failed to split op: (table unit)
+
+Failed to split op: (table unit)
+
+Failed to split op: (table unit)
+
+Failed to split op: (table unit)
+
+Failed to split op: (table unit)
+
+Failed to split op: (table unit)
+
+Failed to split op: (table unit)
+
+Failed to split op: (table unit)
+
+Failed to split op: (table unit)
+
+Failed to split op: (table unit)
+
+Failed to split op: (table unit)
+
+Failed to split op: (table unit)
+
+Failed to split op: (table unit)
+
+Failed to split op: (table unit)
+
+Failed to split op: (table unit)
+
+Failed to split op: (table unit)
+
+Failed to split op: (table unit)
+
+Failed to split op: (table unit)
+
+Failed to split op: (table unit)
+
+Failed to split op: (table unit)
+
+Failed to split op: (table unit)
+
+Failed to split op: (table unit)
+
+Failed to split op: (table unit)
+
+Failed to split op: (table unit)
+
+Failed to split op: (table unit)
+
+Failed to split op: (table unit)
+
+Failed to split op: (table unit)
+
+Failed to split op: (table unit)
+
+Failed to split op: (table unit)
+
+Failed to split op: (table unit)
+
+Failed to split op: (table unit)
+
+Failed to split op: (table unit)
+
+Failed to split op: (table unit)
+
+Failed to split op: (table unit)
+
+Failed to split op: (table unit)
+
+Failed to split op: (table unit)
+
+Failed to split op: (table unit)
+
+Failed to split op: (table unit)
+
+Failed to split op: (table unit)
+
+Failed to split op: (table unit)
+
+Failed to split op: (table unit)
+
+Failed to split op: (table unit)
+
+Failed to split op: (table unit)
+
+Failed to split op: (table unit)
+
+Failed to split op: (table unit)
+
+Failed to split op: (table unit)
+
+Failed to split op: (table unit)
+
+Failed to split op: (table unit)
+
+Failed to split op: (table unit)
+
+Failed to split op: (table unit)
+
+http://base/w: Not using cached dataset
+http://base/w: Using cached dataset
+http://base/w: Using cached dataset
+Failed to split op: (table unit)
+
+Failed to split op: (table unit)
+
+http://base/w: Using cached dataset
+http://base/w: Not using cached dataset
+http://base/w: Using cached dataset
+Failed to split op: (table unit)
+
+Failed to split op: (table unit)
+
+http://base/w: Using cached dataset
+Not using cached dataset for window: http://base/w
+Using cached dataset for window: http://base/w
+Using cached dataset for window: http://base/w
+Failed to split op: (table unit)
+
+Failed to split op: (table unit)
+
+Using cached dataset for window: http://base/w
+Not using cached dataset for window: http://base/w
+Using cached dataset for window: http://base/w
+Failed to split op: (table unit)
+
+Failed to split op: (table unit)
+
+Using cached dataset for window: http://base/w
+Not using cached dataset for window: http://base/w
+WindowDatasetGraph(size: 0)
+Using cached dataset for window: http://base/w
+Using cached dataset for window: http://base/w
+Failed to split op: (table unit)
+
+Failed to split op: (table unit)
+
+Using cached dataset for window: http://base/w
+Not using cached dataset for window: http://base/w
+WindowDatasetGraph(size: 0)
+Using cached dataset for window: http://base/w
+Failed to split op: (table unit)
+
+Failed to split op: (table unit)
+
+Using cached dataset for window: http://base/w
+Not using cached dataset for window: http://base/w
+WindowDatasetGraph(size: 0)
+Using cached dataset for window: http://base/w
+Failed to split op: (table unit)
+
+Failed to split op: (table unit)
+
+Using cached dataset for window: http://base/w
+Not using cached dataset for window: http://base/w
+WindowDatasetGraph(size: 0)
+Using cached dataset for window: http://base/w
+Failed to split op: (table unit)
+
+Failed to split op: (table unit)
+
+Using cached dataset for window: http://base/w
+Not using cached dataset for window: http://base/w
+WindowDatasetGraph(size: 0)
+Using cached dataset for window: http://base/w
+Failed to split op: (table unit)
+
+Failed to split op: (table unit)
+
+Using cached dataset for window: http://base/w
+Not using cached dataset for window: http://base/w
+WindowDatasetGraph(size: 0)
+Using cached dataset for window: http://base/w
+Failed to split op: (table unit)
+
+Failed to split op: (table unit)
+
+Using cached dataset for window: http://base/w
+Not using cached dataset for window: http://base/w
+WindowDatasetGraph(size: 0)
+Using cached dataset for window: http://base/w
+Failed to split op: (table unit)
+
+Failed to split op: (table unit)
+
+Using cached dataset for window: http://base/w
+Not using cached dataset for window: http://base/w
+WindowDatasetGraph(size: 0)
+Using cached dataset for window: http://base/w
+Using cached dataset for window: http://base/w
+Failed to split op: (table unit)
+
+Failed to split op: (table unit)
+
+Using cached dataset for window: http://base/w
+Not using cached dataset for window: http://base/w
+WindowDatasetGraph(size: 0)
+Using cached dataset for window: http://base/w
+Failed to split op: (table unit)
+
+Failed to split op: (table unit)
+
+Using cached dataset for window: http://base/w
+Not using cached dataset for window: http://base/w
+WindowDatasetGraph(size: 0)
+Using cached dataset for window: http://base/w
+Using cached dataset for window: http://base/w
+Failed to split op: (table unit)
+
+Failed to split op: (table unit)
+
+Using cached dataset for window: http://base/w
+Not using cached dataset for window: http://base/w
+WindowDatasetGraph(size: 0)
+Using cached dataset for window: http://base/w
+Failed to split op: (table unit)
+
+Failed to split op: (table unit)
+
+Using cached dataset for window: http://base/w
+Not using cached dataset for window: http://base/w
+WindowDatasetGraph(size: 0)
+Using cached dataset for window: http://base/w
+Using cached dataset for window: http://base/w
+Failed to split op: (table unit)
+
+Failed to split op: (table unit)
+
+Using cached dataset for window: http://base/w
+Not using cached dataset for window: http://base/w
+WindowDatasetGraph(size: 0)
+Using cached dataset for window: http://base/w
+Failed to split op: (table unit)
+
+Failed to split op: (table unit)
+
+Using cached dataset for window: http://base/w
+Not using cached dataset for window: http://base/w
+WindowDatasetGraph(size: 0)
+Using cached dataset for window: http://base/w
+Using cached dataset for window: http://base/w
+Failed to split op: (table unit)
+
+Failed to split op: (table unit)
+
+Using cached dataset for window: http://base/w
+Not using cached dataset for window: http://base/w
+WindowDatasetGraph(size: 0)
+Using cached dataset for window: http://base/w
+Failed to split op: (table unit)
+
+Failed to split op: (table unit)
+
+Using cached dataset for window: http://base/w
+Not using cached dataset for window: http://base/w
+WindowDatasetGraph(size: 0)
+Using cached dataset for window: http://base/w
+Using cached dataset for window: http://base/w
+Failed to split op: (table unit)
+
+Failed to split op: (table unit)
+
+Using cached dataset for window: http://base/w
+Not using cached dataset for window: http://base/w
+WindowDatasetGraph(size: 0)
+Using cached dataset for window: http://base/w
+Failed to split op: (table unit)
+
+Failed to split op: (table unit)
+
+Using cached dataset for window: http://base/w
+Not using cached dataset for window: http://base/w
+WindowDatasetGraph(size: 0)
+Using cached dataset for window: http://base/w
+Failed to split op: (table unit)
+
+Failed to split op: (table unit)
+
+Using cached dataset for window: http://base/w
+Not using cached dataset for window: http://base/w
+WindowDatasetGraph(size: 0)
+Using cached dataset for window: http://base/w
+Failed to split op: (table unit)
+
+Failed to split op: (table unit)
+
+Using cached dataset for window: http://base/w
+Not using cached dataset for window: http://base/w
+WindowDatasetGraph(size: 0)
+Using cached dataset for window: http://base/w
+Failed to split op: (table unit)
+
+Failed to split op: (table unit)
+
+Using cached dataset for window: http://base/w
+Not using cached dataset for window: http://base/w
+WindowDatasetGraph(size: 0)
+Using cached dataset for window: http://base/w
+Failed to split op: (table unit)
+
+Failed to split op: (table unit)
+
+Using cached dataset for window: http://base/w
+Not using cached dataset for window: http://base/w
+WindowDatasetGraph(size: 0)
+Using cached dataset for window: http://base/w
+Failed to split op: (table unit)
+
+Failed to split op: (table unit)
+
+Using cached dataset for window: http://base/w
+Not using cached dataset for window: http://base/w
+WindowDatasetGraph(size: 0)
+Using cached dataset for window: http://base/w
+Failed to split op: (table unit)
+
+Failed to split op: (table unit)
+
+Using cached dataset for window: http://base/w
+Not using cached dataset for window: http://base/w
+WindowDatasetGraph(size: 0)
+Using cached dataset for window: http://base/w
+Failed to split op: (table unit)
+
+Failed to split op: (table unit)
+
+Using cached dataset for window: http://base/w
+Not using cached dataset for window: http://base/w
+WindowDatasetGraph(size: 0)
+Using cached dataset for window: http://base/w
+Failed to split op: (table unit)
+
+Failed to split op: (table unit)
+
+Using cached dataset for window: http://base/w
+Not using cached dataset for window: http://base/w
+WindowDatasetGraph(size: 0)
+Using cached dataset for window: http://base/w
+Using cached dataset for window: http://base/w
+Failed to split op: (table unit)
+
+Failed to split op: (table unit)
+
+Using cached dataset for window: http://base/w
+Not using cached dataset for window: http://base/w
+WindowDatasetGraph(size: 0)
+Using cached dataset for window: http://base/w
+Failed to split op: (table unit)
+
+Failed to split op: (table unit)
+
+Using cached dataset for window: http://base/w
+Not using cached dataset for window: http://base/w
+WindowDatasetGraph(size: 0)
+Using cached dataset for window: http://base/w
+Failed to split op: (table unit)
+
+Failed to split op: (table unit)
+
+Using cached dataset for window: http://base/w
+Not using cached dataset for window: http://base/w
+WindowDatasetGraph(size: 0)
+Using cached dataset for window: http://base/w
+Failed to split op: (table unit)
+
+Failed to split op: (table unit)
+
+Using cached dataset for window: http://base/w
+Not using cached dataset for window: http://base/w
+WindowDatasetGraph(size: 0)
+Using cached dataset for window: http://base/w
+Failed to split op: (table unit)
+
+Failed to split op: (table unit)
+
+Using cached dataset for window: http://base/w
+Not using cached dataset for window: http://base/w
+WindowDatasetGraph(size: 0)
+Using cached dataset for window: http://base/w
+Failed to split op: (table unit)
+
+Failed to split op: (table unit)
+
+Using cached dataset for window: http://base/w
+Not using cached dataset for window: http://base/w
+WindowDatasetGraph(size: 0)
+Using cached dataset for window: http://base/w
+Failed to split op: (table unit)
+
+Failed to split op: (table unit)
+
+Using cached dataset for window: http://base/w
+Not using cached dataset for window: http://base/w
+WindowDatasetGraph(size: 0)
+Using cached dataset for window: http://base/w
+Failed to split op: (table unit)
+
+Failed to split op: (table unit)
+
+Using cached dataset for window: http://base/w
+Not using cached dataset for window: http://base/w
+WindowDatasetGraph(size: 0)
+Using cached dataset for window: http://base/w
+Failed to split op: (table unit)
+
+Failed to split op: (table unit)
+
+Using cached dataset for window: http://base/w
+Not using cached dataset for window: http://base/w
+WindowDatasetGraph(size: 0)
+Using cached dataset for window: http://base/w
+Failed to split op: (table unit)
+
+Failed to split op: (table unit)
+
+Using cached dataset for window: http://base/w
+Not using cached dataset for window: http://base/w
+WindowDatasetGraph(size: 0)
+Using cached dataset for window: http://base/w
+Using cached dataset for window: http://base/w
+Failed to split op: (table unit)
+
+Failed to split op: (table unit)
+
+Using cached dataset for window: http://base/w
+Not using cached dataset for window: http://base/w
+WindowDatasetGraph(size: 0)
+Using cached dataset for window: http://base/w
+Failed to split op: (table unit)
+
+Failed to split op: (table unit)
+
+Using cached dataset for window: http://base/w
+Not using cached dataset for window: http://base/w
+WindowDatasetGraph(size: 0)
+Using cached dataset for window: http://base/w
+Using cached dataset for window: http://base/w
+Failed to split op: (table unit)
+
+Failed to split op: (table unit)
+
+Using cached dataset for window: http://base/w
+Not using cached dataset for window: http://base/w
+WindowDatasetGraph(size: 0)
+Using cached dataset for window: http://base/w
+Failed to split op: (table unit)
+
+Failed to split op: (table unit)
+
+Using cached dataset for window: http://base/w
+Not using cached dataset for window: http://base/w
+WindowDatasetGraph(size: 0)
+Using cached dataset for window: http://base/w
+Using cached dataset for window: http://base/w
+Failed to split op: (table unit)
+
+Failed to split op: (table unit)
+
+Using cached dataset for window: http://base/w
+Not using cached dataset for window: http://base/w
+WindowDatasetGraph(size: 0)
+Using cached dataset for window: http://base/w
+Failed to split op: (table unit)
+
+Failed to split op: (table unit)
+
+Using cached dataset for window: http://base/w
+Not using cached dataset for window: http://base/w
+WindowDatasetGraph(size: 0)
+Using cached dataset for window: http://base/w
+Failed to split op: (table unit)
+
+Failed to split op: (table unit)
+
+Using cached dataset for window: http://base/w
+Not using cached dataset for window: http://base/w
+WindowDatasetGraph(size: 0)
+Using cached dataset for window: http://base/w
+Failed to split op: (table unit)
+
+Failed to split op: (table unit)
+
+Using cached dataset for window: http://base/w
+Not using cached dataset for window: http://base/w
+WindowDatasetGraph(size: 0)
+Using cached dataset for window: http://base/w
+Using cached dataset for window: http://base/w
+Failed to split op: (table unit)
+
+Failed to split op: (table unit)
+
+Using cached dataset for window: http://base/w
+Not using cached dataset for window: http://base/w
+WindowDatasetGraph(size: 0)
+Using cached dataset for window: http://base/w
+Failed to split op: (table unit)
+
+Failed to split op: (table unit)
+
+Using cached dataset for window: http://base/w
+Not using cached dataset for window: http://base/w
+WindowDatasetGraph(size: 0)
+Using cached dataset for window: http://base/w
+Using cached dataset for window: http://base/w
+Failed to split op: (table unit)
+
+Failed to split op: (table unit)
+
+Using cached dataset for window: http://base/w
+Not using cached dataset for window: http://base/w
+WindowDatasetGraph(size: 0)
+Using cached dataset for window: http://base/w
+Failed to split op: (table unit)
+
+Failed to split op: (table unit)
+
+Using cached dataset for window: http://base/w
+Not using cached dataset for window: http://base/w
+WindowDatasetGraph(size: 0)
+Using cached dataset for window: http://base/w
+Using cached dataset for window: http://base/w
+Failed to split op: (table unit)
+
+Failed to split op: (table unit)
+
+Using cached dataset for window: http://base/w
+Not using cached dataset for window: http://base/w
+WindowDatasetGraph(size: 0)
+Using cached dataset for window: http://base/w
+Failed to split op: (table unit)
+
+Failed to split op: (table unit)
+
+Using cached dataset for window: http://base/w
+Not using cached dataset for window: http://base/w
+WindowDatasetGraph(size: 0)
+Using cached dataset for window: http://base/w
+Using cached dataset for window: http://base/w
+Failed to split op: (table unit)
+
+Failed to split op: (table unit)
+
+Using cached dataset for window: http://base/w
+Not using cached dataset for window: http://base/w
+WindowDatasetGraph(size: 0)
+Using cached dataset for window: http://base/w
+Failed to split op: (table unit)
+
+Failed to split op: (table unit)
+
+Using cached dataset for window: http://base/w
+Not using cached dataset for window: http://base/w
+WindowDatasetGraph(size: 0)
+Using cached dataset for window: http://base/w
+Using cached dataset for window: http://base/w
+Failed to split op: (table unit)
+
+Failed to split op: (table unit)
+
+Using cached dataset for window: http://base/w
+Not using cached dataset for window: http://base/w
+WindowDatasetGraph(size: 0)
+Using cached dataset for window: http://base/w
+Failed to split op: (table unit)
+
+Failed to split op: (table unit)
+
+Using cached dataset for window: http://base/w
+Not using cached dataset for window: http://base/w
+WindowDatasetGraph(size: 0)
+Using cached dataset for window: http://base/w
+Using cached dataset for window: http://base/w
+Failed to split op: (table unit)
+
+Failed to split op: (table unit)
+
+Using cached dataset for window: http://base/w
+Not using cached dataset for window: http://base/w
+WindowDatasetGraph(size: 0)
+Using cached dataset for window: http://base/w
+Failed to split op: (table unit)
+
+Failed to split op: (table unit)
+
+Using cached dataset for window: http://base/w
+Not using cached dataset for window: http://base/w
+WindowDatasetGraph(size: 0)
+Using cached dataset for window: http://base/w
+Using cached dataset for window: http://base/w
+Failed to split op: (table unit)
+
+Failed to split op: (table unit)
+
+Using cached dataset for window: http://base/w
+Not using cached dataset for window: http://base/w
+WindowDatasetGraph(size: 0)
+Using cached dataset for window: http://base/w
+Failed to split op: (table unit)
+
+Failed to split op: (table unit)
+
+Using cached dataset for window: http://base/w
+Not using cached dataset for window: http://base/w
+WindowDatasetGraph(size: 0)
+Using cached dataset for window: http://base/w
+Using cached dataset for window: http://base/w
+Failed to split op: (table unit)
+
+Failed to split op: (table unit)
+
+Using cached dataset for window: http://base/w
+Not using cached dataset for window: http://base/w
+WindowDatasetGraph(size: 0)
+Using cached dataset for window: http://base/w
+Failed to split op: (table unit)
+
+Failed to split op: (table unit)
+
+Using cached dataset for window: http://base/w
+Not using cached dataset for window: http://base/w
+WindowDatasetGraph(size: 0)
+Using cached dataset for window: http://base/w
+Failed to split op: (table unit)
+
+Failed to split op: (table unit)
+
+Using cached dataset for window: http://base/w
+Not using cached dataset for window: http://base/w
+WindowDatasetGraph(size: 0)
+Using cached dataset for window: http://base/w
+Failed to split op: (table unit)
+
+Failed to split op: (table unit)
+
+Using cached dataset for window: http://base/w
+Not using cached dataset for window: http://base/w
+WindowDatasetGraph(size: 0)
+Using cached dataset for window: http://base/w
+Failed to split op: (table unit)
+
+Failed to split op: (table unit)
+
+Using cached dataset for window: http://base/w
+Not using cached dataset for window: http://base/w
+WindowDatasetGraph(size: 0)
+Using cached dataset for window: http://base/w
+Failed to split op: (table unit)
+
+Failed to split op: (table unit)
+
+Using cached dataset for window: http://base/w
+Not using cached dataset for window: http://base/w
+WindowDatasetGraph(size: 0)
+Using cached dataset for window: http://base/w
+Failed to split op: (table unit)
+
+Failed to split op: (table unit)
+
+Using cached dataset for window: http://base/w
+Not using cached dataset for window: http://base/w
+WindowDatasetGraph(size: 0)
+Using cached dataset for window: http://base/w
+Failed to split op: (table unit)
+
+Failed to split op: (table unit)
+
+Using cached dataset for window: http://base/w
+Not using cached dataset for window: http://base/w
+WindowDatasetGraph(size: 0)
+Using cached dataset for window: http://base/w
+Using cached dataset for window: http://base/w
+Failed to split op: (table unit)
+
+Failed to split op: (table unit)
+
+Using cached dataset for window: http://base/w
+Not using cached dataset for window: http://base/w
+WindowDatasetGraph(size: 0)
+Using cached dataset for window: http://base/w
+Failed to split op: (table unit)
+
+Failed to split op: (table unit)
+
+Using cached dataset for window: http://base/w
+Not using cached dataset for window: http://base/w
+WindowDatasetGraph(size: 0)
+Using cached dataset for window: http://base/w
+Using cached dataset for window: http://base/w
+Failed to split op: (table unit)
+
+Failed to split op: (table unit)
+
+Using cached dataset for window: http://base/w
+Not using cached dataset for window: http://base/w
+WindowDatasetGraph(size: 0)
+Using cached dataset for window: http://base/w
+Failed to split op: (table unit)
+
+Failed to split op: (table unit)
+
+Using cached dataset for window: http://base/w
+Not using cached dataset for window: http://base/w
+WindowDatasetGraph(size: 0)
+Using cached dataset for window: http://base/w
+Using cached dataset for window: http://base/w
+Failed to split op: (table unit)
+
+Failed to split op: (table unit)
+
+Using cached dataset for window: http://base/w
+Not using cached dataset for window: http://base/w
+WindowDatasetGraph(size: 0)
+Using cached dataset for window: http://base/w
+Failed to split op: (table unit)
+
+Failed to split op: (table unit)
+
+Using cached dataset for window: http://base/w
+Not using cached dataset for window: http://base/w
+WindowDatasetGraph(size: 0)
+Using cached dataset for window: http://base/w
+Failed to split op: (table unit)
+
+Failed to split op: (table unit)
+
+Using cached dataset for window: http://base/w
+Not using cached dataset for window: http://base/w
+WindowDatasetGraph(size: 0)
+Using cached dataset for window: http://base/w
+Using cached dataset for window: http://base/w
+Failed to split op: (table unit)
+
+Failed to split op: (table unit)
+
+Using cached dataset for window: http://base/w
+Not using cached dataset for window: http://base/w
+WindowDatasetGraph(size: 0)
+Using cached dataset for window: http://base/w
+Failed to split op: (table unit)
+
+Failed to split op: (table unit)
+
+Using cached dataset for window: http://base/w
+Not using cached dataset for window: http://base/w
+WindowDatasetGraph(size: 0)
+Using cached dataset for window: http://base/w
+Failed to split op: (table unit)
+
+Failed to split op: (table unit)
+
+Using cached dataset for window: http://base/w
+Not using cached dataset for window: http://base/w
+WindowDatasetGraph(size: 0)
+Using cached dataset for window: http://base/w
+Failed to split op: (table unit)
+
+Failed to split op: (table unit)
+
+Using cached dataset for window: http://base/w
+Not using cached dataset for window: http://base/w
+WindowDatasetGraph(size: 0)
+Using cached dataset for window: http://base/w
+Failed to split op: (table unit)
+
+Failed to split op: (table unit)
+
+Using cached dataset for window: http://base/w
+Not using cached dataset for window: http://base/w
+WindowDatasetGraph(size: 0)
+Using cached dataset for window: http://base/w
+Failed to split op: (table unit)
+
+Failed to split op: (table unit)
+
+Using cached dataset for window: http://base/w
+Not using cached dataset for window: http://base/w
+WindowDatasetGraph(size: 0)
+Using cached dataset for window: http://base/w
+Failed to split op: (table unit)
+
+Failed to split op: (table unit)
+
+Using cached dataset for window: http://base/w
+Not using cached dataset for window: http://base/w
+WindowDatasetGraph(size: 0)
+Using cached dataset for window: http://base/w
+Failed to split op: (table unit)
+
+Failed to split op: (table unit)
+
+Using cached dataset for window: http://base/w
+Not using cached dataset for window: http://base/w
+WindowDatasetGraph(size: 0)
+Using cached dataset for window: http://base/w
+Failed to split op: (table unit)
+
+Failed to split op: (table unit)
+
+Using cached dataset for window: http://base/w
+Not using cached dataset for window: http://base/w
+WindowDatasetGraph(size: 0)
+Using cached dataset for window: http://base/w
+Using cached dataset for window: http://base/w
+Failed to split op: (table unit)
+
+Failed to split op: (table unit)
+
+Using cached dataset for window: http://base/w
+Not using cached dataset for window: http://base/w
+WindowDatasetGraph(size: 0)
+Using cached dataset for window: http://base/w
+Failed to split op: (table unit)
+
+Failed to split op: (table unit)
+
+Using cached dataset for window: http://base/w
+Not using cached dataset for window: http://base/w
+WindowDatasetGraph(size: 0)
+Using cached dataset for window: http://base/w
+Failed to split op: (table unit)
+
+Failed to split op: (table unit)
+
+Using cached dataset for window: http://base/w
+Not using cached dataset for window: http://base/w
+WindowDatasetGraph(size: 0)
+Using cached dataset for window: http://base/w
+Failed to split op: (table unit)
+
+Failed to split op: (table unit)
+
+Using cached dataset for window: http://base/w
+Not using cached dataset for window: http://base/w
+WindowDatasetGraph(size: 0)
+Using cached dataset for window: http://base/w
+Using cached dataset for window: http://base/w
+Failed to split op: (table unit)
+
+Failed to split op: (table unit)
+
+Using cached dataset for window: http://base/w
+Not using cached dataset for window: http://base/w
+WindowDatasetGraph(size: 0)
+Using cached dataset for window: http://base/w
+Failed to split op: (table unit)
+
+Failed to split op: (table unit)
+
+Using cached dataset for window: http://base/w
+Not using cached dataset for window: http://base/w
+WindowDatasetGraph(size: 0)
+Using cached dataset for window: http://base/w
+Failed to split op: (table unit)
+
+Failed to split op: (table unit)
+
+Using cached dataset for window: http://base/w
+Not using cached dataset for window: http://base/w
+WindowDatasetGraph(size: 0)
+Using cached dataset for window: http://base/w
+Failed to split op: (table unit)
+
+Failed to split op: (table unit)
+
+Using cached dataset for window: http://base/w
+Not using cached dataset for window: http://base/w
+WindowDatasetGraph(size: 0)
+Using cached dataset for window: http://base/w
+Failed to split op: (table unit)
+
+Failed to split op: (table unit)
+
+Using cached dataset for window: http://base/w
+Not using cached dataset for window: http://base/w
+WindowDatasetGraph(size: 0)
+Using cached dataset for window: http://base/w
+Failed to split op: (table unit)
+
+Failed to split op: (table unit)
+
+Using cached dataset for window: http://base/w
+Not using cached dataset for window: http://base/w
+WindowDatasetGraph(size: 0)
+Using cached dataset for window: http://base/w
+Failed to split op: (table unit)
+
+Failed to split op: (table unit)
+
+Using cached dataset for window: http://base/w
+Not using cached dataset for window: http://base/w
+WindowDatasetGraph(size: 0)
+Using cached dataset for window: http://base/w
+Failed to split op: (table unit)
+
+Failed to split op: (table unit)
+
+Using cached dataset for window: http://base/w
+Not using cached dataset for window: http://base/w
+WindowDatasetGraph(size: 0)
+Using cached dataset for window: http://base/w
+Failed to split op: (table unit)
+
+Failed to split op: (table unit)
+
+Using cached dataset for window: http://base/w
+Not using cached dataset for window: http://base/w
+WindowDatasetGraph(size: 0)
+Using cached dataset for window: http://base/w
+Failed to split op: (table unit)
+
+Failed to split op: (table unit)
+
+Using cached dataset for window: http://base/w
+Not using cached dataset for window: http://base/w
+WindowDatasetGraph(size: 0)
+Using cached dataset for window: http://base/w
+Failed to split op: (table unit)
+
+Failed to split op: (table unit)
+
+Using cached dataset for window: http://base/w
+Using cached dataset for window: http://base/w
+Not using cached dataset for window: http://base/w
+WindowDatasetGraph(size: 0)
+Failed to split op: (table unit)
+
+Failed to split op: (table unit)
+
+Using cached dataset for window: http://base/w
+Using cached dataset for window: http://base/w
+Not using cached dataset for window: http://base/w
+WindowDatasetGraph(size: 0)
+Failed to split op: (table unit)
+
+Failed to split op: (table unit)
+
+Using cached dataset for window: http://base/w
+Using cached dataset for window: http://base/w
+Not using cached dataset for window: http://base/w
+WindowDatasetGraph(size: 0)
+Failed to split op: (table unit)
+
+Failed to split op: (table unit)
+
+Using cached dataset for window: http://base/w
+Using cached dataset for window: http://base/w
+Failed to split op: (table unit)
+
+Failed to split op: (table unit)
+
+Failed to split op: (table unit)
+
+Failed to split op: (table unit)
+
+Failed to split op: (table unit)
+
+Failed to split op: (table unit)
+
+Failed to split op: (table unit)
+
+Failed to split op: (table unit)
+
+Failed to split op: (table unit)
+
+Failed to split op: (table unit)
+
+Failed to split op: (table unit)
+
+Failed to split op: (table unit)
+
+Failed to split op: (table unit)
+
+Failed to split op: (table unit)
+

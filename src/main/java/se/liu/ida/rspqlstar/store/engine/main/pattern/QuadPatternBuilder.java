@@ -1,4 +1,4 @@
-package se.liu.ida.rspqlstar.store.engine.main.quadpattern;
+package se.liu.ida.rspqlstar.store.engine.main.pattern;
 
 import org.apache.jena.graph.Node;
 import org.apache.jena.graph.Node_Triple;
@@ -18,8 +18,8 @@ public class QuadPatternBuilder {
     private Element predicate = null;
     private Element object = null;
 
-    static private VarDictionary varDict = VarDictionary.get();
-    static private NodeDictionary nd = NodeDictionaryFactory.get();
+    final private VarDictionary varDict = VarDictionary.get();
+    final private NodeDictionary nd = NodeDictionaryFactory.get();
 
     public QuadStarPattern createQuadPattern() {
         return new QuadStarPattern(graph, subject, predicate, object);
@@ -57,8 +57,6 @@ public class QuadPatternBuilder {
                 subject = id != null ? new Key(id) : null;
             }
         } else {
-            System.err.println("this var: " + node);
-            if(!node.isVariable()) throw new IllegalStateException();
             subject = varDict.createVariable((Var) node);
         }
     }

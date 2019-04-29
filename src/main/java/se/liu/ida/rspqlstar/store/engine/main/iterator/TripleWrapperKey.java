@@ -1,6 +1,6 @@
 package se.liu.ida.rspqlstar.store.engine.main.iterator;
 
-import se.liu.ida.rspqlstar.store.engine.main.quadpattern.Key;
+import se.liu.ida.rspqlstar.store.engine.main.pattern.Key;
 import se.liu.ida.rspqlstar.store.index.IdBasedTriple;
 
 public class TripleWrapperKey extends Key {

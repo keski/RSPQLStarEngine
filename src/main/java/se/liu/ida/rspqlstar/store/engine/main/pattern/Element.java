@@ -1,4 +1,4 @@
-package se.liu.ida.rspqlstar.store.engine.main.quadpattern;
+package se.liu.ida.rspqlstar.store.engine.main.pattern;
 
 /**
  * Defines the elements that appear as subject, predicates and objects in TripleStarPattern.

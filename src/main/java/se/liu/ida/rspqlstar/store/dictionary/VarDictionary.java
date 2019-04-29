@@ -6,7 +6,7 @@ import java.util.Map;
 
 import org.apache.jena.sparql.core.Var;
 
-import se.liu.ida.rspqlstar.store.engine.main.quadpattern.Variable;
+import se.liu.ida.rspqlstar.store.engine.main.pattern.Variable;
 
 /**
  * This dictionary creates and contains the mappings from a jena Var {@link Var} to an integer.
