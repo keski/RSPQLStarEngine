@@ -2,6 +2,7 @@ package se.liu.ida.rspqlstar.store.engine.main.iterator;
 
 import org.apache.jena.atlas.lib.Closeable;
 import org.apache.jena.sparql.engine.ExecutionContext;
+import org.apache.log4j.Logger;
 import se.liu.ida.rspqlstar.store.dataset.DatasetGraphStar;
 import se.liu.ida.rspqlstar.store.dataset.StreamingDatasetGraph;
 import se.liu.ida.rspqlstar.store.dictionary.IdFactory;
@@ -25,6 +26,7 @@ import java.util.Iterator;
  * iterate all quads in pattern, and bind.
  */
 public class IdBasedEmbeddedTriplePatternExtend implements Iterator<SolutionMapping>, Closeable {
+    final private Logger logger = Logger.getLogger(IdBasedEmbeddedTriplePatternExtend.class);
     final private QuadStarPattern pattern;
     final private DatasetGraphStar dsg;
     final private Iterator<SolutionMapping> input;
@@ -44,7 +46,6 @@ public class IdBasedEmbeddedTriplePatternExtend implements Iterator<SolutionMapp
     }
 
     public boolean hasNext() {
-
         while (currentMatches == null || !currentMatches.hasNext()) {
             if (!input.hasNext() || !pattern.isMatchable()) {
                 return false;

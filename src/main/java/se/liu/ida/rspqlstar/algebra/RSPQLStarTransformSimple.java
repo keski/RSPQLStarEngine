@@ -2,7 +2,6 @@ package se.liu.ida.rspqlstar.algebra;
 
 import org.apache.jena.graph.Node;
 import org.apache.jena.graph.Node_Triple;
-import org.apache.jena.sparql.algebra.Algebra;
 import org.apache.jena.sparql.algebra.Op;
 import org.apache.jena.sparql.algebra.TransformCopy;
 import org.apache.jena.sparql.algebra.op.*;
@@ -12,10 +11,11 @@ import org.apache.jena.sparql.expr.nodevalue.NodeValueNode;
 import org.apache.log4j.Logger;
 import se.liu.ida.rspqlstar.algebra.op.OpExtendQuad;
 import se.liu.ida.rspqlstar.algebra.op.OpWindow;
-import se.liu.ida.rspqlstar.algebra.op.OpWrapper;
 import se.liu.ida.rspqlstar.store.dictionary.VarDictionary;
 
-import java.util.*;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
 
 public class RSPQLStarTransformSimple extends TransformCopy {
     final private Logger logger = Logger.getLogger(RSPQLStarTransformSimple.class);
@@ -23,14 +23,18 @@ public class RSPQLStarTransformSimple extends TransformCopy {
     final private VarDictionary varDict = VarDictionary.get();
     final boolean reverseOpExtend = true;
 
+    public void reset(){
+        varMap.clear();
+    }
+
     @Override
     public Op transform(final OpExt opExt) {
         if(opExt instanceof OpWindow){
             final OpWindow opWindow = (OpWindow) opExt;
             final Op op = transform(opWindow.getSubOp());
-            return new OpWindow(opWindow.getNode(), op);
+            return opWindow.copy(op);
         } else {
-            return transform(opExt);
+            return opExt;
         }
     }
 
@@ -38,12 +42,12 @@ public class RSPQLStarTransformSimple extends TransformCopy {
     public Op transform(final OpQuadPattern opQuadPattern) {
         Op op = null;
         for(Quad quad : opQuadPattern.getPattern()){
-            final Op op2 = splitQuadWithEmbeddedTriple(quad);
+            final Op op2 = transform(splitQuadWithEmbeddedTriple(quad));
 
             if(op == null) {
                 op = op2;
             } else {
-                op = OpSequence.create(op, new OpQuad(quad));
+                op = OpSequence.create(op, op2);
             }
         }
         return op;
@@ -51,11 +55,11 @@ public class RSPQLStarTransformSimple extends TransformCopy {
 
     public Op transform(final OpSequence opSequence) {
         Op op = null;
-        for(Op op2 : opSequence.getElements()){
+        for(final Op op2 : opSequence.getElements()){
             if(op == null) {
-                op = op2;
+                op = transform(op2);
             } else {
-                op = OpSequence.create(op, op2);
+                op = OpSequence.create(op, transform(op2));
             }
         }
         return op;
@@ -66,12 +70,12 @@ public class RSPQLStarTransformSimple extends TransformCopy {
     }
 
     public Op transform(final OpJoin opJoin) {
-        final Op left = opJoin.getLeft();
-        final Op right = opJoin.getRight();
-        return OpJoin.create(transform(left), transform(right));
+        final Op left = transform(opJoin.getLeft());
+        final Op right = transform(opJoin.getRight());
+        return OpJoin.create(left, right);
     }
 
-    private Op splitQuadWithEmbeddedTriple(Quad quad) {
+    private Op splitQuadWithEmbeddedTriple(final Quad quad) {
         final List<Op> ops = new ArrayList<>();
 
         final Node subject;
@@ -137,13 +141,16 @@ public class RSPQLStarTransformSimple extends TransformCopy {
             op2 = transform((OpFilter) op);
         } else if (op instanceof OpJoin) {
             op2 = transform((OpJoin) op);
+        }   else if (op instanceof OpExtendQuad) {
+            op2 = transform((OpExtendQuad) op);
         } else {
             logger.debug("Failed to split op: " + op);
             if(op instanceof OpBGP) throw new IllegalStateException();
             op2 = op;
         }
-
         return op2;
     }
+
+
 
 }

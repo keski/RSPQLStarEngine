@@ -34,6 +34,18 @@ public class OpRSPQLStarExecutor extends OpExecutor {
     final private NodeDictionary nd = NodeDictionaryFactory.get();
 
     /**
+     * Make sure QueryIterRoot closes if query result is empty.
+     * @param op
+     * @param input
+     * @return
+     */
+    protected QueryIterator exec(Op op, QueryIterator input) {
+        final QueryIterator qIter = super.exec(op, input);
+        if(!qIter.hasNext()) input.close();
+        return qIter;
+    }
+
+    /**
      * Creates an operator compiler.
      */
     public OpRSPQLStarExecutor(ExecutionContext execCxt) {
@@ -154,14 +166,14 @@ public class OpRSPQLStarExecutor extends OpExecutor {
      */
     protected Iterator<SolutionMapping> execute(OpFilter opFilter, Iterator<SolutionMapping> input){
         final QueryIterator iter = new DecodeBindingsIterator(input, execCxt);
-        return new EncodeBindingsIterator(execute(opFilter, iter), execCxt);
+        return new EncodeBindingsIterator(super.execute(opFilter, iter), execCxt);
     }
 
     private Iterator<SolutionMapping> execute(OpExtend opExtend, Iterator<SolutionMapping> input) {
         return execute(new OpExtendQuad(opExtend, null), input);
     }
 
-    private Iterator<SolutionMapping> execute(OpExtendQuad opExtendQuad, Iterator<SolutionMapping> input) {
+    private Iterator<SolutionMapping> execute(final OpExtendQuad opExtendQuad, final Iterator<SolutionMapping> input) {
         final OpExtend opExtend = opExtendQuad.getSubOp();
         final Expr expr = opExtend.getVarExprList().getExprs().values().iterator().next();
 
@@ -170,9 +182,7 @@ public class OpRSPQLStarExecutor extends OpExecutor {
         }
 
         final Node node = ((NodeValue) expr).asNode();
-        final Var var = expr.getExprVar().asVar();
-        // OLD:
-        // final Var var = opExtend.getVarExprList().getVars().get(0);
+        final Var var = opExtend.getVarExprList().getVars().get(0);
 
         if (node instanceof Node_Triple) {
             // Get the graph context from the original opExtendQuad
@@ -192,7 +202,7 @@ public class OpRSPQLStarExecutor extends OpExecutor {
         }
     }
 
-    private Iterator<SolutionMapping> execute(OpWindow opWindow, Iterator<SolutionMapping> input) {
+    private Iterator<SolutionMapping> execute(final OpWindow opWindow, final Iterator<SolutionMapping> input) {
         final StreamingDatasetGraph sdg = (StreamingDatasetGraph) execCxt.getDataset();
         sdg.useWindowDataset(opWindow.getNode().toString());
         final Iterator<SolutionMapping> iter = executeIdBasedOp(opWindow.getSubOp(), input);
@@ -232,7 +242,7 @@ public class OpRSPQLStarExecutor extends OpExecutor {
      * @param opQuad
      * @return
      */
-    private QuadStarPattern encode(OpQuad opQuad) {
+    private QuadStarPattern encode(final OpQuad opQuad) {
         final Quad pattern = opQuad.getQuad();
         final QuadPatternBuilder builder = new QuadPatternBuilder();
         builder.setGraph(pattern.getGraph());
@@ -248,7 +258,7 @@ public class OpRSPQLStarExecutor extends OpExecutor {
      * @param node_triple
      * @return
      */
-    private QuadStarPattern encode(Node graph, Node_Triple node_triple) {
+    private QuadStarPattern encode(final Node graph, final Node_Triple node_triple) {
         final QuadPatternBuilder builder = new QuadPatternBuilder();
         final Triple t = node_triple.get();
         builder.setGraph(graph);
@@ -265,7 +275,7 @@ public class OpRSPQLStarExecutor extends OpExecutor {
      * @param node
      * @return
      */
-    private Long encode(Node node) {
+    private Long encode(final Node node) {
         return nd.getId(node);
     }
 
@@ -275,7 +285,7 @@ public class OpRSPQLStarExecutor extends OpExecutor {
      * @param var
      * @return
      */
-    private int encode(Var var) {
+    private int encode(final Var var) {
         return varDict.createId(var);
     }
 

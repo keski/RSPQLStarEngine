@@ -3,7 +3,9 @@ package se.liu.ida.rspqlstar.store.dataset;
 import org.apache.jena.graph.Graph;
 import org.apache.jena.graph.Node;
 import org.apache.jena.graph.Node_Triple;
+import org.apache.jena.rdf.model.ModelFactory;
 import org.apache.jena.sparql.core.Quad;
+import org.apache.log4j.Logger;
 import se.liu.ida.rspqlstar.store.dictionary.nodedictionary.NodeDictionary;
 import se.liu.ida.rspqlstar.store.dictionary.nodedictionary.NodeDictionaryFactory;
 import se.liu.ida.rspqlstar.store.dictionary.referencedictionary.ReferenceDictionary;
@@ -25,7 +27,8 @@ import java.util.Iterator;
  * using the Jena API classes using on-the-fly decoding.
  */
 
-public class DatasetGraphStar extends AbstractDatasetGraph { //implements DatasetGraph {
+public class DatasetGraphStar extends AbstractDatasetGraph {
+    final private Logger logger = Logger.getLogger(DatasetGraphStar.class);
     final public Index GSPO;
     final public Index GPOS;
     final public Index GOSP;
@@ -66,7 +69,8 @@ public class DatasetGraphStar extends AbstractDatasetGraph { //implements Datase
 
     @Override
     public Graph getDefaultGraph() {
-        return null;
+        logger.debug("Accessing default graph of DatasetGraphStar, was this intentional? Returning empty graph.");
+        return ModelFactory.createDefaultModel().getGraph();
     }
 
     @Override

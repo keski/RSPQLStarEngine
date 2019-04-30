@@ -1,16 +1,15 @@
 package se.liu.ida.rspqlstar.store.dictionary.nodedictionary;
 
 import org.apache.jena.graph.Node;
+import org.apache.jena.graph.Node_Triple;
+import se.liu.ida.rspqlstar.store.dictionary.IdFactory;
 import se.liu.ida.rspqlstar.store.dictionary.nodedictionary.idnodes.NodeWithIDFactory;
 import se.liu.ida.rspqlstar.store.dictionary.nodedictionary.idnodes.Node_WithID;
-import se.liu.ida.rspqlstar.store.dictionary.IdFactory;
 
 import java.io.PrintStream;
 import java.util.ArrayList;
-import java.util.Collections;
 import java.util.List;
 import java.util.concurrent.ConcurrentHashMap;
-import java.util.concurrent.ConcurrentLinkedDeque;
 
 /**
  * The node dictionary keeps track of the mappings between nodes and their respective IDs.

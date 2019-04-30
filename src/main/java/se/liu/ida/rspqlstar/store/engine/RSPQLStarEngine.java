@@ -1,9 +1,7 @@
 package se.liu.ida.rspqlstar.store.engine;
 
 import org.apache.jena.query.Query;
-import org.apache.jena.sparql.algebra.Algebra;
 import org.apache.jena.sparql.algebra.Op;
-import org.apache.jena.sparql.algebra.Transformer;
 import org.apache.jena.sparql.core.DatasetGraph;
 import org.apache.jena.sparql.engine.*;
 import org.apache.jena.sparql.engine.binding.Binding;
@@ -12,13 +10,16 @@ import org.apache.jena.sparql.engine.iterator.QueryIteratorCheck;
 import org.apache.jena.sparql.engine.main.QC;
 import org.apache.jena.sparql.engine.main.QueryEngineMainQuad;
 import org.apache.jena.sparql.util.Context;
+import org.apache.log4j.Logger;
 import se.liu.ida.rspqlstar.algebra.MyAlgebra;
-import se.liu.ida.rspqlstar.algebra.RSPQLStarTransformSimple;
 import se.liu.ida.rspqlstar.query.RSPQLStarQuery;
 import se.liu.ida.rspqlstar.store.dataset.DatasetGraphStar;
 import se.liu.ida.rspqlstar.store.engine.main.OpRSPQLStarExecutor;
 
 public class RSPQLStarEngine extends QueryEngineMainQuad {
+    private static final Logger logger = Logger.getLogger(RSPQLStarEngine.class);
+    private Op cachedOp = null;
+
     static final private QueryEngineFactory factory = new QueryEngineFactory() {
         @Override
         public boolean accept(Query query, DatasetGraph datasetGraph, Context context) {
@@ -59,15 +60,22 @@ public class RSPQLStarEngine extends QueryEngineMainQuad {
     }
 
     protected Op createOp(Query query) {
-        return MyAlgebra.compile(query);
+        if(cachedOp == null) {
+            cachedOp = MyAlgebra.compile(query);
+        }
+        return cachedOp;
     }
 
     public QueryIterator eval(Op op, DatasetGraph datasetGraph, Binding input, Context context) {
         final ExecutionContext execCxt = new ExecutionContext(context, null, datasetGraph, QC.getFactory(context));
+
         final QueryIterator qIter1 = QueryIterRoot.create(input, execCxt);
         final QueryIterator qIter2 = QC.execute(op, qIter1, execCxt);
         return QueryIteratorCheck.check(qIter2, execCxt); // check for closed iterators
     }
 
-
+    @Override
+    protected Op modifyOp(Op op) {
+        return op;
+    }
 }

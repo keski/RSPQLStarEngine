@@ -54,6 +54,12 @@ public class WindowDatasetGraph extends DatasetGraphStar {
         return startTime + width + n * step;
     }
 
+    /**
+     * Search window dataset without re-materializing it first.
+     * @param time
+     * @param pattern
+     * @return
+     */
     public Iterator<IdBasedQuad> find(long time, QuadStarPattern pattern){
         final long upperBound = getUpperBound(time);
 

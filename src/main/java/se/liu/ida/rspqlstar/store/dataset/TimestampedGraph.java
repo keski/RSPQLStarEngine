@@ -9,6 +9,7 @@ import java.util.Date;
 
 
 public class TimestampedGraph implements StreamRDF {
+    // TODO replace with more efficient in the case of TG
     public DatasetGraphStar dgs = new DatasetGraphStar();
     public long time;
 
@@ -18,7 +19,7 @@ public class TimestampedGraph implements StreamRDF {
 
     @Override
     public void start() {
-        dgs = new DatasetGraphStar(); // override this to provide a more streamlined implementation
+        dgs = new DatasetGraphStar();
     }
 
     @Override

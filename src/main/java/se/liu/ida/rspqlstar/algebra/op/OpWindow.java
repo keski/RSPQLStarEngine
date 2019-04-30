@@ -3,19 +3,16 @@ package se.liu.ida.rspqlstar.algebra.op;
 import org.apache.jena.atlas.io.IndentedWriter;
 import org.apache.jena.atlas.lib.NotImplemented;
 import org.apache.jena.graph.Node;
-import org.apache.jena.sparql.algebra.Algebra;
 import org.apache.jena.sparql.algebra.Op;
 import org.apache.jena.sparql.algebra.OpVisitor;
 import org.apache.jena.sparql.algebra.Transform;
+import org.apache.jena.sparql.algebra.Transformer;
 import org.apache.jena.sparql.algebra.op.OpExt;
-import org.apache.jena.sparql.algebra.op.OpGraph;
-import org.apache.jena.sparql.algebra.op.OpJoin;
-import org.apache.jena.sparql.algebra.op.OpQuadPattern;
 import org.apache.jena.sparql.engine.ExecutionContext;
 import org.apache.jena.sparql.engine.QueryIterator;
 import org.apache.jena.sparql.serializer.SerializationContext;
 import org.apache.jena.sparql.util.NodeIsomorphismMap;
-import se.liu.ida.rspqlstar.algebra.RSPQLStarTransform;
+import se.liu.ida.rspqlstar.algebra.MyAlgebra;
 import se.liu.ida.rspqlstar.sse.writers.MyWriterOp;
 
 public class OpWindow extends OpExt {
@@ -77,7 +74,7 @@ public class OpWindow extends OpExt {
     }
 
     public Op apply(Transform transform) {
-        subOp = Algebra.toQuadForm(subOp);
+        subOp = Transformer.transform(transform, MyAlgebra.toQuadForm(subOp));
         return this;
     }
 

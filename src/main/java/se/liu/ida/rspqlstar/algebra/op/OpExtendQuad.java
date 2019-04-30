@@ -33,7 +33,7 @@ public class OpExtendQuad extends OpExt {
 
     @Override
     public Op effectiveOp() {
-        throw new NotImplemented();
+        return subOp;
     }
 
     @Override

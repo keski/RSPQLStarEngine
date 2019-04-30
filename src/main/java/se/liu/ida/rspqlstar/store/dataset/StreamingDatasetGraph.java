@@ -19,6 +19,7 @@ import java.util.*;
 public class StreamingDatasetGraph extends AbstractDatasetGraph {
     private DatasetGraphStar baseDataset = new DatasetGraphStar();
     private Map<String, WindowDatasetGraph> windows = new HashMap<>();
+    private Map<String, RDFStream> rdfStreams = new HashMap<>();
     private DatasetGraphStar activeDataset = baseDataset;
     private Date time = new Date();
 
@@ -32,14 +33,25 @@ public class StreamingDatasetGraph extends AbstractDatasetGraph {
      * creates a WindowDatasetGraph for each named window mentioned in the query.
      */
 
-    public StreamingDatasetGraph(RSPQLStarQuery query, Map<String, RDFStream> streams){
-        TemporalUnit t;
+    public void registerStream(RDFStream rdfStream){
+        rdfStreams.put(rdfStream.iri, rdfStream);
+    }
 
+    /**
+     * Initialize the dataset for use with a given query. All streams stream on which the
+     * the query is dependent must be registered.
+     *
+     * Note: A single dataset can be used for multiple parallel queries; however, each named
+     * window must be unique, since  aA WindowDatasetGraph is created for each named window
+     * mentioned in the query.
+     */
+
+    public void initForQuery(RSPQLStarQuery query){
         for(NamedWindow w : query.getNamedWindows().values()){
             final String name = w.getWindowName();
             final Duration range = w.getRange();
             final Duration step = w.getStep();
-            final RDFStream rdfStream = streams.get(w.getStreamName());
+            final RDFStream rdfStream = rdfStreams.get(w.getStreamName());
             addWindow(new WindowDatasetGraph(name, range, step, time, rdfStream));
         }
     }

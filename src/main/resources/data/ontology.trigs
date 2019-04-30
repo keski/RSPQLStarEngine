@@ -1,0 +1,54 @@
+@base <http://base/> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix sosa: <http://www.w3.org/ns/sosa/> .
+@prefix ssn: <http://www.w3.org/ns/ssn/> .
+@prefix ex: <http:///example.org/ontology#> .
+
+<person1>
+    a foaf:Person ;
+    foaf:age 71 ;
+    foaf:name "Rut" ;
+    rdfs:comment "This resource represents Rut in the scenario" .
+
+<person2>
+    a foaf:Person ;
+    foaf:age 70 ;
+    foaf:name "Arne" ;
+    rdfs:comment "This resource represents Rut's partner in the scenario" .
+
+<person1/heart_rate>
+    a sosa:ObservableProperty ;
+    sosa:isObservedBy <sensor/heart_rate/1> ;
+    ssn:isPropertyOf <person1> ;
+    rdfs:label "Measure of a Rut's heart rate"@en .
+
+<person1/location>
+    a sosa:ObservableProperty ;
+    sosa:isObservedBy <sensor/location/1> ;
+    ssn:isPropertyOf <person1> ;
+    rdfs:label "Indicates whether Rut is at home or not"@en .
+
+<person2/location>
+    a sosa:ObservableProperty ;
+    sosa:isObservedBy <sensor/location/2> ;
+    ssn:isPropertyOf <person2> ;
+    rdfs:label "Indicates whether Rut's partner is at home or not"@en .
+
+
+<sensor/heart_rate/1>
+    a sosa:Sensor ;
+    sosa:observes <person1/heart_rate> ;
+    rdfs:comment "Sensor measuring the Rut's heart rate" .
+
+<sensor/location/1>
+    a sosa:Sensor ;
+    sosa:observes <person1/location> ;
+    rdfs:comment "Sensor indicating whether Rut is at home or not" .
+
+<sensor/location/2>
+    a sosa:Sensor ;
+    sosa:observes <person2/location> ;
+    rdfs:comment "Sensor indicating whether Rut's partner is at home or not" .

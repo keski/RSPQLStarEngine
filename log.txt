@@ -1325,3 +1325,2391 @@ Failed to split op: (table unit)
 
 Failed to split op: (table unit)
 
+There is no id-based iterator implemented for (graph ?g
+  (join
+    (table unit)
+    (bgp
+      (triple ?sensor <http://base/hasValue> ?value)
+      (triple ?sensor @http://base/hasValue ?value <http://base/hasConfidence> ?confidence)
+    )))
+, defaulting to decode/encode
+There is no id-based iterator implemented for (graph ?g
+  (join
+    (table unit)
+    (bgp
+      (triple ?sensor <http://base/hasValue> ?value)
+      (triple ?sensor @http://base/hasValue ?value <http://base/hasConfidence> ?confidence)
+    )))
+, defaulting to decode/encode
+There is no id-based iterator implemented for (graph ?g
+  (join
+    (table unit)
+    (bgp
+      (triple ?sensor <http://base/hasValue> ?value)
+      (triple ?sensor @http://base/hasValue ?value <http://base/hasConfidence> ?confidence)
+    )))
+, defaulting to decode/encode
+There is no id-based iterator implemented for (graph ?g
+  (join
+    (table unit)
+    (bgp
+      (triple ?sensor <http://base/hasValue> ?value)
+      (triple ?sensor @http://base/hasValue ?value <http://base/hasConfidence> ?confidence)
+    )))
+, defaulting to decode/encode
+There is no id-based iterator implemented for (graph ?g
+  (join
+    (table unit)
+    (bgp
+      (triple ?sensor <http://base/hasValue> ?value)
+      (triple ?sensor @http://base/hasValue ?value <http://base/hasConfidence> ?confidence)
+    )))
+, defaulting to decode/encode
+There is no id-based iterator implemented for (graph ?g
+  (join
+    (table unit)
+    (bgp
+      (triple ?sensor <http://base/hasValue> ?value)
+      (triple ?sensor @http://base/hasValue ?value <http://base/hasConfidence> ?confidence)
+    )))
+, defaulting to decode/encode
+There is no id-based iterator implemented for (graph ?g
+  (join
+    (table unit)
+    (bgp
+      (triple ?sensor <http://base/hasValue> ?value)
+      (triple ?sensor @http://base/hasValue ?value <http://base/hasConfidence> ?confidence)
+    )))
+, defaulting to decode/encode
+There is no id-based iterator implemented for (graph ?g
+  (join
+    (table unit)
+    (bgp (triple ?sensor @http://base/hasValue ?value <http://base/hasConfidence> ?confidence))))
+, defaulting to decode/encode
+(project (?sensor ?value)
+  (join
+    (join
+      (table unit)
+      (window <http://base/w>
+        (join
+          (table unit)
+          (join
+            (table unit)
+            (sequence
+              (quad ?g ?a ?b ?c)
+              (sequence
+                (quad ?g ?_1 <http://base/hasConfidence> ?confidence)
+                (extendquad ?g ((?_1 ?sensor @http://base/hasValue ?value))
+                  (table empty)))))))
+    )
+    (sequence
+      (quad <urn:x-arq:DefaultGraphNode> ?_2 ?b ?c)
+      (extendquad urn:x-arq:DefaultGraphNode ((?_2 ?a @?b ?c))
+        (table empty))
+    )))
+
+(project (?sensor ?value)
+  (join
+    (table unit)
+    (window <http://base/w>
+      (join
+        (table unit)
+        (join
+          (table unit)
+          (sequence
+            (quad ?g ?_1 <http://base/hasConfidence> ?confidence)
+            (extendquad ?g ((?_1 ?sensor @http://base/hasValue ?value))
+              (table empty))))))
+  ))
+
+(project (?sensor ?value)
+  (join
+    (table unit)
+    (window <http://base/w>
+      (join
+        (table unit)
+        (join
+          (table unit)
+          (sequence
+            (quad ?g ?_1 <http://base/hasConfidence> ?confidence)
+            (extendquad ?g ((?_1 ?sensor @http://base/hasValue ?value))
+              (table empty))))))
+  ))
+
+(project (?sensor ?value)
+  (join
+    (table unit)
+    (window <http://base/w>
+      (join
+        (table unit)
+        (join
+          (table unit)
+          (sequence
+            (quad ?g ?_1 <http://base/hasConfidence> ?confidence)
+            (extendquad ?g ((?_1 ?sensor @http://base/hasValue ?value))
+              (table empty))))))
+  ))
+
+(project (?sensor ?value)
+  (join
+    (table unit)
+    (window <http://base/w>
+      (join
+        (table unit)
+        (join
+          (table unit)
+          (quad ?g ?_1 <http://base/hasConfidence> ?confidence))))
+  ))
+
+(project (?sensor ?value)
+  (join
+    (table unit)
+    (window <http://base/w>
+      (join
+        (table unit)
+        (join
+          (table unit)
+          (quad ?g ?_1 <http://base/hasConfidence> ?confidence))))
+  ))
+
+(project (?sensor ?value)
+  (join
+    (table unit)
+    (window <http://base/w>
+      (join
+        (table unit)
+        (join
+          (table unit)
+          (quad ?g ?_1 <http://base/hasConfidence> ?confidence))))
+  ))
+
+(project (?sensor ?value)
+  (join
+    (table unit)
+    (window <http://base/w>
+      (join
+        (table unit)
+        (join
+          (table unit)
+          (quad ?g ?_1 <http://base/hasConfidence> ?confidence))))
+  ))
+
+(project (?sensor ?value)
+  (join
+    (table unit)
+    (window <http://base/w>
+      (join
+        (table unit)
+        (join
+          (table unit)
+          (sequence
+            (quad ?g ?_1 <http://base/hasConfidence> ?confidence)
+            (extendquad ?g ((?_1 ?sensor @http://base/hasValue ?value))
+              (table empty))))))
+  ))
+
+[Root]
+(project (?sensor ?value)
+  (join
+    (table unit)
+    (window <http://base/w>
+      (join
+        (table unit)
+        (join
+          (table unit)
+          (quad ?g ?_1 <http://base/hasConfidence> ?confidence))))
+  ))
+
+[Root]
+(project (?sensor ?value)
+  (join
+    (table unit)
+    (window <http://base/w>
+      (join
+        (table unit)
+        (join
+          (table unit)
+          (quad ?g ?_1 <http://base/hasConfidence> ?confidence))))
+  ))
+
+[Root]
+[Root]
+[Root]
+[Root]
+curInput: [Root]
+curInput: [Root]
+curInput: [Root]
+curInput: [Root]
+curInput: [Root]
+curInput: [Root]
+curInput: [Root]
+curInput: [Root]
+(project (?a ?sensor ?value)
+  (join
+    (table unit)
+    (window <http://base/w>
+      (join
+        (table unit)
+        (join
+          (table unit)
+          (sequence
+            (quad ?g ?_1 <http://base/hasConfidence> ?confidence)
+            (extendquad ?g ((?_1 ?sensor @http://base/hasValue ?value))
+              (table empty))))))
+  ))
+
+(project (?a ?sensor ?value)
+  (join
+    (table unit)
+    (window <http://base/w>
+      (join
+        (table unit)
+        (join
+          (table unit)
+          (sequence
+            (quad ?g ?_1 <http://base/hasConfidence> ?confidence)
+            (extendquad ?g ((?_1 ?sensor @http://base/hasValue ?value))
+              (table empty))))))
+  ))
+
+IdBasedQuadPatternIterator
+(project (?a ?sensor ?value)
+  (join
+    (table unit)
+    (window <http://base/w>
+      (join
+        (table unit)
+        (join
+          (table unit)
+          (quad ?g ?_1 <http://base/hasConfidence> ?confidence))))
+  ))
+
+IdBasedQuadPatternIterator
+IdBasedQuadPatternIterator
+IdBasedQuadPatternIterator
+IdBasedQuadPatternIterator
+IdBasedQuadPatternIterator
+IdBasedQuadPatternIterator
+IdBasedQuadPatternIterator
+IdBasedQuadPatternIterator
+IdBasedQuadPatternIterator
+IdBasedQuadPatternIterator
+IdBasedQuadPatternIterator
+IdBasedQuadPatternIterator
+IdBasedQuadPatternIterator
+IdBasedQuadPatternIterator
+IdBasedQuadPatternIterator
+IdBasedQuadPatternIterator
+IdBasedQuadPatternIterator
+IdBasedQuadPatternIterator
+IdBasedQuadPatternIterator
+(project (?a ?sensor ?value)
+  (join
+    (table unit)
+    (window <http://base/w>
+      (join
+        (table unit)
+        (join
+          (table unit)
+          (quad ?g ?_1 <http://base/hasConfidence> ?confidence))))
+  ))
+
+IdBasedQuadPatternIterator
+IdBasedQuadPatternIterator
+IdBasedQuadPatternIterator
+IdBasedQuadPatternIterator
+IdBasedQuadPatternIterator
+IdBasedQuadPatternIterator
+IdBasedQuadPatternIterator
+IdBasedQuadPatternIterator
+IdBasedQuadPatternIterator
+IdBasedQuadPatternIterator
+IdBasedQuadPatternIterator
+IdBasedQuadPatternIterator
+IdBasedQuadPatternIterator
+IdBasedQuadPatternIterator
+IdBasedQuadPatternIterator
+IdBasedQuadPatternIterator
+IdBasedQuadPatternIterator
+IdBasedQuadPatternIterator
+IdBasedQuadPatternIterator
+IdBasedQuadPatternIterator
+IdBasedQuadPatternIterator
+IdBasedQuadPatternIterator
+IdBasedQuadPatternIterator
+IdBasedQuadPatternIterator
+IdBasedQuadPatternIterator
+IdBasedQuadPatternIterator
+IdBasedQuadPatternIterator
+IdBasedQuadPatternIterator
+IdBasedQuadPatternIterator
+IdBasedQuadPatternIterator
+IdBasedQuadPatternIterator
+(project (?a ?sensor ?value)
+  (join
+    (table unit)
+    (window <http://base/w>
+      (join
+        (table unit)
+        (join
+          (table unit)
+          (quad ?g ?_1 <http://base/hasConfidence> ?confidence))))
+  ))
+
+IdBasedQuadPatternIterator
+IdBasedQuadPatternIterator
+IdBasedQuadPatternIterator
+IdBasedQuadPatternIterator
+IdBasedQuadPatternIterator
+IdBasedQuadPatternIterator
+IdBasedQuadPatternIterator
+IdBasedQuadPatternIterator
+IdBasedQuadPatternIterator
+IdBasedQuadPatternIterator
+IdBasedQuadPatternIterator
+IdBasedQuadPatternIterator
+IdBasedQuadPatternIterator
+IdBasedQuadPatternIterator
+IdBasedQuadPatternIterator
+IdBasedQuadPatternIterator
+IdBasedQuadPatternIterator
+IdBasedQuadPatternIterator
+IdBasedQuadPatternIterator
+IdBasedQuadPatternIterator
+IdBasedQuadPatternIterator
+IdBasedQuadPatternIterator
+IdBasedQuadPatternIterator
+IdBasedQuadPatternIterator
+IdBasedQuadPatternIterator
+IdBasedQuadPatternIterator
+IdBasedQuadPatternIterator
+IdBasedQuadPatternIterator
+IdBasedQuadPatternIterator
+IdBasedQuadPatternIterator
+IdBasedQuadPatternIterator
+IdBasedQuadPatternIterator
+IdBasedQuadPatternIterator
+IdBasedQuadPatternIterator
+IdBasedQuadPatternIterator
+IdBasedQuadPatternIterator
+IdBasedQuadPatternIterator
+IdBasedQuadPatternIterator
+IdBasedQuadPatternIterator
+IdBasedQuadPatternIterator
+IdBasedQuadPatternIterator
+IdBasedQuadPatternIterator
+IdBasedQuadPatternIterator
+(project (?a ?sensor ?value)
+  (join
+    (table unit)
+    (window <http://base/w>
+      (join
+        (table unit)
+        (join
+          (table unit)
+          (quad ?g ?_1 <http://base/hasConfidence> ?confidence))))
+  ))
+
+IdBasedQuadPatternIterator
+IdBasedQuadPatternIterator
+IdBasedQuadPatternIterator
+IdBasedQuadPatternIterator
+IdBasedQuadPatternIterator
+IdBasedQuadPatternIterator
+IdBasedQuadPatternIterator
+IdBasedQuadPatternIterator
+IdBasedQuadPatternIterator
+IdBasedQuadPatternIterator
+IdBasedQuadPatternIterator
+IdBasedQuadPatternIterator
+IdBasedQuadPatternIterator
+IdBasedQuadPatternIterator
+IdBasedQuadPatternIterator
+IdBasedQuadPatternIterator
+IdBasedQuadPatternIterator
+IdBasedQuadPatternIterator
+IdBasedQuadPatternIterator
+IdBasedQuadPatternIterator
+IdBasedQuadPatternIterator
+IdBasedQuadPatternIterator
+IdBasedQuadPatternIterator
+IdBasedQuadPatternIterator
+IdBasedQuadPatternIterator
+IdBasedQuadPatternIterator
+IdBasedQuadPatternIterator
+IdBasedQuadPatternIterator
+IdBasedQuadPatternIterator
+IdBasedQuadPatternIterator
+IdBasedQuadPatternIterator
+IdBasedQuadPatternIterator
+IdBasedQuadPatternIterator
+IdBasedQuadPatternIterator
+IdBasedQuadPatternIterator
+IdBasedQuadPatternIterator
+IdBasedQuadPatternIterator
+IdBasedQuadPatternIterator
+IdBasedQuadPatternIterator
+IdBasedQuadPatternIterator
+IdBasedQuadPatternIterator
+IdBasedQuadPatternIterator
+IdBasedQuadPatternIterator
+IdBasedQuadPatternIterator
+IdBasedQuadPatternIterator
+IdBasedQuadPatternIterator
+IdBasedQuadPatternIterator
+IdBasedQuadPatternIterator
+IdBasedQuadPatternIterator
+(project (?a ?sensor ?value)
+  (join
+    (table unit)
+    (window <http://base/w>
+      (join
+        (table unit)
+        (join
+          (table unit)
+          (quad ?g ?_1 <http://base/hasConfidence> ?confidence))))
+  ))
+
+IdBasedQuadPatternIterator
+IdBasedQuadPatternIterator
+IdBasedQuadPatternIterator
+IdBasedQuadPatternIterator
+IdBasedQuadPatternIterator
+IdBasedQuadPatternIterator
+IdBasedQuadPatternIterator
+IdBasedQuadPatternIterator
+IdBasedQuadPatternIterator
+IdBasedQuadPatternIterator
+IdBasedQuadPatternIterator
+IdBasedQuadPatternIterator
+IdBasedQuadPatternIterator
+IdBasedQuadPatternIterator
+IdBasedQuadPatternIterator
+IdBasedQuadPatternIterator
+IdBasedQuadPatternIterator
+IdBasedQuadPatternIterator
+IdBasedQuadPatternIterator
+IdBasedQuadPatternIterator
+IdBasedQuadPatternIterator
+IdBasedQuadPatternIterator
+IdBasedQuadPatternIterator
+IdBasedQuadPatternIterator
+IdBasedQuadPatternIterator
+IdBasedQuadPatternIterator
+IdBasedQuadPatternIterator
+IdBasedQuadPatternIterator
+IdBasedQuadPatternIterator
+IdBasedQuadPatternIterator
+IdBasedQuadPatternIterator
+IdBasedQuadPatternIterator
+IdBasedQuadPatternIterator
+IdBasedQuadPatternIterator
+IdBasedQuadPatternIterator
+IdBasedQuadPatternIterator
+IdBasedQuadPatternIterator
+IdBasedQuadPatternIterator
+IdBasedQuadPatternIterator
+IdBasedQuadPatternIterator
+IdBasedQuadPatternIterator
+IdBasedQuadPatternIterator
+IdBasedQuadPatternIterator
+IdBasedQuadPatternIterator
+IdBasedQuadPatternIterator
+IdBasedQuadPatternIterator
+IdBasedQuadPatternIterator
+IdBasedQuadPatternIterator
+IdBasedQuadPatternIterator
+(project (?a ?sensor ?value)
+  (join
+    (table unit)
+    (window <http://base/w>
+      (join
+        (table unit)
+        (join
+          (table unit)
+          (quad ?g ?_1 <http://base/hasConfidence> ?confidence))))
+  ))
+
+IdBasedQuadPatternIterator
+IdBasedQuadPatternIterator
+IdBasedQuadPatternIterator
+IdBasedQuadPatternIterator
+IdBasedQuadPatternIterator
+IdBasedQuadPatternIterator
+IdBasedQuadPatternIterator
+IdBasedQuadPatternIterator
+IdBasedQuadPatternIterator
+IdBasedQuadPatternIterator
+IdBasedQuadPatternIterator
+IdBasedQuadPatternIterator
+IdBasedQuadPatternIterator
+IdBasedQuadPatternIterator
+IdBasedQuadPatternIterator
+IdBasedQuadPatternIterator
+IdBasedQuadPatternIterator
+IdBasedQuadPatternIterator
+IdBasedQuadPatternIterator
+IdBasedQuadPatternIterator
+IdBasedQuadPatternIterator
+IdBasedQuadPatternIterator
+IdBasedQuadPatternIterator
+IdBasedQuadPatternIterator
+IdBasedQuadPatternIterator
+IdBasedQuadPatternIterator
+IdBasedQuadPatternIterator
+IdBasedQuadPatternIterator
+IdBasedQuadPatternIterator
+IdBasedQuadPatternIterator
+IdBasedQuadPatternIterator
+IdBasedQuadPatternIterator
+IdBasedQuadPatternIterator
+IdBasedQuadPatternIterator
+IdBasedQuadPatternIterator
+IdBasedQuadPatternIterator
+IdBasedQuadPatternIterator
+IdBasedQuadPatternIterator
+IdBasedQuadPatternIterator
+IdBasedQuadPatternIterator
+IdBasedQuadPatternIterator
+IdBasedQuadPatternIterator
+IdBasedQuadPatternIterator
+IdBasedQuadPatternIterator
+IdBasedQuadPatternIterator
+IdBasedQuadPatternIterator
+IdBasedQuadPatternIterator
+IdBasedQuadPatternIterator
+IdBasedQuadPatternIterator
+IdBasedQuadPatternIterator
+IdBasedQuadPatternIterator
+IdBasedQuadPatternIterator
+IdBasedQuadPatternIterator
+IdBasedQuadPatternIterator
+IdBasedQuadPatternIterator
+IdBasedQuadPatternIterator
+IdBasedQuadPatternIterator
+IdBasedQuadPatternIterator
+IdBasedQuadPatternIterator
+IdBasedQuadPatternIterator
+IdBasedQuadPatternIterator
+(project (?a ?sensor ?value)
+  (join
+    (table unit)
+    (window <http://base/w>
+      (join
+        (table unit)
+        (join
+          (table unit)
+          (quad ?g ?_1 <http://base/hasConfidence> ?confidence))))
+  ))
+
+IdBasedQuadPatternIterator
+IdBasedQuadPatternIterator
+IdBasedQuadPatternIterator
+IdBasedQuadPatternIterator
+IdBasedQuadPatternIterator
+IdBasedQuadPatternIterator
+IdBasedQuadPatternIterator
+IdBasedQuadPatternIterator
+IdBasedQuadPatternIterator
+IdBasedQuadPatternIterator
+IdBasedQuadPatternIterator
+IdBasedQuadPatternIterator
+IdBasedQuadPatternIterator
+IdBasedQuadPatternIterator
+IdBasedQuadPatternIterator
+IdBasedQuadPatternIterator
+IdBasedQuadPatternIterator
+IdBasedQuadPatternIterator
+IdBasedQuadPatternIterator
+IdBasedQuadPatternIterator
+IdBasedQuadPatternIterator
+IdBasedQuadPatternIterator
+IdBasedQuadPatternIterator
+IdBasedQuadPatternIterator
+IdBasedQuadPatternIterator
+IdBasedQuadPatternIterator
+IdBasedQuadPatternIterator
+IdBasedQuadPatternIterator
+IdBasedQuadPatternIterator
+IdBasedQuadPatternIterator
+IdBasedQuadPatternIterator
+IdBasedQuadPatternIterator
+IdBasedQuadPatternIterator
+IdBasedQuadPatternIterator
+IdBasedQuadPatternIterator
+IdBasedQuadPatternIterator
+IdBasedQuadPatternIterator
+IdBasedQuadPatternIterator
+IdBasedQuadPatternIterator
+IdBasedQuadPatternIterator
+IdBasedQuadPatternIterator
+IdBasedQuadPatternIterator
+IdBasedQuadPatternIterator
+IdBasedQuadPatternIterator
+IdBasedQuadPatternIterator
+IdBasedQuadPatternIterator
+IdBasedQuadPatternIterator
+IdBasedQuadPatternIterator
+IdBasedQuadPatternIterator
+IdBasedQuadPatternIterator
+IdBasedQuadPatternIterator
+IdBasedQuadPatternIterator
+IdBasedQuadPatternIterator
+IdBasedQuadPatternIterator
+IdBasedQuadPatternIterator
+IdBasedQuadPatternIterator
+IdBasedQuadPatternIterator
+IdBasedQuadPatternIterator
+IdBasedQuadPatternIterator
+IdBasedQuadPatternIterator
+IdBasedQuadPatternIterator
+(project (?a ?sensor ?value)
+  (join
+    (table unit)
+    (window <http://base/w>
+      (join
+        (table unit)
+        (join
+          (table unit)
+          (quad ?g ?_1 <http://base/hasConfidence> ?confidence))))
+  ))
+
+IdBasedQuadPatternIterator
+IdBasedQuadPatternIterator
+IdBasedQuadPatternIterator
+IdBasedQuadPatternIterator
+IdBasedQuadPatternIterator
+IdBasedQuadPatternIterator
+IdBasedQuadPatternIterator
+IdBasedQuadPatternIterator
+IdBasedQuadPatternIterator
+IdBasedQuadPatternIterator
+IdBasedQuadPatternIterator
+IdBasedQuadPatternIterator
+IdBasedQuadPatternIterator
+IdBasedQuadPatternIterator
+IdBasedQuadPatternIterator
+IdBasedQuadPatternIterator
+IdBasedQuadPatternIterator
+IdBasedQuadPatternIterator
+IdBasedQuadPatternIterator
+IdBasedQuadPatternIterator
+IdBasedQuadPatternIterator
+IdBasedQuadPatternIterator
+IdBasedQuadPatternIterator
+IdBasedQuadPatternIterator
+IdBasedQuadPatternIterator
+IdBasedQuadPatternIterator
+IdBasedQuadPatternIterator
+IdBasedQuadPatternIterator
+IdBasedQuadPatternIterator
+IdBasedQuadPatternIterator
+IdBasedQuadPatternIterator
+IdBasedQuadPatternIterator
+IdBasedQuadPatternIterator
+IdBasedQuadPatternIterator
+IdBasedQuadPatternIterator
+IdBasedQuadPatternIterator
+IdBasedQuadPatternIterator
+IdBasedQuadPatternIterator
+IdBasedQuadPatternIterator
+IdBasedQuadPatternIterator
+IdBasedQuadPatternIterator
+IdBasedQuadPatternIterator
+IdBasedQuadPatternIterator
+IdBasedQuadPatternIterator
+IdBasedQuadPatternIterator
+IdBasedQuadPatternIterator
+IdBasedQuadPatternIterator
+IdBasedQuadPatternIterator
+IdBasedQuadPatternIterator
+IdBasedQuadPatternIterator
+IdBasedQuadPatternIterator
+IdBasedQuadPatternIterator
+IdBasedQuadPatternIterator
+IdBasedQuadPatternIterator
+IdBasedQuadPatternIterator
+IdBasedQuadPatternIterator
+IdBasedQuadPatternIterator
+IdBasedQuadPatternIterator
+IdBasedQuadPatternIterator
+IdBasedQuadPatternIterator
+IdBasedQuadPatternIterator
+(project (?a ?sensor ?value)
+  (join
+    (table unit)
+    (window <http://base/w>
+      (join
+        (table unit)
+        (join
+          (table unit)
+          (quad ?g ?_1 <http://base/hasConfidence> ?confidence))))
+  ))
+
+IdBasedQuadPatternIterator
+IdBasedQuadPatternIterator
+IdBasedQuadPatternIterator
+IdBasedQuadPatternIterator
+IdBasedQuadPatternIterator
+IdBasedQuadPatternIterator
+IdBasedQuadPatternIterator
+IdBasedQuadPatternIterator
+IdBasedQuadPatternIterator
+IdBasedQuadPatternIterator
+IdBasedQuadPatternIterator
+IdBasedQuadPatternIterator
+IdBasedQuadPatternIterator
+IdBasedQuadPatternIterator
+IdBasedQuadPatternIterator
+IdBasedQuadPatternIterator
+IdBasedQuadPatternIterator
+IdBasedQuadPatternIterator
+IdBasedQuadPatternIterator
+IdBasedQuadPatternIterator
+IdBasedQuadPatternIterator
+IdBasedQuadPatternIterator
+IdBasedQuadPatternIterator
+IdBasedQuadPatternIterator
+IdBasedQuadPatternIterator
+IdBasedQuadPatternIterator
+IdBasedQuadPatternIterator
+IdBasedQuadPatternIterator
+IdBasedQuadPatternIterator
+IdBasedQuadPatternIterator
+IdBasedQuadPatternIterator
+IdBasedQuadPatternIterator
+IdBasedQuadPatternIterator
+IdBasedQuadPatternIterator
+IdBasedQuadPatternIterator
+IdBasedQuadPatternIterator
+IdBasedQuadPatternIterator
+IdBasedQuadPatternIterator
+IdBasedQuadPatternIterator
+IdBasedQuadPatternIterator
+IdBasedQuadPatternIterator
+IdBasedQuadPatternIterator
+IdBasedQuadPatternIterator
+IdBasedQuadPatternIterator
+IdBasedQuadPatternIterator
+IdBasedQuadPatternIterator
+IdBasedQuadPatternIterator
+IdBasedQuadPatternIterator
+IdBasedQuadPatternIterator
+IdBasedQuadPatternIterator
+IdBasedQuadPatternIterator
+IdBasedQuadPatternIterator
+IdBasedQuadPatternIterator
+IdBasedQuadPatternIterator
+IdBasedQuadPatternIterator
+IdBasedQuadPatternIterator
+IdBasedQuadPatternIterator
+IdBasedQuadPatternIterator
+IdBasedQuadPatternIterator
+IdBasedQuadPatternIterator
+IdBasedQuadPatternIterator
+(project (?a ?sensor ?value)
+  (join
+    (table unit)
+    (window <http://base/w>
+      (join
+        (table unit)
+        (join
+          (table unit)
+          (quad ?g ?_1 <http://base/hasConfidence> ?confidence))))
+  ))
+
+IdBasedQuadPatternIterator
+IdBasedQuadPatternIterator
+IdBasedQuadPatternIterator
+IdBasedQuadPatternIterator
+IdBasedQuadPatternIterator
+IdBasedQuadPatternIterator
+IdBasedQuadPatternIterator
+IdBasedQuadPatternIterator
+IdBasedQuadPatternIterator
+IdBasedQuadPatternIterator
+IdBasedQuadPatternIterator
+IdBasedQuadPatternIterator
+IdBasedQuadPatternIterator
+IdBasedQuadPatternIterator
+IdBasedQuadPatternIterator
+IdBasedQuadPatternIterator
+IdBasedQuadPatternIterator
+IdBasedQuadPatternIterator
+IdBasedQuadPatternIterator
+IdBasedQuadPatternIterator
+IdBasedQuadPatternIterator
+IdBasedQuadPatternIterator
+IdBasedQuadPatternIterator
+IdBasedQuadPatternIterator
+IdBasedQuadPatternIterator
+IdBasedQuadPatternIterator
+IdBasedQuadPatternIterator
+IdBasedQuadPatternIterator
+IdBasedQuadPatternIterator
+IdBasedQuadPatternIterator
+IdBasedQuadPatternIterator
+IdBasedQuadPatternIterator
+IdBasedQuadPatternIterator
+IdBasedQuadPatternIterator
+IdBasedQuadPatternIterator
+IdBasedQuadPatternIterator
+IdBasedQuadPatternIterator
+IdBasedQuadPatternIterator
+IdBasedQuadPatternIterator
+IdBasedQuadPatternIterator
+IdBasedQuadPatternIterator
+IdBasedQuadPatternIterator
+IdBasedQuadPatternIterator
+IdBasedQuadPatternIterator
+IdBasedQuadPatternIterator
+IdBasedQuadPatternIterator
+IdBasedQuadPatternIterator
+IdBasedQuadPatternIterator
+IdBasedQuadPatternIterator
+IdBasedQuadPatternIterator
+IdBasedQuadPatternIterator
+IdBasedQuadPatternIterator
+IdBasedQuadPatternIterator
+IdBasedQuadPatternIterator
+IdBasedQuadPatternIterator
+IdBasedQuadPatternIterator
+IdBasedQuadPatternIterator
+IdBasedQuadPatternIterator
+IdBasedQuadPatternIterator
+IdBasedQuadPatternIterator
+IdBasedQuadPatternIterator
+(project (?a ?sensor ?value)
+  (join
+    (table unit)
+    (window <http://base/w>
+      (join
+        (table unit)
+        (join
+          (table unit)
+          (quad ?g ?_1 <http://base/hasConfidence> ?confidence))))
+  ))
+
+IdBasedQuadPatternIterator
+IdBasedQuadPatternIterator
+IdBasedQuadPatternIterator
+IdBasedQuadPatternIterator
+IdBasedQuadPatternIterator
+IdBasedQuadPatternIterator
+IdBasedQuadPatternIterator
+IdBasedQuadPatternIterator
+IdBasedQuadPatternIterator
+IdBasedQuadPatternIterator
+IdBasedQuadPatternIterator
+IdBasedQuadPatternIterator
+IdBasedQuadPatternIterator
+IdBasedQuadPatternIterator
+IdBasedQuadPatternIterator
+IdBasedQuadPatternIterator
+IdBasedQuadPatternIterator
+IdBasedQuadPatternIterator
+IdBasedQuadPatternIterator
+IdBasedQuadPatternIterator
+IdBasedQuadPatternIterator
+IdBasedQuadPatternIterator
+IdBasedQuadPatternIterator
+IdBasedQuadPatternIterator
+IdBasedQuadPatternIterator
+IdBasedQuadPatternIterator
+IdBasedQuadPatternIterator
+IdBasedQuadPatternIterator
+IdBasedQuadPatternIterator
+IdBasedQuadPatternIterator
+IdBasedQuadPatternIterator
+IdBasedQuadPatternIterator
+IdBasedQuadPatternIterator
+IdBasedQuadPatternIterator
+IdBasedQuadPatternIterator
+IdBasedQuadPatternIterator
+IdBasedQuadPatternIterator
+IdBasedQuadPatternIterator
+IdBasedQuadPatternIterator
+IdBasedQuadPatternIterator
+IdBasedQuadPatternIterator
+IdBasedQuadPatternIterator
+IdBasedQuadPatternIterator
+IdBasedQuadPatternIterator
+IdBasedQuadPatternIterator
+IdBasedQuadPatternIterator
+IdBasedQuadPatternIterator
+IdBasedQuadPatternIterator
+IdBasedQuadPatternIterator
+IdBasedQuadPatternIterator
+IdBasedQuadPatternIterator
+IdBasedQuadPatternIterator
+IdBasedQuadPatternIterator
+IdBasedQuadPatternIterator
+IdBasedQuadPatternIterator
+IdBasedQuadPatternIterator
+IdBasedQuadPatternIterator
+IdBasedQuadPatternIterator
+IdBasedQuadPatternIterator
+IdBasedQuadPatternIterator
+IdBasedQuadPatternIterator
+(project (?a ?sensor ?value)
+  (join
+    (table unit)
+    (window <http://base/w>
+      (join
+        (table unit)
+        (join
+          (table unit)
+          (quad ?g ?_1 <http://base/hasConfidence> ?confidence))))
+  ))
+
+IdBasedQuadPatternIterator
+IdBasedQuadPatternIterator
+IdBasedQuadPatternIterator
+IdBasedQuadPatternIterator
+IdBasedQuadPatternIterator
+IdBasedQuadPatternIterator
+IdBasedQuadPatternIterator
+IdBasedQuadPatternIterator
+IdBasedQuadPatternIterator
+IdBasedQuadPatternIterator
+IdBasedQuadPatternIterator
+IdBasedQuadPatternIterator
+IdBasedQuadPatternIterator
+IdBasedQuadPatternIterator
+IdBasedQuadPatternIterator
+IdBasedQuadPatternIterator
+IdBasedQuadPatternIterator
+IdBasedQuadPatternIterator
+IdBasedQuadPatternIterator
+IdBasedQuadPatternIterator
+IdBasedQuadPatternIterator
+IdBasedQuadPatternIterator
+IdBasedQuadPatternIterator
+IdBasedQuadPatternIterator
+IdBasedQuadPatternIterator
+IdBasedQuadPatternIterator
+IdBasedQuadPatternIterator
+IdBasedQuadPatternIterator
+IdBasedQuadPatternIterator
+IdBasedQuadPatternIterator
+IdBasedQuadPatternIterator
+IdBasedQuadPatternIterator
+IdBasedQuadPatternIterator
+IdBasedQuadPatternIterator
+IdBasedQuadPatternIterator
+IdBasedQuadPatternIterator
+IdBasedQuadPatternIterator
+IdBasedQuadPatternIterator
+IdBasedQuadPatternIterator
+IdBasedQuadPatternIterator
+IdBasedQuadPatternIterator
+IdBasedQuadPatternIterator
+IdBasedQuadPatternIterator
+IdBasedQuadPatternIterator
+IdBasedQuadPatternIterator
+IdBasedQuadPatternIterator
+IdBasedQuadPatternIterator
+IdBasedQuadPatternIterator
+IdBasedQuadPatternIterator
+IdBasedQuadPatternIterator
+IdBasedQuadPatternIterator
+IdBasedQuadPatternIterator
+IdBasedQuadPatternIterator
+IdBasedQuadPatternIterator
+IdBasedQuadPatternIterator
+IdBasedQuadPatternIterator
+IdBasedQuadPatternIterator
+IdBasedQuadPatternIterator
+IdBasedQuadPatternIterator
+IdBasedQuadPatternIterator
+IdBasedQuadPatternIterator
+(project (?a ?sensor ?value)
+  (join
+    (table unit)
+    (window <http://base/w>
+      (join
+        (table unit)
+        (join
+          (table unit)
+          (quad ?g ?_1 <http://base/hasConfidence> ?confidence))))
+  ))
+
+IdBasedQuadPatternIterator
+IdBasedQuadPatternIterator
+IdBasedQuadPatternIterator
+IdBasedQuadPatternIterator
+IdBasedQuadPatternIterator
+IdBasedQuadPatternIterator
+IdBasedQuadPatternIterator
+IdBasedQuadPatternIterator
+IdBasedQuadPatternIterator
+IdBasedQuadPatternIterator
+IdBasedQuadPatternIterator
+IdBasedQuadPatternIterator
+IdBasedQuadPatternIterator
+IdBasedQuadPatternIterator
+IdBasedQuadPatternIterator
+IdBasedQuadPatternIterator
+IdBasedQuadPatternIterator
+IdBasedQuadPatternIterator
+IdBasedQuadPatternIterator
+IdBasedQuadPatternIterator
+IdBasedQuadPatternIterator
+IdBasedQuadPatternIterator
+IdBasedQuadPatternIterator
+IdBasedQuadPatternIterator
+IdBasedQuadPatternIterator
+IdBasedQuadPatternIterator
+IdBasedQuadPatternIterator
+IdBasedQuadPatternIterator
+IdBasedQuadPatternIterator
+IdBasedQuadPatternIterator
+IdBasedQuadPatternIterator
+IdBasedQuadPatternIterator
+IdBasedQuadPatternIterator
+IdBasedQuadPatternIterator
+IdBasedQuadPatternIterator
+IdBasedQuadPatternIterator
+IdBasedQuadPatternIterator
+IdBasedQuadPatternIterator
+IdBasedQuadPatternIterator
+IdBasedQuadPatternIterator
+IdBasedQuadPatternIterator
+IdBasedQuadPatternIterator
+IdBasedQuadPatternIterator
+IdBasedQuadPatternIterator
+IdBasedQuadPatternIterator
+IdBasedQuadPatternIterator
+IdBasedQuadPatternIterator
+IdBasedQuadPatternIterator
+IdBasedQuadPatternIterator
+IdBasedQuadPatternIterator
+IdBasedQuadPatternIterator
+IdBasedQuadPatternIterator
+IdBasedQuadPatternIterator
+IdBasedQuadPatternIterator
+IdBasedQuadPatternIterator
+IdBasedQuadPatternIterator
+IdBasedQuadPatternIterator
+IdBasedQuadPatternIterator
+IdBasedQuadPatternIterator
+IdBasedQuadPatternIterator
+IdBasedQuadPatternIterator
+(project (?a ?sensor ?value)
+  (join
+    (table unit)
+    (window <http://base/w>
+      (join
+        (table unit)
+        (join
+          (table unit)
+          (quad ?g ?_1 <http://base/hasConfidence> ?confidence))))
+  ))
+
+IdBasedQuadPatternIterator
+IdBasedQuadPatternIterator
+IdBasedQuadPatternIterator
+IdBasedQuadPatternIterator
+IdBasedQuadPatternIterator
+IdBasedQuadPatternIterator
+IdBasedQuadPatternIterator
+IdBasedQuadPatternIterator
+IdBasedQuadPatternIterator
+IdBasedQuadPatternIterator
+IdBasedQuadPatternIterator
+IdBasedQuadPatternIterator
+IdBasedQuadPatternIterator
+IdBasedQuadPatternIterator
+IdBasedQuadPatternIterator
+IdBasedQuadPatternIterator
+IdBasedQuadPatternIterator
+IdBasedQuadPatternIterator
+IdBasedQuadPatternIterator
+IdBasedQuadPatternIterator
+IdBasedQuadPatternIterator
+IdBasedQuadPatternIterator
+IdBasedQuadPatternIterator
+IdBasedQuadPatternIterator
+IdBasedQuadPatternIterator
+IdBasedQuadPatternIterator
+IdBasedQuadPatternIterator
+IdBasedQuadPatternIterator
+IdBasedQuadPatternIterator
+IdBasedQuadPatternIterator
+IdBasedQuadPatternIterator
+IdBasedQuadPatternIterator
+IdBasedQuadPatternIterator
+IdBasedQuadPatternIterator
+IdBasedQuadPatternIterator
+IdBasedQuadPatternIterator
+IdBasedQuadPatternIterator
+IdBasedQuadPatternIterator
+IdBasedQuadPatternIterator
+IdBasedQuadPatternIterator
+IdBasedQuadPatternIterator
+IdBasedQuadPatternIterator
+IdBasedQuadPatternIterator
+IdBasedQuadPatternIterator
+IdBasedQuadPatternIterator
+IdBasedQuadPatternIterator
+IdBasedQuadPatternIterator
+IdBasedQuadPatternIterator
+IdBasedQuadPatternIterator
+IdBasedQuadPatternIterator
+IdBasedQuadPatternIterator
+IdBasedQuadPatternIterator
+IdBasedQuadPatternIterator
+IdBasedQuadPatternIterator
+IdBasedQuadPatternIterator
+IdBasedQuadPatternIterator
+IdBasedQuadPatternIterator
+IdBasedQuadPatternIterator
+IdBasedQuadPatternIterator
+IdBasedQuadPatternIterator
+IdBasedQuadPatternIterator
+(project (?a ?sensor ?value)
+  (join
+    (table unit)
+    (window <http://base/w>
+      (join
+        (table unit)
+        (join
+          (table unit)
+          (quad ?g ?_1 <http://base/hasConfidence> ?confidence))))
+  ))
+
+IdBasedQuadPatternIterator
+IdBasedQuadPatternIterator
+IdBasedQuadPatternIterator
+IdBasedQuadPatternIterator
+IdBasedQuadPatternIterator
+IdBasedQuadPatternIterator
+IdBasedQuadPatternIterator
+IdBasedQuadPatternIterator
+IdBasedQuadPatternIterator
+IdBasedQuadPatternIterator
+IdBasedQuadPatternIterator
+IdBasedQuadPatternIterator
+IdBasedQuadPatternIterator
+IdBasedQuadPatternIterator
+IdBasedQuadPatternIterator
+IdBasedQuadPatternIterator
+IdBasedQuadPatternIterator
+IdBasedQuadPatternIterator
+IdBasedQuadPatternIterator
+IdBasedQuadPatternIterator
+IdBasedQuadPatternIterator
+IdBasedQuadPatternIterator
+IdBasedQuadPatternIterator
+IdBasedQuadPatternIterator
+IdBasedQuadPatternIterator
+IdBasedQuadPatternIterator
+IdBasedQuadPatternIterator
+IdBasedQuadPatternIterator
+IdBasedQuadPatternIterator
+IdBasedQuadPatternIterator
+IdBasedQuadPatternIterator
+IdBasedQuadPatternIterator
+IdBasedQuadPatternIterator
+IdBasedQuadPatternIterator
+IdBasedQuadPatternIterator
+IdBasedQuadPatternIterator
+IdBasedQuadPatternIterator
+IdBasedQuadPatternIterator
+IdBasedQuadPatternIterator
+IdBasedQuadPatternIterator
+IdBasedQuadPatternIterator
+IdBasedQuadPatternIterator
+IdBasedQuadPatternIterator
+IdBasedQuadPatternIterator
+IdBasedQuadPatternIterator
+IdBasedQuadPatternIterator
+IdBasedQuadPatternIterator
+IdBasedQuadPatternIterator
+IdBasedQuadPatternIterator
+IdBasedQuadPatternIterator
+IdBasedQuadPatternIterator
+IdBasedQuadPatternIterator
+IdBasedQuadPatternIterator
+IdBasedQuadPatternIterator
+IdBasedQuadPatternIterator
+IdBasedQuadPatternIterator
+IdBasedQuadPatternIterator
+IdBasedQuadPatternIterator
+IdBasedQuadPatternIterator
+IdBasedQuadPatternIterator
+IdBasedQuadPatternIterator
+(project (?a ?sensor ?value)
+  (join
+    (table unit)
+    (window <http://base/w>
+      (join
+        (table unit)
+        (join
+          (table unit)
+          (quad ?g ?_1 <http://base/hasConfidence> ?confidence))))
+  ))
+
+IdBasedQuadPatternIterator
+IdBasedQuadPatternIterator
+IdBasedQuadPatternIterator
+IdBasedQuadPatternIterator
+IdBasedQuadPatternIterator
+IdBasedQuadPatternIterator
+IdBasedQuadPatternIterator
+IdBasedQuadPatternIterator
+IdBasedQuadPatternIterator
+IdBasedQuadPatternIterator
+IdBasedQuadPatternIterator
+IdBasedQuadPatternIterator
+IdBasedQuadPatternIterator
+IdBasedQuadPatternIterator
+IdBasedQuadPatternIterator
+IdBasedQuadPatternIterator
+IdBasedQuadPatternIterator
+IdBasedQuadPatternIterator
+IdBasedQuadPatternIterator
+IdBasedQuadPatternIterator
+IdBasedQuadPatternIterator
+IdBasedQuadPatternIterator
+IdBasedQuadPatternIterator
+IdBasedQuadPatternIterator
+IdBasedQuadPatternIterator
+IdBasedQuadPatternIterator
+IdBasedQuadPatternIterator
+IdBasedQuadPatternIterator
+IdBasedQuadPatternIterator
+IdBasedQuadPatternIterator
+IdBasedQuadPatternIterator
+IdBasedQuadPatternIterator
+IdBasedQuadPatternIterator
+IdBasedQuadPatternIterator
+IdBasedQuadPatternIterator
+IdBasedQuadPatternIterator
+IdBasedQuadPatternIterator
+IdBasedQuadPatternIterator
+IdBasedQuadPatternIterator
+IdBasedQuadPatternIterator
+IdBasedQuadPatternIterator
+IdBasedQuadPatternIterator
+IdBasedQuadPatternIterator
+IdBasedQuadPatternIterator
+IdBasedQuadPatternIterator
+IdBasedQuadPatternIterator
+IdBasedQuadPatternIterator
+IdBasedQuadPatternIterator
+IdBasedQuadPatternIterator
+IdBasedQuadPatternIterator
+IdBasedQuadPatternIterator
+IdBasedQuadPatternIterator
+IdBasedQuadPatternIterator
+IdBasedQuadPatternIterator
+IdBasedQuadPatternIterator
+IdBasedQuadPatternIterator
+IdBasedQuadPatternIterator
+IdBasedQuadPatternIterator
+IdBasedQuadPatternIterator
+IdBasedQuadPatternIterator
+IdBasedQuadPatternIterator
+(project (?a ?sensor ?value)
+  (join
+    (table unit)
+    (window <http://base/w>
+      (join
+        (table unit)
+        (join
+          (table unit)
+          (quad ?g ?_1 <http://base/hasConfidence> ?confidence))))
+  ))
+
+IdBasedQuadPatternIterator
+IdBasedQuadPatternIterator
+IdBasedQuadPatternIterator
+IdBasedQuadPatternIterator
+IdBasedQuadPatternIterator
+IdBasedQuadPatternIterator
+IdBasedQuadPatternIterator
+IdBasedQuadPatternIterator
+IdBasedQuadPatternIterator
+IdBasedQuadPatternIterator
+IdBasedQuadPatternIterator
+IdBasedQuadPatternIterator
+IdBasedQuadPatternIterator
+IdBasedQuadPatternIterator
+IdBasedQuadPatternIterator
+IdBasedQuadPatternIterator
+IdBasedQuadPatternIterator
+IdBasedQuadPatternIterator
+IdBasedQuadPatternIterator
+IdBasedQuadPatternIterator
+IdBasedQuadPatternIterator
+IdBasedQuadPatternIterator
+IdBasedQuadPatternIterator
+IdBasedQuadPatternIterator
+IdBasedQuadPatternIterator
+IdBasedQuadPatternIterator
+IdBasedQuadPatternIterator
+IdBasedQuadPatternIterator
+IdBasedQuadPatternIterator
+IdBasedQuadPatternIterator
+IdBasedQuadPatternIterator
+IdBasedQuadPatternIterator
+IdBasedQuadPatternIterator
+IdBasedQuadPatternIterator
+IdBasedQuadPatternIterator
+IdBasedQuadPatternIterator
+IdBasedQuadPatternIterator
+IdBasedQuadPatternIterator
+IdBasedQuadPatternIterator
+IdBasedQuadPatternIterator
+IdBasedQuadPatternIterator
+IdBasedQuadPatternIterator
+IdBasedQuadPatternIterator
+IdBasedQuadPatternIterator
+IdBasedQuadPatternIterator
+IdBasedQuadPatternIterator
+IdBasedQuadPatternIterator
+IdBasedQuadPatternIterator
+IdBasedQuadPatternIterator
+IdBasedQuadPatternIterator
+IdBasedQuadPatternIterator
+IdBasedQuadPatternIterator
+IdBasedQuadPatternIterator
+IdBasedQuadPatternIterator
+IdBasedQuadPatternIterator
+IdBasedQuadPatternIterator
+IdBasedQuadPatternIterator
+IdBasedQuadPatternIterator
+IdBasedQuadPatternIterator
+IdBasedQuadPatternIterator
+IdBasedQuadPatternIterator
+(project (?a ?sensor ?value)
+  (join
+    (table unit)
+    (window <http://base/w>
+      (join
+        (table unit)
+        (join
+          (table unit)
+          (quad ?g ?_1 <http://base/hasConfidence> ?confidence))))
+  ))
+
+IdBasedQuadPatternIterator
+IdBasedQuadPatternIterator
+IdBasedQuadPatternIterator
+IdBasedQuadPatternIterator
+IdBasedQuadPatternIterator
+IdBasedQuadPatternIterator
+IdBasedQuadPatternIterator
+IdBasedQuadPatternIterator
+IdBasedQuadPatternIterator
+IdBasedQuadPatternIterator
+IdBasedQuadPatternIterator
+IdBasedQuadPatternIterator
+IdBasedQuadPatternIterator
+IdBasedQuadPatternIterator
+IdBasedQuadPatternIterator
+IdBasedQuadPatternIterator
+IdBasedQuadPatternIterator
+IdBasedQuadPatternIterator
+IdBasedQuadPatternIterator
+IdBasedQuadPatternIterator
+IdBasedQuadPatternIterator
+IdBasedQuadPatternIterator
+IdBasedQuadPatternIterator
+IdBasedQuadPatternIterator
+IdBasedQuadPatternIterator
+IdBasedQuadPatternIterator
+IdBasedQuadPatternIterator
+IdBasedQuadPatternIterator
+IdBasedQuadPatternIterator
+IdBasedQuadPatternIterator
+IdBasedQuadPatternIterator
+IdBasedQuadPatternIterator
+IdBasedQuadPatternIterator
+IdBasedQuadPatternIterator
+IdBasedQuadPatternIterator
+IdBasedQuadPatternIterator
+IdBasedQuadPatternIterator
+IdBasedQuadPatternIterator
+IdBasedQuadPatternIterator
+IdBasedQuadPatternIterator
+IdBasedQuadPatternIterator
+IdBasedQuadPatternIterator
+IdBasedQuadPatternIterator
+IdBasedQuadPatternIterator
+IdBasedQuadPatternIterator
+IdBasedQuadPatternIterator
+IdBasedQuadPatternIterator
+IdBasedQuadPatternIterator
+IdBasedQuadPatternIterator
+IdBasedQuadPatternIterator
+IdBasedQuadPatternIterator
+IdBasedQuadPatternIterator
+IdBasedQuadPatternIterator
+IdBasedQuadPatternIterator
+IdBasedQuadPatternIterator
+IdBasedQuadPatternIterator
+IdBasedQuadPatternIterator
+IdBasedQuadPatternIterator
+IdBasedQuadPatternIterator
+IdBasedQuadPatternIterator
+IdBasedQuadPatternIterator
+(project (?a ?sensor ?value)
+  (join
+    (table unit)
+    (window <http://base/w>
+      (join
+        (table unit)
+        (join
+          (table unit)
+          (quad ?g ?_1 <http://base/hasConfidence> ?confidence))))
+  ))
+
+IdBasedQuadPatternIterator
+IdBasedQuadPatternIterator
+IdBasedQuadPatternIterator
+IdBasedQuadPatternIterator
+IdBasedQuadPatternIterator
+IdBasedQuadPatternIterator
+IdBasedQuadPatternIterator
+IdBasedQuadPatternIterator
+IdBasedQuadPatternIterator
+IdBasedQuadPatternIterator
+IdBasedQuadPatternIterator
+IdBasedQuadPatternIterator
+IdBasedQuadPatternIterator
+IdBasedQuadPatternIterator
+IdBasedQuadPatternIterator
+IdBasedQuadPatternIterator
+IdBasedQuadPatternIterator
+IdBasedQuadPatternIterator
+IdBasedQuadPatternIterator
+IdBasedQuadPatternIterator
+IdBasedQuadPatternIterator
+IdBasedQuadPatternIterator
+IdBasedQuadPatternIterator
+IdBasedQuadPatternIterator
+IdBasedQuadPatternIterator
+IdBasedQuadPatternIterator
+IdBasedQuadPatternIterator
+IdBasedQuadPatternIterator
+IdBasedQuadPatternIterator
+IdBasedQuadPatternIterator
+IdBasedQuadPatternIterator
+IdBasedQuadPatternIterator
+IdBasedQuadPatternIterator
+IdBasedQuadPatternIterator
+IdBasedQuadPatternIterator
+IdBasedQuadPatternIterator
+IdBasedQuadPatternIterator
+IdBasedQuadPatternIterator
+IdBasedQuadPatternIterator
+IdBasedQuadPatternIterator
+IdBasedQuadPatternIterator
+IdBasedQuadPatternIterator
+IdBasedQuadPatternIterator
+IdBasedQuadPatternIterator
+IdBasedQuadPatternIterator
+IdBasedQuadPatternIterator
+IdBasedQuadPatternIterator
+IdBasedQuadPatternIterator
+IdBasedQuadPatternIterator
+IdBasedQuadPatternIterator
+IdBasedQuadPatternIterator
+IdBasedQuadPatternIterator
+IdBasedQuadPatternIterator
+IdBasedQuadPatternIterator
+IdBasedQuadPatternIterator
+IdBasedQuadPatternIterator
+IdBasedQuadPatternIterator
+IdBasedQuadPatternIterator
+IdBasedQuadPatternIterator
+IdBasedQuadPatternIterator
+IdBasedQuadPatternIterator
+(project (?a ?sensor ?value)
+  (join
+    (table unit)
+    (window <http://base/w>
+      (join
+        (table unit)
+        (join
+          (table unit)
+          (quad ?g ?_1 <http://base/hasConfidence> ?confidence))))
+  ))
+
+IdBasedQuadPatternIterator
+IdBasedQuadPatternIterator
+IdBasedQuadPatternIterator
+IdBasedQuadPatternIterator
+IdBasedQuadPatternIterator
+IdBasedQuadPatternIterator
+IdBasedQuadPatternIterator
+IdBasedQuadPatternIterator
+IdBasedQuadPatternIterator
+IdBasedQuadPatternIterator
+IdBasedQuadPatternIterator
+IdBasedQuadPatternIterator
+IdBasedQuadPatternIterator
+IdBasedQuadPatternIterator
+IdBasedQuadPatternIterator
+IdBasedQuadPatternIterator
+IdBasedQuadPatternIterator
+IdBasedQuadPatternIterator
+IdBasedQuadPatternIterator
+IdBasedQuadPatternIterator
+IdBasedQuadPatternIterator
+IdBasedQuadPatternIterator
+IdBasedQuadPatternIterator
+IdBasedQuadPatternIterator
+IdBasedQuadPatternIterator
+IdBasedQuadPatternIterator
+IdBasedQuadPatternIterator
+IdBasedQuadPatternIterator
+IdBasedQuadPatternIterator
+IdBasedQuadPatternIterator
+IdBasedQuadPatternIterator
+IdBasedQuadPatternIterator
+IdBasedQuadPatternIterator
+IdBasedQuadPatternIterator
+IdBasedQuadPatternIterator
+IdBasedQuadPatternIterator
+IdBasedQuadPatternIterator
+IdBasedQuadPatternIterator
+IdBasedQuadPatternIterator
+IdBasedQuadPatternIterator
+IdBasedQuadPatternIterator
+IdBasedQuadPatternIterator
+IdBasedQuadPatternIterator
+IdBasedQuadPatternIterator
+IdBasedQuadPatternIterator
+IdBasedQuadPatternIterator
+IdBasedQuadPatternIterator
+IdBasedQuadPatternIterator
+IdBasedQuadPatternIterator
+IdBasedQuadPatternIterator
+IdBasedQuadPatternIterator
+IdBasedQuadPatternIterator
+IdBasedQuadPatternIterator
+IdBasedQuadPatternIterator
+IdBasedQuadPatternIterator
+IdBasedQuadPatternIterator
+IdBasedQuadPatternIterator
+IdBasedQuadPatternIterator
+IdBasedQuadPatternIterator
+IdBasedQuadPatternIterator
+IdBasedQuadPatternIterator
+(project (?a ?sensor ?value)
+  (join
+    (table unit)
+    (window <http://base/w>
+      (join
+        (table unit)
+        (join
+          (table unit)
+          (quad ?g ?_1 <http://base/hasConfidence> ?confidence))))
+  ))
+
+IdBasedQuadPatternIterator
+IdBasedQuadPatternIterator
+IdBasedQuadPatternIterator
+IdBasedQuadPatternIterator
+IdBasedQuadPatternIterator
+IdBasedQuadPatternIterator
+IdBasedQuadPatternIterator
+IdBasedQuadPatternIterator
+IdBasedQuadPatternIterator
+IdBasedQuadPatternIterator
+IdBasedQuadPatternIterator
+IdBasedQuadPatternIterator
+IdBasedQuadPatternIterator
+IdBasedQuadPatternIterator
+IdBasedQuadPatternIterator
+IdBasedQuadPatternIterator
+IdBasedQuadPatternIterator
+IdBasedQuadPatternIterator
+IdBasedQuadPatternIterator
+IdBasedQuadPatternIterator
+IdBasedQuadPatternIterator
+IdBasedQuadPatternIterator
+IdBasedQuadPatternIterator
+IdBasedQuadPatternIterator
+IdBasedQuadPatternIterator
+IdBasedQuadPatternIterator
+IdBasedQuadPatternIterator
+IdBasedQuadPatternIterator
+IdBasedQuadPatternIterator
+IdBasedQuadPatternIterator
+IdBasedQuadPatternIterator
+IdBasedQuadPatternIterator
+IdBasedQuadPatternIterator
+IdBasedQuadPatternIterator
+IdBasedQuadPatternIterator
+IdBasedQuadPatternIterator
+IdBasedQuadPatternIterator
+IdBasedQuadPatternIterator
+IdBasedQuadPatternIterator
+IdBasedQuadPatternIterator
+IdBasedQuadPatternIterator
+IdBasedQuadPatternIterator
+IdBasedQuadPatternIterator
+IdBasedQuadPatternIterator
+IdBasedQuadPatternIterator
+IdBasedQuadPatternIterator
+IdBasedQuadPatternIterator
+IdBasedQuadPatternIterator
+IdBasedQuadPatternIterator
+IdBasedQuadPatternIterator
+IdBasedQuadPatternIterator
+IdBasedQuadPatternIterator
+IdBasedQuadPatternIterator
+IdBasedQuadPatternIterator
+IdBasedQuadPatternIterator
+IdBasedQuadPatternIterator
+IdBasedQuadPatternIterator
+IdBasedQuadPatternIterator
+IdBasedQuadPatternIterator
+IdBasedQuadPatternIterator
+IdBasedQuadPatternIterator
+(project (?a ?sensor ?value)
+  (join
+    (table unit)
+    (window <http://base/w>
+      (join
+        (table unit)
+        (join
+          (table unit)
+          (quad ?g ?_1 <http://base/hasConfidence> ?confidence))))
+  ))
+
+IdBasedQuadPatternIterator
+IdBasedQuadPatternIterator
+IdBasedQuadPatternIterator
+IdBasedQuadPatternIterator
+IdBasedQuadPatternIterator
+IdBasedQuadPatternIterator
+IdBasedQuadPatternIterator
+IdBasedQuadPatternIterator
+IdBasedQuadPatternIterator
+IdBasedQuadPatternIterator
+IdBasedQuadPatternIterator
+IdBasedQuadPatternIterator
+IdBasedQuadPatternIterator
+IdBasedQuadPatternIterator
+IdBasedQuadPatternIterator
+IdBasedQuadPatternIterator
+IdBasedQuadPatternIterator
+IdBasedQuadPatternIterator
+IdBasedQuadPatternIterator
+IdBasedQuadPatternIterator
+IdBasedQuadPatternIterator
+IdBasedQuadPatternIterator
+IdBasedQuadPatternIterator
+IdBasedQuadPatternIterator
+IdBasedQuadPatternIterator
+IdBasedQuadPatternIterator
+IdBasedQuadPatternIterator
+IdBasedQuadPatternIterator
+IdBasedQuadPatternIterator
+IdBasedQuadPatternIterator
+IdBasedQuadPatternIterator
+IdBasedQuadPatternIterator
+IdBasedQuadPatternIterator
+IdBasedQuadPatternIterator
+IdBasedQuadPatternIterator
+IdBasedQuadPatternIterator
+IdBasedQuadPatternIterator
+IdBasedQuadPatternIterator
+IdBasedQuadPatternIterator
+IdBasedQuadPatternIterator
+IdBasedQuadPatternIterator
+IdBasedQuadPatternIterator
+IdBasedQuadPatternIterator
+IdBasedQuadPatternIterator
+IdBasedQuadPatternIterator
+IdBasedQuadPatternIterator
+IdBasedQuadPatternIterator
+IdBasedQuadPatternIterator
+IdBasedQuadPatternIterator
+IdBasedQuadPatternIterator
+IdBasedQuadPatternIterator
+IdBasedQuadPatternIterator
+IdBasedQuadPatternIterator
+IdBasedQuadPatternIterator
+IdBasedQuadPatternIterator
+IdBasedQuadPatternIterator
+IdBasedQuadPatternIterator
+IdBasedQuadPatternIterator
+IdBasedQuadPatternIterator
+IdBasedQuadPatternIterator
+IdBasedQuadPatternIterator
+(project (?a ?sensor ?value)
+  (join
+    (table unit)
+    (window <http://base/w>
+      (join
+        (table unit)
+        (join
+          (table unit)
+          (sequence
+            (quad ?g ?_1 <http://base/hasConfidence> ?confidence)
+            (extendquad ?g ((?_1 ?sensor @http://base/hasValue ?value))
+              (table empty))))))
+  ))
+
+IdBasedQuadPatternIterator
+(project (?a ?sensor ?value)
+  (join
+    (table unit)
+    (window <http://base/w>
+      (join
+        (table unit)
+        (join
+          (table unit)
+          (quad ?g ?_1 <http://base/hasConfidence> ?confidence))))
+  ))
+
+IdBasedQuadPatternIterator
+IdBasedQuadPatternIterator
+IdBasedQuadPatternIterator
+IdBasedQuadPatternIterator
+IdBasedQuadPatternIterator
+IdBasedQuadPatternIterator
+IdBasedQuadPatternIterator
+IdBasedQuadPatternIterator
+IdBasedQuadPatternIterator
+IdBasedQuadPatternIterator
+IdBasedQuadPatternIterator
+IdBasedQuadPatternIterator
+IdBasedQuadPatternIterator
+IdBasedQuadPatternIterator
+IdBasedQuadPatternIterator
+IdBasedQuadPatternIterator
+IdBasedQuadPatternIterator
+IdBasedQuadPatternIterator
+IdBasedQuadPatternIterator
+(project (?a ?sensor ?value)
+  (join
+    (table unit)
+    (window <http://base/w>
+      (join
+        (table unit)
+        (join
+          (table unit)
+          (sequence
+            (quad ?g ?_1 <http://base/hasConfidence> ?confidence)
+            (extendquad ?g ((?_1 ?sensor @http://base/hasValue ?value))
+              (table empty))))))
+  ))
+
+IdBasedQuadPatternIterator
+(project (?a ?sensor ?value)
+  (join
+    (table unit)
+    (window <http://base/w>
+      (join
+        (table unit)
+        (join
+          (table unit)
+          (quad ?g ?_1 <http://base/hasConfidence> ?confidence))))
+  ))
+
+IdBasedQuadPatternIterator
+IdBasedQuadPatternIterator
+IdBasedQuadPatternIterator
+IdBasedQuadPatternIterator
+IdBasedQuadPatternIterator
+IdBasedQuadPatternIterator
+IdBasedQuadPatternIterator
+IdBasedQuadPatternIterator
+IdBasedQuadPatternIterator
+IdBasedQuadPatternIterator
+IdBasedQuadPatternIterator
+IdBasedQuadPatternIterator
+IdBasedQuadPatternIterator
+IdBasedQuadPatternIterator
+IdBasedQuadPatternIterator
+IdBasedQuadPatternIterator
+IdBasedQuadPatternIterator
+IdBasedQuadPatternIterator
+IdBasedQuadPatternIterator
+(project (?a ?sensor ?value)
+  (join
+    (table unit)
+    (window <http://base/w>
+      (join
+        (table unit)
+        (join
+          (table unit)
+          (quad ?g ?_1 <http://base/hasConfidence> ?confidence))))
+  ))
+
+IdBasedQuadPatternIterator
+IdBasedQuadPatternIterator
+IdBasedQuadPatternIterator
+IdBasedQuadPatternIterator
+IdBasedQuadPatternIterator
+IdBasedQuadPatternIterator
+IdBasedQuadPatternIterator
+IdBasedQuadPatternIterator
+IdBasedQuadPatternIterator
+IdBasedQuadPatternIterator
+IdBasedQuadPatternIterator
+IdBasedQuadPatternIterator
+IdBasedQuadPatternIterator
+IdBasedQuadPatternIterator
+IdBasedQuadPatternIterator
+IdBasedQuadPatternIterator
+IdBasedQuadPatternIterator
+IdBasedQuadPatternIterator
+IdBasedQuadPatternIterator
+IdBasedQuadPatternIterator
+IdBasedQuadPatternIterator
+IdBasedQuadPatternIterator
+IdBasedQuadPatternIterator
+IdBasedQuadPatternIterator
+IdBasedQuadPatternIterator
+IdBasedQuadPatternIterator
+IdBasedQuadPatternIterator
+IdBasedQuadPatternIterator
+IdBasedQuadPatternIterator
+IdBasedQuadPatternIterator
+IdBasedQuadPatternIterator
+BASE    <http://base/>
+PREFIX  xsd:  <http://www.w3.org/2001/XMLSchema#>
+PREFIX  rdf:  <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+
+REGISTER STREAM <output> COMPUTED EVERY PT1S AS
+SELECT  ?a ?sensor ?value
+FROM NAMED WINDOW <w> ON <breathing> [RANGE PT5S STEP PT1S]
+WHERE
+  {  }
+
+(project (?a ?sensor ?value)
+  (join
+    (table unit)
+    (window <http://base/w>
+      (join
+        (table unit)
+        (join
+          (table unit)
+          (sequence
+            (quad ?g ?_1 <http://base/hasConfidence> ?confidence)
+            (extendquad ?g ((?_1 ?sensor @http://base/hasValue ?value))
+              (table empty))))))
+  ))
+
+IdBasedQuadPatternIterator
+BASE    <http://base/>
+PREFIX  xsd:  <http://www.w3.org/2001/XMLSchema#>
+PREFIX  rdf:  <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+
+REGISTER STREAM <output> COMPUTED EVERY PT1S AS
+SELECT  ?a ?sensor ?value
+FROM NAMED WINDOW <w> ON <breathing> [RANGE PT5S STEP PT1S]
+WHERE
+  {  }
+
+(project (?a ?sensor ?value)
+  (join
+    (table unit)
+    (window <http://base/w>
+      (join
+        (table unit)
+        (join
+          (table unit)
+          (quad ?g ?_1 <http://base/hasConfidence> ?confidence))))
+  ))
+
+IdBasedQuadPatternIterator
+IdBasedQuadPatternIterator
+IdBasedQuadPatternIterator
+IdBasedQuadPatternIterator
+IdBasedQuadPatternIterator
+IdBasedQuadPatternIterator
+IdBasedQuadPatternIterator
+IdBasedQuadPatternIterator
+IdBasedQuadPatternIterator
+IdBasedQuadPatternIterator
+IdBasedQuadPatternIterator
+IdBasedQuadPatternIterator
+IdBasedQuadPatternIterator
+IdBasedQuadPatternIterator
+IdBasedQuadPatternIterator
+IdBasedQuadPatternIterator
+IdBasedQuadPatternIterator
+IdBasedQuadPatternIterator
+IdBasedQuadPatternIterator
+BASE    <http://base/>
+PREFIX  xsd:  <http://www.w3.org/2001/XMLSchema#>
+PREFIX  rdf:  <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+
+REGISTER STREAM <output> COMPUTED EVERY PT1S AS
+SELECT  ?a ?sensor ?value
+FROM NAMED WINDOW <w> ON <breathing> [RANGE PT5S STEP PT1S]
+WHERE
+  {  }
+
+(project (?a ?sensor ?value)
+  (join
+    (table unit)
+    (window <http://base/w>
+      (join
+        (table unit)
+        (join
+          (table unit)
+          (quad ?g ?_1 <http://base/hasConfidence> ?confidence))))
+  ))
+
+IdBasedQuadPatternIterator
+IdBasedQuadPatternIterator
+IdBasedQuadPatternIterator
+IdBasedQuadPatternIterator
+IdBasedQuadPatternIterator
+IdBasedQuadPatternIterator
+IdBasedQuadPatternIterator
+IdBasedQuadPatternIterator
+IdBasedQuadPatternIterator
+IdBasedQuadPatternIterator
+IdBasedQuadPatternIterator
+IdBasedQuadPatternIterator
+IdBasedQuadPatternIterator
+IdBasedQuadPatternIterator
+IdBasedQuadPatternIterator
+IdBasedQuadPatternIterator
+IdBasedQuadPatternIterator
+IdBasedQuadPatternIterator
+IdBasedQuadPatternIterator
+IdBasedQuadPatternIterator
+IdBasedQuadPatternIterator
+IdBasedQuadPatternIterator
+IdBasedQuadPatternIterator
+IdBasedQuadPatternIterator
+IdBasedQuadPatternIterator
+IdBasedQuadPatternIterator
+IdBasedQuadPatternIterator
+IdBasedQuadPatternIterator
+IdBasedQuadPatternIterator
+IdBasedQuadPatternIterator
+IdBasedQuadPatternIterator
+(project (?a ?sensor ?value)
+  (join
+    (table unit)
+    (window <http://base/w>
+      (join
+        (table unit)
+        (join
+          (table unit)
+          (sequence
+            (quad ?g ?_1 <http://base/hasConfidence> ?confidence)
+            (extendquad ?g ((?_1 ?sensor @http://base/hasValue ?value))
+              (table empty))))))
+  ))
+
+IdBasedQuadPatternIterator
+IdBasedEmbeddedTriplePatternExtend
+IdBasedQuadPatternIterator
+IdBasedQuadPatternIterator
+(project (?a ?sensor ?value)
+  (join
+    (table unit)
+    (window <http://base/w>
+      (join
+        (table unit)
+        (join
+          (table unit)
+          (quad ?g ?_1 <http://base/hasConfidence> ?confidence))))
+  ))
+
+IdBasedQuadPatternIterator
+IdBasedQuadPatternIterator
+IdBasedQuadPatternIterator
+IdBasedQuadPatternIterator
+IdBasedQuadPatternIterator
+IdBasedQuadPatternIterator
+IdBasedQuadPatternIterator
+IdBasedQuadPatternIterator
+IdBasedQuadPatternIterator
+IdBasedQuadPatternIterator
+IdBasedQuadPatternIterator
+IdBasedQuadPatternIterator
+IdBasedQuadPatternIterator
+IdBasedQuadPatternIterator
+IdBasedQuadPatternIterator
+IdBasedQuadPatternIterator
+IdBasedQuadPatternIterator
+IdBasedQuadPatternIterator
+IdBasedQuadPatternIterator
+(project (?a ?sensor ?value)
+  (join
+    (table unit)
+    (window <http://base/w>
+      (join
+        (table unit)
+        (join
+          (table unit)
+          (quad ?g ?_1 <http://base/hasConfidence> ?confidence))))
+  ))
+
+IdBasedQuadPatternIterator
+IdBasedQuadPatternIterator
+IdBasedQuadPatternIterator
+IdBasedQuadPatternIterator
+IdBasedQuadPatternIterator
+IdBasedQuadPatternIterator
+IdBasedQuadPatternIterator
+IdBasedQuadPatternIterator
+IdBasedQuadPatternIterator
+IdBasedQuadPatternIterator
+IdBasedQuadPatternIterator
+IdBasedQuadPatternIterator
+IdBasedQuadPatternIterator
+IdBasedQuadPatternIterator
+IdBasedQuadPatternIterator
+IdBasedQuadPatternIterator
+IdBasedQuadPatternIterator
+IdBasedQuadPatternIterator
+IdBasedQuadPatternIterator
+IdBasedQuadPatternIterator
+IdBasedQuadPatternIterator
+IdBasedQuadPatternIterator
+IdBasedQuadPatternIterator
+IdBasedQuadPatternIterator
+IdBasedQuadPatternIterator
+IdBasedQuadPatternIterator
+IdBasedQuadPatternIterator
+IdBasedQuadPatternIterator
+IdBasedQuadPatternIterator
+IdBasedQuadPatternIterator
+IdBasedQuadPatternIterator
+(project (?a ?sensor ?value)
+  (join
+    (table unit)
+    (window <http://base/w>
+      (join
+        (table unit)
+        (join
+          (table unit)
+          (sequence
+            (quad ?g ?_1 <http://base/hasConfidence> ?confidence)
+            (extendquad ?g ((?_1 ?sensor @http://base/hasValue ?value))
+              (table empty))))))
+  ))
+
+IdBasedQuadPatternIterator
+(project (?a ?sensor ?value)
+  (join
+    (table unit)
+    (window <http://base/w>
+      (join
+        (table unit)
+        (join
+          (table unit)
+          (quad ?g ?_1 <http://base/hasConfidence> ?confidence))))
+  ))
+
+IdBasedQuadPatternIterator
+IdBasedQuadPatternIterator
+IdBasedQuadPatternIterator
+IdBasedQuadPatternIterator
+IdBasedQuadPatternIterator
+IdBasedQuadPatternIterator
+IdBasedQuadPatternIterator
+IdBasedQuadPatternIterator
+IdBasedQuadPatternIterator
+IdBasedQuadPatternIterator
+IdBasedQuadPatternIterator
+IdBasedQuadPatternIterator
+IdBasedQuadPatternIterator
+IdBasedQuadPatternIterator
+IdBasedQuadPatternIterator
+IdBasedQuadPatternIterator
+IdBasedQuadPatternIterator
+IdBasedQuadPatternIterator
+IdBasedQuadPatternIterator
+(project (?a ?sensor ?value)
+  (join
+    (table unit)
+    (window <http://base/w>
+      (join
+        (table unit)
+        (join
+          (table unit)
+          (quad ?g ?_1 <http://base/hasConfidence> ?confidence))))
+  ))
+
+IdBasedQuadPatternIterator
+IdBasedQuadPatternIterator
+IdBasedQuadPatternIterator
+IdBasedQuadPatternIterator
+IdBasedQuadPatternIterator
+IdBasedQuadPatternIterator
+IdBasedQuadPatternIterator
+IdBasedQuadPatternIterator
+IdBasedQuadPatternIterator
+IdBasedQuadPatternIterator
+IdBasedQuadPatternIterator
+IdBasedQuadPatternIterator
+IdBasedQuadPatternIterator
+IdBasedQuadPatternIterator
+IdBasedQuadPatternIterator
+IdBasedQuadPatternIterator
+IdBasedQuadPatternIterator
+IdBasedQuadPatternIterator
+IdBasedQuadPatternIterator
+IdBasedQuadPatternIterator
+IdBasedQuadPatternIterator
+IdBasedQuadPatternIterator
+IdBasedQuadPatternIterator
+IdBasedQuadPatternIterator
+IdBasedQuadPatternIterator
+IdBasedQuadPatternIterator
+IdBasedQuadPatternIterator
+IdBasedQuadPatternIterator
+IdBasedQuadPatternIterator
+IdBasedQuadPatternIterator
+IdBasedQuadPatternIterator
+(project (?a ?sensor ?value)
+  (join
+    (table unit)
+    (window <http://base/w>
+      (join
+        (table unit)
+        (join
+          (table unit)
+          (quad ?g ?_1 <http://base/hasConfidence> ?confidence))))
+  ))
+
+IdBasedQuadPatternIterator
+IdBasedQuadPatternIterator
+IdBasedQuadPatternIterator
+IdBasedQuadPatternIterator
+IdBasedQuadPatternIterator
+IdBasedQuadPatternIterator
+IdBasedQuadPatternIterator
+IdBasedQuadPatternIterator
+IdBasedQuadPatternIterator
+IdBasedQuadPatternIterator
+IdBasedQuadPatternIterator
+IdBasedQuadPatternIterator
+IdBasedQuadPatternIterator
+IdBasedQuadPatternIterator
+IdBasedQuadPatternIterator
+IdBasedQuadPatternIterator
+IdBasedQuadPatternIterator
+IdBasedQuadPatternIterator
+IdBasedQuadPatternIterator
+IdBasedQuadPatternIterator
+IdBasedQuadPatternIterator
+IdBasedQuadPatternIterator
+IdBasedQuadPatternIterator
+IdBasedQuadPatternIterator
+IdBasedQuadPatternIterator
+IdBasedQuadPatternIterator
+IdBasedQuadPatternIterator
+IdBasedQuadPatternIterator
+IdBasedQuadPatternIterator
+IdBasedQuadPatternIterator
+IdBasedQuadPatternIterator
+IdBasedQuadPatternIterator
+IdBasedQuadPatternIterator
+IdBasedQuadPatternIterator
+IdBasedQuadPatternIterator
+IdBasedQuadPatternIterator
+IdBasedQuadPatternIterator
+IdBasedQuadPatternIterator
+IdBasedQuadPatternIterator
+IdBasedQuadPatternIterator
+IdBasedQuadPatternIterator
+IdBasedQuadPatternIterator
+IdBasedQuadPatternIterator
+(project (?a ?sensor ?value)
+  (join
+    (table unit)
+    (window <http://base/w>
+      (join
+        (table unit)
+        (join
+          (table unit)
+          (sequence
+            (quad ?g ?_1 <http://base/hasConfidence> ?confidence)
+            (extendquad ?g ((?_1 ?sensor @http://base/hasValue ?value))
+              (table empty))))))
+  ))
+
+1436423842
+IdBasedEmbeddedTriplePatternExtend
+1664616991
+1664616991
+1664616991
+1664616991
+1664616991
+IdBasedEmbeddedTriplePatternExtend
+IdBasedEmbeddedTriplePatternExtend
+IdBasedEmbeddedTriplePatternExtend
+IdBasedEmbeddedTriplePatternExtend
+IdBasedEmbeddedTriplePatternExtend
+IdBasedEmbeddedTriplePatternExtend
+IdBasedEmbeddedTriplePatternExtend
+IdBasedEmbeddedTriplePatternExtend
+IdBasedEmbeddedTriplePatternExtend
+IdBasedEmbeddedTriplePatternExtend
+IdBasedEmbeddedTriplePatternExtend
+IdBasedEmbeddedTriplePatternExtend
+IdBasedEmbeddedTriplePatternExtend
+IdBasedEmbeddedTriplePatternExtend
+IdBasedEmbeddedTriplePatternExtend
+IdBasedEmbeddedTriplePatternExtend
+IdBasedEmbeddedTriplePatternExtend
+IdBasedEmbeddedTriplePatternExtend
+IdBasedEmbeddedTriplePatternExtend
+IdBasedEmbeddedTriplePatternExtend
+IdBasedEmbeddedTriplePatternExtend
+IdBasedEmbeddedTriplePatternExtend
+IdBasedEmbeddedTriplePatternExtend
+IdBasedEmbeddedTriplePatternExtend
+IdBasedEmbeddedTriplePatternExtend
+IdBasedEmbeddedTriplePatternExtend
+IdBasedEmbeddedTriplePatternExtend
+IdBasedEmbeddedTriplePatternExtend
+IdBasedEmbeddedTriplePatternExtend
+IdBasedEmbeddedTriplePatternExtend
+IdBasedEmbeddedTriplePatternExtend
+IdBasedEmbeddedTriplePatternExtend
+IdBasedEmbeddedTriplePatternExtend
+IdBasedEmbeddedTriplePatternExtend
+IdBasedEmbeddedTriplePatternExtend
+IdBasedEmbeddedTriplePatternExtend
+IdBasedEmbeddedTriplePatternExtend
+IdBasedEmbeddedTriplePatternExtend
+IdBasedEmbeddedTriplePatternExtend
+IdBasedEmbeddedTriplePatternExtend
+IdBasedEmbeddedTriplePatternExtend
+IdBasedEmbeddedTriplePatternExtend
+IdBasedEmbeddedTriplePatternExtend
+IdBasedEmbeddedTriplePatternExtend
+IdBasedEmbeddedTriplePatternExtend
+IdBasedEmbeddedTriplePatternExtend
+IdBasedEmbeddedTriplePatternExtend
+IdBasedEmbeddedTriplePatternExtend
+IdBasedEmbeddedTriplePatternExtend
+IdBasedEmbeddedTriplePatternExtend
+IdBasedEmbeddedTriplePatternExtend
+IdBasedEmbeddedTriplePatternExtend
+IdBasedEmbeddedTriplePatternExtend
+IdBasedEmbeddedTriplePatternExtend
+IdBasedEmbeddedTriplePatternExtend
+IdBasedEmbeddedTriplePatternExtend
+IdBasedEmbeddedTriplePatternExtend
+IdBasedEmbeddedTriplePatternExtend
+IdBasedEmbeddedTriplePatternExtend
+IdBasedEmbeddedTriplePatternExtend
+IdBasedEmbeddedTriplePatternExtend
+IdBasedEmbeddedTriplePatternExtend
+IdBasedEmbeddedTriplePatternExtend
+IdBasedEmbeddedTriplePatternExtend
+IdBasedEmbeddedTriplePatternExtend
+IdBasedEmbeddedTriplePatternExtend
+IdBasedEmbeddedTriplePatternExtend
+IdBasedEmbeddedTriplePatternExtend
+IdBasedEmbeddedTriplePatternExtend
+IdBasedEmbeddedTriplePatternExtend
+IdBasedEmbeddedTriplePatternExtend
+IdBasedEmbeddedTriplePatternExtend
+IdBasedEmbeddedTriplePatternExtend
+IdBasedEmbeddedTriplePatternExtend
+IdBasedEmbeddedTriplePatternExtend
+IdBasedEmbeddedTriplePatternExtend
+IdBasedEmbeddedTriplePatternExtend
+IdBasedEmbeddedTriplePatternExtend
+IdBasedEmbeddedTriplePatternExtend
+IdBasedEmbeddedTriplePatternExtend
+IdBasedEmbeddedTriplePatternExtend
+IdBasedEmbeddedTriplePatternExtend
+IdBasedEmbeddedTriplePatternExtend
+IdBasedEmbeddedTriplePatternExtend
+IdBasedEmbeddedTriplePatternExtend
+IdBasedEmbeddedTriplePatternExtend
+IdBasedEmbeddedTriplePatternExtend
+IdBasedEmbeddedTriplePatternExtend
+IdBasedEmbeddedTriplePatternExtend
+IdBasedEmbeddedTriplePatternExtend
+IdBasedEmbeddedTriplePatternExtend
+IdBasedEmbeddedTriplePatternExtend
+IdBasedEmbeddedTriplePatternExtend
+IdBasedEmbeddedTriplePatternExtend
+IdBasedEmbeddedTriplePatternExtend
+IdBasedEmbeddedTriplePatternExtend
+IdBasedEmbeddedTriplePatternExtend
+IdBasedEmbeddedTriplePatternExtend
+IdBasedEmbeddedTriplePatternExtend
+IdBasedEmbeddedTriplePatternExtend
+IdBasedEmbeddedTriplePatternExtend
+IdBasedEmbeddedTriplePatternExtend
+IdBasedEmbeddedTriplePatternExtend
+IdBasedEmbeddedTriplePatternExtend
+IdBasedEmbeddedTriplePatternExtend
+IdBasedEmbeddedTriplePatternExtend
+IdBasedEmbeddedTriplePatternExtend
+IdBasedEmbeddedTriplePatternExtend
+IdBasedEmbeddedTriplePatternExtend
+IdBasedEmbeddedTriplePatternExtend
+IdBasedEmbeddedTriplePatternExtend
+IdBasedEmbeddedTriplePatternExtend
+IdBasedEmbeddedTriplePatternExtend
+IdBasedEmbeddedTriplePatternExtend
+IdBasedEmbeddedTriplePatternExtend
+IdBasedEmbeddedTriplePatternExtend
+IdBasedEmbeddedTriplePatternExtend
+IdBasedEmbeddedTriplePatternExtend
+IdBasedEmbeddedTriplePatternExtend
+IdBasedEmbeddedTriplePatternExtend
+IdBasedEmbeddedTriplePatternExtend
+Accessing default graph of DatasetGraphStar, was this intentional? Returning empty graph.
+Accessing default graph of DatasetGraphStar, was this intentional? Returning empty graph.
+Accessing default graph of DatasetGraphStar, was this intentional? Returning empty graph.
+Accessing default graph of DatasetGraphStar, was this intentional? Returning empty graph.
+Accessing default graph of DatasetGraphStar, was this intentional? Returning empty graph.
+Accessing default graph of DatasetGraphStar, was this intentional? Returning empty graph.
+Accessing default graph of DatasetGraphStar, was this intentional? Returning empty graph.
+Accessing default graph of DatasetGraphStar, was this intentional? Returning empty graph.
+Accessing default graph of DatasetGraphStar, was this intentional? Returning empty graph.
+Accessing default graph of DatasetGraphStar, was this intentional? Returning empty graph.
+Accessing default graph of DatasetGraphStar, was this intentional? Returning empty graph.
+Accessing default graph of DatasetGraphStar, was this intentional? Returning empty graph.
+Accessing default graph of DatasetGraphStar, was this intentional? Returning empty graph.
+Accessing default graph of DatasetGraphStar, was this intentional? Returning empty graph.
+Accessing default graph of DatasetGraphStar, was this intentional? Returning empty graph.
+Accessing default graph of DatasetGraphStar, was this intentional? Returning empty graph.
+Accessing default graph of DatasetGraphStar, was this intentional? Returning empty graph.
+Accessing default graph of DatasetGraphStar, was this intentional? Returning empty graph.
+Accessing default graph of DatasetGraphStar, was this intentional? Returning empty graph.
+Accessing default graph of DatasetGraphStar, was this intentional? Returning empty graph.
+Accessing default graph of DatasetGraphStar, was this intentional? Returning empty graph.
+Accessing default graph of DatasetGraphStar, was this intentional? Returning empty graph.
+Accessing default graph of DatasetGraphStar, was this intentional? Returning empty graph.
+Accessing default graph of DatasetGraphStar, was this intentional? Returning empty graph.
+Accessing default graph of DatasetGraphStar, was this intentional? Returning empty graph.
+Accessing default graph of DatasetGraphStar, was this intentional? Returning empty graph.
+Accessing default graph of DatasetGraphStar, was this intentional? Returning empty graph.
+Accessing default graph of DatasetGraphStar, was this intentional? Returning empty graph.
+Accessing default graph of DatasetGraphStar, was this intentional? Returning empty graph.
+Accessing default graph of DatasetGraphStar, was this intentional? Returning empty graph.
+Accessing default graph of DatasetGraphStar, was this intentional? Returning empty graph.
+Accessing default graph of DatasetGraphStar, was this intentional? Returning empty graph.
+Accessing default graph of DatasetGraphStar, was this intentional? Returning empty graph.
+Accessing default graph of DatasetGraphStar, was this intentional? Returning empty graph.
+Accessing default graph of DatasetGraphStar, was this intentional? Returning empty graph.
+Accessing default graph of DatasetGraphStar, was this intentional? Returning empty graph.
+Accessing default graph of DatasetGraphStar, was this intentional? Returning empty graph.
+Accessing default graph of DatasetGraphStar, was this intentional? Returning empty graph.
+Accessing default graph of DatasetGraphStar, was this intentional? Returning empty graph.
+Accessing default graph of DatasetGraphStar, was this intentional? Returning empty graph.
+Accessing default graph of DatasetGraphStar, was this intentional? Returning empty graph.
+Accessing default graph of DatasetGraphStar, was this intentional? Returning empty graph.
+Accessing default graph of DatasetGraphStar, was this intentional? Returning empty graph.
+Accessing default graph of DatasetGraphStar, was this intentional? Returning empty graph.
+Accessing default graph of DatasetGraphStar, was this intentional? Returning empty graph.
+Accessing default graph of DatasetGraphStar, was this intentional? Returning empty graph.
+Accessing default graph of DatasetGraphStar, was this intentional? Returning empty graph.
+Accessing default graph of DatasetGraphStar, was this intentional? Returning empty graph.

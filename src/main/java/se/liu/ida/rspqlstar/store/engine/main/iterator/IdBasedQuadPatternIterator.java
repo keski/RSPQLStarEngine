@@ -1,14 +1,15 @@
 package se.liu.ida.rspqlstar.store.engine.main.iterator;
 
 import org.apache.jena.sparql.engine.ExecutionContext;
+import org.apache.log4j.Logger;
 import se.liu.ida.rspqlstar.store.dataset.DatasetGraphStar;
 import se.liu.ida.rspqlstar.store.dataset.StreamingDatasetGraph;
-import se.liu.ida.rspqlstar.store.engine.main.pattern.Variable;
-import se.liu.ida.rspqlstar.store.index.IdBasedQuad;
+import se.liu.ida.rspqlstar.store.engine.main.SolutionMapping;
 import se.liu.ida.rspqlstar.store.engine.main.pattern.Element;
 import se.liu.ida.rspqlstar.store.engine.main.pattern.Key;
 import se.liu.ida.rspqlstar.store.engine.main.pattern.QuadStarPattern;
-import se.liu.ida.rspqlstar.store.engine.main.SolutionMapping;
+import se.liu.ida.rspqlstar.store.engine.main.pattern.Variable;
+import se.liu.ida.rspqlstar.store.index.IdBasedQuad;
 
 import java.util.Collections;
 import java.util.Iterator;
@@ -18,6 +19,7 @@ import java.util.Iterator;
  * Iterator for quad pattern
  */
 public class IdBasedQuadPatternIterator implements Iterator<SolutionMapping> {
+    final private Logger logger = Logger.getLogger(IdBasedQuadPatternIterator.class);
     final private Iterator<SolutionMapping> input;
     final private QuadStarPattern pattern;
     private SolutionMapping currentInputMapping = null;
@@ -32,6 +34,7 @@ public class IdBasedQuadPatternIterator implements Iterator<SolutionMapping> {
     }
 
     public boolean hasNext() {
+        //logger.info("IdBasedQuadPatternIterator");
         while (currentMatches == null || !currentMatches.hasNext()) {
             if (!input.hasNext() || !pattern.isMatchable()) {
                 return false;
