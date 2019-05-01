@@ -24,7 +24,6 @@ import se.liu.ida.rspqlstar.store.dictionary.nodedictionary.NodeDictionaryFactor
 import se.liu.ida.rspqlstar.store.engine.main.iterator.*;
 import se.liu.ida.rspqlstar.store.engine.main.pattern.*;
 
-import java.util.Collections;
 import java.util.Iterator;
 
 public class OpRSPQLStarExecutor extends OpExecutor {
@@ -39,16 +38,16 @@ public class OpRSPQLStarExecutor extends OpExecutor {
      * @param input
      * @return
      */
-    protected QueryIterator exec(Op op, QueryIterator input) {
-        final QueryIterator qIter = super.exec(op, input);
-        if(!qIter.hasNext()) input.close();
-        return qIter;
+    protected QueryIterator exec(final Op op, final QueryIterator input) {
+        final QueryIterator iter = super.exec(op, input);
+        if(!iter.hasNext()) input.close();
+        return iter;
     }
 
     /**
      * Creates an operator compiler.
      */
-    public OpRSPQLStarExecutor(ExecutionContext execCxt) {
+    public OpRSPQLStarExecutor(final ExecutionContext execCxt) {
         super(execCxt);
     }
 
@@ -59,7 +58,7 @@ public class OpRSPQLStarExecutor extends OpExecutor {
      * @return
      */
     @Override
-    protected QueryIterator execute(OpJoin opJoin, QueryIterator input) {
+    protected QueryIterator execute(final OpJoin opJoin, final QueryIterator input) {
         final Iterator<SolutionMapping> iter = new EncodeBindingsIterator(input, execCxt);
         return new DecodeBindingsIterator(execute(opJoin, iter), execCxt);
     }
@@ -76,26 +75,7 @@ public class OpRSPQLStarExecutor extends OpExecutor {
         return new DecodeBindingsIterator(execute(opSequence, iter), execCxt);
     }
 
-    /**
-     * Map to ID based OpExtend.
-     * @param opExtend
-     * @param input
-     * @return
-     */
-    @Override
-    protected QueryIterator execute(final OpExtend opExtend, final QueryIterator input) {
-        return super.execute(opExtend, input);
-        // TODO
-        // Fork here
-        // 1) Regular, use simple
-        // 2) Node_Triple, map
-        //final Expr expr = opExtend.getVarExprList().getExprs().values().iterator().next();
-        //if(expr instanceof ExprVar){
 
-        //}
-        //final Iterator<SolutionMapping> iter = new EncodeBindingsIterator(input, execCxt);
-        //return new DecodeBindingsIterator(execute(opExtend, iter), execCxt);
-    }
 
     /**
      * Map to ID based OpQuad.
@@ -170,16 +150,30 @@ public class OpRSPQLStarExecutor extends OpExecutor {
     }
 
     private Iterator<SolutionMapping> execute(OpExtend opExtend, Iterator<SolutionMapping> input) {
-        return execute(new OpExtendQuad(opExtend, null), input);
+        // regular extend
+        final Expr expr = opExtend.getVarExprList().getExprs().values().iterator().next();
+        final Var var = opExtend.getVarExprList().getVars().get(0);
+        final Key key;
+
+        if(expr instanceof ExprVar){
+            throw new IllegalStateException("Binding variable to variable is currently not supported.");
+        } else {
+            final Node node = ((NodeValue) expr).asNode();
+            final Long id = encode(node);
+            // use a NodeWrapperKey if the value cannot be encoded
+            key = id != null ? new Key(id) : new NodeWrapperKey(node);
+        }
+
+        return new IdBasedExtendIterator(encode(var), key, input, execCxt);
     }
 
     private Iterator<SolutionMapping> execute(final OpExtendQuad opExtendQuad, final Iterator<SolutionMapping> input) {
         final OpExtend opExtend = opExtendQuad.getSubOp();
         final Expr expr = opExtend.getVarExprList().getExprs().values().iterator().next();
 
-        if(expr instanceof ExprVar){
-            return Collections.emptyIterator();
-        }
+        //if(expr instanceof ExprVar){
+        //    return Collections.emptyIterator();
+        //}
 
         final Node node = ((NodeValue) expr).asNode();
         final Var var = opExtend.getVarExprList().getVars().get(0);
@@ -195,10 +189,7 @@ public class OpRSPQLStarExecutor extends OpExecutor {
             final QuadStarPattern pattern = new QuadStarPattern(g, s, p, o);
             return new IdBasedEmbeddedTriplePatternExtend(encode(var), pattern, input, execCxt);
         } else {
-            // regular extend
-            final Long id = encode(node);
-            final Key key = id != null ? new Key(id) : new NodeWrapperKey(node);
-            return new IdBasedExtendIterator(encode(var), key, input, execCxt);
+            throw new IllegalStateException("OpExtendQuad does not bind to a Node_Triple");
         }
     }
 
@@ -219,7 +210,7 @@ public class OpRSPQLStarExecutor extends OpExecutor {
         } else if (op instanceof OpSequence) {
             iterator = execute((OpSequence) op, input);
         } else if (op instanceof OpExtend) {
-            iterator = execute(new OpExtendQuad((OpExtend) op, null), input);
+            iterator = execute((OpExtend) op, input);
         } else if (op instanceof OpExtendQuad) {
             iterator = execute((OpExtendQuad) op, input);
         } else if (op instanceof OpFilter) {
@@ -235,7 +226,6 @@ public class OpRSPQLStarExecutor extends OpExecutor {
         }
         return iterator;
     }
-
 
     /**
      * Encode quad as QuadStarPattern

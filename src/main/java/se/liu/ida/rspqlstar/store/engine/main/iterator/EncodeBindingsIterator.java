@@ -51,7 +51,7 @@ public class EncodeBindingsIterator implements Iterator<SolutionMapping>, Closea
         while (iter.hasNext()) {
             final Var var = iter.next();
             final Node value = curInput.get(var);
-            if(value instanceof Node_Triple){ // wrap as node
+            if(value instanceof Node_Triple){
                 final IdBasedTriple idBasedTriple = asIdBaseTriple(((Node_Triple) value).get());
                 curOutput.set(varDict.getId(var), new TripleWrapperKey(idBasedTriple));
             } else {

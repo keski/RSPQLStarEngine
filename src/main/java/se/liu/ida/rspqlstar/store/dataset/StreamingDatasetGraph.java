@@ -74,7 +74,7 @@ public class StreamingDatasetGraph extends AbstractDatasetGraph {
 
     public void setTime(Date time){
         this.time = time;
-        windows.values().forEach(w -> w.getDataset(time.getTime()));
+        //windows.values().forEach(w -> w.getDataset(time.getTime()));
     }
 
     public Date getTime(){

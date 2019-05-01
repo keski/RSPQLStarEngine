@@ -68,10 +68,9 @@ public class RSPQLStarEngine extends QueryEngineMainQuad {
 
     public QueryIterator eval(Op op, DatasetGraph datasetGraph, Binding input, Context context) {
         final ExecutionContext execCxt = new ExecutionContext(context, null, datasetGraph, QC.getFactory(context));
-
-        final QueryIterator qIter1 = QueryIterRoot.create(input, execCxt);
-        final QueryIterator qIter2 = QC.execute(op, qIter1, execCxt);
-        return QueryIteratorCheck.check(qIter2, execCxt); // check for closed iterators
+        final QueryIterator iter1 = QueryIterRoot.create(input, execCxt);
+        final QueryIterator iter2 = QC.execute(op, iter1, execCxt);
+        return QueryIteratorCheck.check(iter2, execCxt); // check for closed iterators
     }
 
     @Override

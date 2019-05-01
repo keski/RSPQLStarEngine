@@ -5,19 +5,17 @@ import se.liu.ida.rspqlstar.store.index.IdBasedTriple;
 
 import java.io.PrintStream;
 import java.util.ArrayList;
+import java.util.Collections;
+import java.util.List;
 import java.util.concurrent.ConcurrentHashMap;
 
 public class HashReferenceDictionary implements ReferenceDictionary {
-    final private ArrayList<IdBasedTriple> idToNodeTriple = new ArrayList<>();
+    final private ConcurrentHashMap<Long, IdBasedTriple> idToNodeTriple = new ConcurrentHashMap();
     final private ConcurrentHashMap<IdBasedTriple, Long> nodeTripleToId = new ConcurrentHashMap();
 
     @Override
     public IdBasedTriple getIdBasedTriple(long id) {
-        final long body = IdFactory.getReferenceIdBody(id);
-        if (body <= idToNodeTriple.size()) {
-            return idToNodeTriple.get((int) (body - 1));
-        }
-        return null;
+        return idToNodeTriple.get(id);
     }
 
     @Override
@@ -31,13 +29,7 @@ public class HashReferenceDictionary implements ReferenceDictionary {
 
     public long addNode(IdBasedTriple idBasedTriple){
         long id = IdFactory.nextReferenceKeyId();
-        long body = IdFactory.getReferenceIdBody(id);
-
-        if (body < idToNodeTriple.size()) {
-            idToNodeTriple.set((int) body, idBasedTriple); // replace existing value
-        } else {
-            idToNodeTriple.add(idBasedTriple);
-        }
+        idToNodeTriple.put(id, idBasedTriple);
         nodeTripleToId.put(idBasedTriple, id);
         return id;
     }

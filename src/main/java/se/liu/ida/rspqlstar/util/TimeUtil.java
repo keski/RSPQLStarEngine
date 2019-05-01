@@ -1,9 +1,19 @@
 package se.liu.ida.rspqlstar.util;
 
+import org.apache.log4j.Logger;
+
+import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.TimeZone;
 
 public class TimeUtil {
+    private static Logger logger = Logger.getLogger(TimeUtil.class);
     public static long offset = 0;
+    public static SimpleDateFormat df = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss");
+
+    static {
+        df.setTimeZone(TimeZone.getTimeZone("UTC"));
+    }
 
     public static Date getTime(){
         final Date date;
@@ -29,7 +39,7 @@ public class TimeUtil {
         try {
             Thread.sleep(sleep);
         } catch (InterruptedException e) {
-            // do nothing
+            logger.info(e.getMessage());
         }
     }
 }

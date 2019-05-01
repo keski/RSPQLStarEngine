@@ -69,6 +69,10 @@ public class RSPQLStarTransformSimple extends TransformCopy {
         return OpFilter.filterBy(opFilter.getExprs(), transform(opFilter.getSubOp()));
     }
 
+    public Op transform(final OpExtend opExtend) {
+        return opExtend.copy(transform(opExtend.getSubOp()));
+    }
+
     public Op transform(final OpJoin opJoin) {
         final Op left = transform(opJoin.getLeft());
         final Op right = transform(opJoin.getRight());
@@ -141,7 +145,9 @@ public class RSPQLStarTransformSimple extends TransformCopy {
             op2 = transform((OpFilter) op);
         } else if (op instanceof OpJoin) {
             op2 = transform((OpJoin) op);
-        }   else if (op instanceof OpExtendQuad) {
+        } else if (op instanceof OpExtend) {
+            op2 = transform((OpExtend) op);
+        }  else if (op instanceof OpExtendQuad) {
             op2 = transform((OpExtendQuad) op);
         } else {
             logger.debug("Failed to split op: " + op);

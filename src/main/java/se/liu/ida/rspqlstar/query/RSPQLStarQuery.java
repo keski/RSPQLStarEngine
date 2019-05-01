@@ -108,6 +108,6 @@ public class RSPQLStarQuery extends Query {
         for(Var var : MyPatternVars.vars(new ArrayList<>(), this.getQueryPattern())){
             addResultVar(var);
         }
-        // add window ref explicitly!
+        // add window ref explicitly?
     }
 }

@@ -8,6 +8,7 @@ import se.liu.ida.rspqlstar.store.dictionary.nodedictionary.idnodes.Node_WithID;
 
 import java.io.PrintStream;
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 import java.util.concurrent.ConcurrentHashMap;
 
@@ -16,12 +17,12 @@ import java.util.concurrent.ConcurrentHashMap;
  */
 
 public class HashNodeDictionary implements NodeDictionary {
-    final private List<Node> idToNode =  new ArrayList<>();
+    final private ConcurrentHashMap<Long, Node> idToNode = new ConcurrentHashMap<>();
     final private ConcurrentHashMap<Node, Long> nodeToId = new ConcurrentHashMap<>();
 
     @Override
     public Node getNode(long id) {
-        return idToNode.get((int) id);
+        return idToNode.get(id);
     }
 
     @Override
@@ -38,7 +39,7 @@ public class HashNodeDictionary implements NodeDictionary {
 
     @Override
     public long addNode(Node node, long id){
-        idToNode.add(node);
+        idToNode.put(id, node);
         nodeToId.put(node, id);
         return id;
     }

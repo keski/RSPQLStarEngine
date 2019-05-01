@@ -39,7 +39,7 @@ public class StreamFromFile extends RSPQLStarStream {
             final Iterator<String> linesIter = linesStream.iterator();
             while(linesIter.hasNext() && !stop){
                 String line = linesIter.next();
-                final long t0 = System.nanoTime();
+                final long t0 = System.currentTimeMillis();
                 if(prefixes == null) {
                     prefixes = line;
                 } else {
@@ -50,8 +50,8 @@ public class StreamFromFile extends RSPQLStarStream {
                             .checking(false)
                             .lang(LangTrigStar.TRIGSTAR)
                             .parse(tg.dgs);
-                    final long t1 = System.nanoTime();
-                    delayedPush(tg, totalDelay - ((t1-t0)/1_000_000));
+                    final long t1 = System.currentTimeMillis();
+                    delayedPush(tg, totalDelay - (t1-t0));
                 }
             }
         } catch (IOException e) {

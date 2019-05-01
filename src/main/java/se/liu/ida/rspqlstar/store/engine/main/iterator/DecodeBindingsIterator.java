@@ -62,7 +62,7 @@ public class DecodeBindingsIterator extends QueryIter {
     private Node getNode(Key key) {
         final Node node;
         try {
-            if (key instanceof NodeWrapperKey) {
+            if (key instanceof TripleWrapperKey) {
                 // We ignore the graph node for the TripleWrapperKey, since this will
                 // be implicit from the context of the Node_Triple
                 final IdBasedTriple idBasedQuad = ((TripleWrapperKey) key).idBasedTriple;
@@ -70,9 +70,12 @@ public class DecodeBindingsIterator extends QueryIter {
                 final Node p = getNode(new Key(idBasedQuad.predicate));
                 final Node o = getNode(new Key(idBasedQuad.object));
                 node = new Node_Triple(new Triple(s, p, o));
+            } else if (key instanceof NodeWrapperKey) {
+                node = ((NodeWrapperKey) key).node;
             } else {
                 if (IdFactory.isReferenceId(key.id)) {
                     final IdBasedTriple idBasedTriple = rd.getIdBasedTriple(key.id);
+                    //System.err.println("------------ " + idBasedTriple);
                     final Node s = getNode(new Key(idBasedTriple.subject));
                     final Node p = getNode(new Key(idBasedTriple.predicate));
                     final Node o = getNode(new Key(idBasedTriple.object));

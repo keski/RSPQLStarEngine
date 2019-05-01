@@ -73,8 +73,11 @@ public class RSPQLStarQueryExecution extends QueryExecutionBase {
             sdg.setTime(TimeUtil.getTime());
             final RSPQLStarQueryExecution exec = new RSPQLStarQueryExecution(query, sdg);
             final ResultSet rs = exec.execSelect();
-            out.printf("--- %s ---\n", sdg.getTime());
-            ResultSetMgr.write(out, rs, ResultSetLang.SPARQLResultSetText);
+            out.printf("\n### %s ###\n", TimeUtil.df.format(sdg.getTime()));
+            if(!rs.hasNext()) out.println("--- Empty result ---");
+            else {
+                ResultSetMgr.write(out, rs, ResultSetLang.SPARQLResultSetText);
+            }
             exec.close();
 
             final long execTime = System.currentTimeMillis() - t0;

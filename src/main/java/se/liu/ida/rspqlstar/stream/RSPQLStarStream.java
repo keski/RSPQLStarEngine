@@ -2,6 +2,7 @@ package se.liu.ida.rspqlstar.stream;
 
 import se.liu.ida.rspqlstar.store.dataset.RDFStream;
 import se.liu.ida.rspqlstar.store.dataset.TimestampedGraph;
+import se.liu.ida.rspqlstar.util.TimeUtil;
 
 import java.text.SimpleDateFormat;
 
@@ -34,19 +35,30 @@ public abstract class RSPQLStarStream implements Runnable {
      * entire push. If the push is not completed in time an exception is thrown.
      *
      * @param timestampedGraph
-     * @param totalDelay
+     * @param delay
      */
-    public void delayedPush(TimestampedGraph timestampedGraph, long totalDelay){
-        final long start = System.currentTimeMillis();
+    public void delayedPush(TimestampedGraph timestampedGraph, long delay){
         push(timestampedGraph);
-        final long end = System.currentTimeMillis();
-        final long delay = totalDelay - (end-start);
-        busyWaitMillisecond(delay);
+        TimeUtil.silentSleep(delay);
+        //busyWaitMillisecond(delay);
     }
 
+    /**
+     * Busy waiting is much more accurate, but very resource expensive. As a trade-off,
+     * this method uses Thread.sleep for the majority of the duration and then aligns it
+     * by using busy wait.
+
+     * @param milliseconds
+     */
     public static void busyWaitMillisecond(long milliseconds){
-        long waitUntil = System.nanoTime() + (milliseconds * 1_000_000);
-        while(waitUntil > System.nanoTime()){
+        final long t0 = System.currentTimeMillis();
+        // Use sleep for most of the duration
+        if(milliseconds > 100){
+            TimeUtil.silentSleep(milliseconds-50);
+        }
+        final long t1 = System.currentTimeMillis();
+        final long waitUntil = t1 + milliseconds - (t1-t0);
+        while(waitUntil > System.currentTimeMillis()){
             ;
         }
     }
