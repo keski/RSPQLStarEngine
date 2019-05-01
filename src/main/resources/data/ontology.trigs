@@ -5,18 +5,39 @@
 @prefix foaf: <http://xmlns.com/foaf/0.1/> .
 @prefix sosa: <http://www.w3.org/ns/sosa/> .
 @prefix ssn: <http://www.w3.org/ns/ssn/> .
-@prefix ex: <http:///example.org/ontology#> .
+@prefix ex: <http://www.example.org/ontology#> .
+
+# temporary
+<<<person1> ex:activity <activity/resting>>>
+    ex:expectedHeartRate [ ex:lowerBound 70 ; ex:upperBound 100 ] ;
+    ex:expectedBreathingRate [ ex:lowerBound 12 ; ex:upperBound 25 ] ;
+    ex:expectedOxygenLevel [ ex:lowerBound 0.95 ; ex:upperBound 1.00 ] ;
+    ex:expectedMotion <motion/low> .
+
+<<<person1> ex:activity <activity/walking>>>
+    ex:expectedHeartRate [ ex:lowerBound 100 ; ex:upperBound 125 ] ;
+    ex:expectedBreathingRate [ ex:lowerBound 25 ; ex:upperBound 40 ] ;
+    ex:expectedOxygenLevel [ ex:lowerBound 0.95 ; ex:upperBound 1.00 ] ;
+    ex:expectedMotion <motion/high> .
+
+<<<person1> ex:activity <activity/sleeping>>>
+    ex:expectedHeartRate [ ex:lowerBound 60 ; ex:upperBound 80 ] ;
+    ex:expectedBreathingRate [ ex:lowerBound 12 ; ex:upperBound 20 ] ;
+    ex:expectedOxygenLevel [ ex:lowerBound 0.95 ; ex:upperBound 1.00 ] ;
+    ex:expectedMotion <motion/low> .
 
 <person1>
     a foaf:Person ;
     foaf:age 71 ;
     foaf:name "Rut" ;
+    ex:partner <person2> ;
     rdfs:comment "This resource represents Rut in the scenario" .
 
 <person2>
     a foaf:Person ;
     foaf:age 70 ;
     foaf:name "Arne" ;
+    ex:partner <person1> ;
     rdfs:comment "This resource represents Rut's partner in the scenario" .
 
 <person1/heart_rate>
