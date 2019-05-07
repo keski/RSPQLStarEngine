@@ -69,4 +69,10 @@ public class HashNodeDictionary implements NodeDictionary {
         }
         out.println(sb.toString());
     }
+
+    @Override
+    public void clear(){
+        idToNode.clear();
+        nodeToId.clear();
+    }
 }

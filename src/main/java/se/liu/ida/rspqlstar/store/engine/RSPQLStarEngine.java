@@ -63,6 +63,7 @@ public class RSPQLStarEngine extends QueryEngineMainQuad {
         if(cachedOp == null) {
             cachedOp = MyAlgebra.compile(query);
         }
+        logger.debug(cachedOp);
         return cachedOp;
     }
 

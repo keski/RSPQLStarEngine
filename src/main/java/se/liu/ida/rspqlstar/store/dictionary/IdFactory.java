@@ -66,4 +66,9 @@ public class IdFactory {
     public static long getReferenceIdBody(long id) {
         return id & ~REFERENCE_BIT;
     }
+
+    public static void reset(){
+        nodeId = 0;
+        referenceId = 1;
+    }
 }

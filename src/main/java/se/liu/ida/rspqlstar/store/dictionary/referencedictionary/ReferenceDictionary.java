@@ -15,4 +15,6 @@ public interface ReferenceDictionary {
     long size();
 
     void print(PrintStream out, int limit);
+
+    void clear();
 }

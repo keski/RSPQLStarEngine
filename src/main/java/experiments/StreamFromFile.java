@@ -10,6 +10,7 @@ import se.liu.ida.rspqlstar.util.TimeUtil;
 import java.io.ByteArrayInputStream;
 import java.io.File;
 import java.io.IOException;
+import java.net.URL;
 import java.nio.file.Files;
 import java.util.Date;
 import java.util.Iterator;
@@ -33,12 +34,16 @@ public class StreamFromFile extends RSPQLStarStream {
 
     @Override
     public void run() {
-        final String path = getClass().getClassLoader().getResource(fileName).getFile();
-        final File file = new File(path);
+        final URL url = getClass().getClassLoader().getResource(fileName);
+        if(url == null) {
+            throw new IllegalStateException("File not found: " + fileName) ;
+        }
+        final File file = new File(url.getFile());
+
         try (Stream linesStream = Files.lines(file.toPath())) {
             final Iterator<String> linesIter = linesStream.iterator();
             while(linesIter.hasNext() && !stop){
-                String line = linesIter.next();
+                final String line = linesIter.next();
                 final long t0 = System.currentTimeMillis();
                 if(prefixes == null) {
                     prefixes = line;
@@ -49,7 +54,7 @@ public class StreamFromFile extends RSPQLStarStream {
                             .source(new ByteArrayInputStream((prefixes + line).getBytes()))
                             .checking(false)
                             .lang(LangTrigStar.TRIGSTAR)
-                            .parse(tg.dgs);
+                            .parse(tg);
                     final long t1 = System.currentTimeMillis();
                     delayedPush(tg, totalDelay - (t1-t0));
                 }

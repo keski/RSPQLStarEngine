@@ -17,11 +17,11 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 
-public class RSPQLStarTransformSimple extends TransformCopy {
-    final private Logger logger = Logger.getLogger(RSPQLStarTransformSimple.class);
+public class RSPQLStarTransform extends TransformCopy {
+    final private Logger logger = Logger.getLogger(RSPQLStarTransform.class);
     final private HashMap<Node_Triple, Var> varMap = new HashMap();
     final private VarDictionary varDict = VarDictionary.get();
-    final boolean reverseOpExtend = true;
+    static public boolean putOpExtendFirst = true;
 
     public void reset(){
         varMap.clear();
@@ -112,7 +112,7 @@ public class RSPQLStarTransformSimple extends TransformCopy {
             if(op2 == null){
                 op = op2;
             } else {
-                if(reverseOpExtend){
+                if(putOpExtendFirst){
                     op = OpSequence.create(op2, op);
                 } else {
                     op = OpSequence.create(op, op2);

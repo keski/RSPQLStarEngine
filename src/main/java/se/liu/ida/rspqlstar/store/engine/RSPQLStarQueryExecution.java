@@ -5,23 +5,33 @@ import org.apache.jena.rdf.model.ModelFactory;
 import org.apache.jena.riot.ResultSetMgr;
 import org.apache.jena.riot.resultset.ResultSetLang;
 import org.apache.jena.sparql.engine.*;
+import org.apache.log4j.Logger;
 import se.liu.ida.rspqlstar.query.RSPQLStarQuery;
 import se.liu.ida.rspqlstar.store.dataset.StreamingDatasetGraph;
 import se.liu.ida.rspqlstar.util.TimeUtil;
 
 import java.io.PrintStream;
+import java.util.ArrayList;
 
 public class RSPQLStarQueryExecution extends QueryExecutionBase {
+    private final Logger logger = Logger.getLogger(RSPQLStarQuery.class);
     protected RSPQLStarQuery query;
     private QueryIterator queryIterator = null;
     public StreamingDatasetGraph sdg;
     private boolean closed;
     private boolean stop = false;
 
+    // Collection of experiment results
+    public ArrayList<Long> expResults = new ArrayList<>();
+
     public RSPQLStarQueryExecution(RSPQLStarQuery query, StreamingDatasetGraph sdg){
         this(query, DatasetFactory.wrap(sdg));
         this.query = query;
         this.sdg = sdg;
+        if(!sdg.isReady()){
+            sdg.initForQuery(query);
+        }
+
     }
 
     public RSPQLStarQueryExecution(RSPQLStarQuery query, Dataset dataset) {
@@ -69,7 +79,7 @@ public class RSPQLStarQueryExecution extends QueryExecutionBase {
     public void execContinuousSelect(PrintStream out) {
         stop = false;
         while(!stop) {
-            final long t0 = System.currentTimeMillis();
+            final long t0 = System.nanoTime();
             sdg.setTime(TimeUtil.getTime());
             final RSPQLStarQueryExecution exec = new RSPQLStarQueryExecution(query, sdg);
             final ResultSet rs = exec.execSelect();
@@ -80,10 +90,13 @@ public class RSPQLStarQueryExecution extends QueryExecutionBase {
             }
             exec.close();
 
-            final long execTime = System.currentTimeMillis() - t0;
-            out.printf("Query executed in %s ms\n", execTime);
+            final long execTime = System.nanoTime() - t0;
+            out.printf("Query executed in %s ns\n", execTime);
 
-            busyWaitMillisecond(query.getComputedEvery().toMillis() - execTime);
+            // save
+            expResults.add(execTime);
+
+            busyWaitMillisecond(query.getComputedEvery().toMillis() - execTime/(1_000_000));
         }
     }
 

@@ -4,7 +4,6 @@ import org.apache.jena.atlas.lib.Lib;
 import org.apache.jena.graph.Node;
 import org.apache.jena.sparql.algebra.AlgebraGenerator;
 import org.apache.jena.sparql.algebra.Op;
-import org.apache.jena.sparql.algebra.Transform;
 import org.apache.jena.sparql.algebra.Transformer;
 import org.apache.jena.sparql.algebra.op.OpAssign;
 import org.apache.jena.sparql.algebra.op.OpExtend;
@@ -17,7 +16,7 @@ import se.liu.ida.rspqlstar.syntax.ElementNamedWindow;
 import java.util.Deque;
 
 public class MyAlgebraGenerator extends AlgebraGenerator {
-    protected static RSPQLStarTransformSimple simplify = new RSPQLStarTransformSimple();
+    protected static RSPQLStarTransform simplify = new RSPQLStarTransform();
 
     private Op compileElementNamedWindow(ElementNamedWindow elt) {
         final Node windowNode = elt.getWindowNameNode();

@@ -22,6 +22,7 @@ public class StreamingDatasetGraph extends AbstractDatasetGraph {
     private Map<String, RDFStream> rdfStreams = new HashMap<>();
     private DatasetGraphStar activeDataset = baseDataset;
     private Date time = new Date();
+    private boolean ready = false;
 
     /**
      * Create a StreamingDatasetGraph.
@@ -52,8 +53,12 @@ public class StreamingDatasetGraph extends AbstractDatasetGraph {
             final Duration range = w.getRange();
             final Duration step = w.getStep();
             final RDFStream rdfStream = rdfStreams.get(w.getStreamName());
+            if(rdfStream == null){
+                throw new IllegalStateException("The RDFStream " + w.getStreamName() + " has not been registered");
+            }
             addWindow(new WindowDatasetGraph(name, range, step, time, rdfStream));
         }
+        ready = true;
     }
 
     public void setBaseDataset(DatasetGraphStar dataset){
@@ -134,5 +139,9 @@ public class StreamingDatasetGraph extends AbstractDatasetGraph {
             throw new IllegalStateException("The named window " + name + " does not exist.");
         }
         return dsg.getDataset(time.getTime());
+    }
+
+    public boolean isReady() {
+        return ready;
     }
 }

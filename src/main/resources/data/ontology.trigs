@@ -8,6 +8,8 @@
 @prefix ex: <http://www.example.org/ontology#> .
 
 # temporary
+# Remove RDF* from activity
+
 <<<person1> ex:activity <activity/resting>>>
     ex:expectedHeartRate [ ex:lowerBound 70 ; ex:upperBound 100 ] ;
     ex:expectedBreathingRate [ ex:lowerBound 12 ; ex:upperBound 25 ] ;

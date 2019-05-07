@@ -1,42 +1,69 @@
 package se.liu.ida.rspqlstar.store.dataset;
 
+import org.apache.jena.graph.Graph;
 import org.apache.jena.graph.Node;
 import org.apache.jena.graph.Node_Triple;
-import org.apache.jena.graph.Triple;
-import org.apache.jena.riot.system.StreamRDF;
+import org.apache.jena.rdf.model.ModelFactory;
 import org.apache.jena.sparql.core.Quad;
+import org.apache.log4j.Logger;
 import se.liu.ida.rspqlstar.store.dictionary.nodedictionary.NodeDictionary;
 import se.liu.ida.rspqlstar.store.dictionary.nodedictionary.NodeDictionaryFactory;
 import se.liu.ida.rspqlstar.store.dictionary.referencedictionary.ReferenceDictionary;
 import se.liu.ida.rspqlstar.store.dictionary.referencedictionary.ReferenceDictionaryFactory;
-import se.liu.ida.rspqlstar.store.index.*;
+import se.liu.ida.rspqlstar.store.engine.main.iterator.DecodingQuadsIterator;
+import se.liu.ida.rspqlstar.store.engine.main.pattern.QuadPatternBuilder;
+import se.liu.ida.rspqlstar.store.engine.main.pattern.QuadStarPattern;
+import se.liu.ida.rspqlstar.store.index.Field;
+import se.liu.ida.rspqlstar.store.index.IdBasedQuad;
+import se.liu.ida.rspqlstar.store.index.Index;
+import se.liu.ida.rspqlstar.store.index.TreeIndex;
 
-import java.io.PrintStream;
-import java.util.Date;
+import java.util.Collections;
 import java.util.Iterator;
 
+/**
+ * The DatasetStarGraph does not contain any data in itself. Instead, it leverages the
+ * indexes in the QuadStore and exposes the data as if it was represented
+ * using the Jena API classes using on-the-fly decoding.
+ */
 
-public class TimestampedGraph implements StreamRDF {
-    public Index index;
-    public long time;
+public class DatasetGraphStarSimple extends AbstractDatasetGraph {
+    final private Logger logger = Logger.getLogger(DatasetGraphStarSimple.class);
+    final public Index GSPO;
     final NodeDictionary nd = NodeDictionaryFactory.get();
     final ReferenceDictionary refT = ReferenceDictionaryFactory.get();
 
-    public TimestampedGraph(Date time){
-        this.time = time.getTime();
-        index = new HashIndex(Field.G, Field.S, Field.P, Field.O);
+    public DatasetGraphStarSimple() {
+        GSPO = new TreeIndex(Field.G, Field.S, Field.P, Field.O);
+    }
+
+    public boolean contains(QuadStarPattern pattern) {
+        return GSPO.contains(pattern);
+    }
+
+    public boolean contains(IdBasedQuad idBasedQuad) {
+        return GSPO.contains(idBasedQuad);
     }
 
     @Override
-    public void start() {}
-
-    @Override
-    public void triple(Triple triple) {
-        throw new UnsupportedOperationException("");
+    public Iterator<Quad> find(Node g, Node s, Node p, Node o) {
+        throw new IllegalStateException("Illegal operation");
     }
 
     @Override
-    public void quad(Quad quad){
+    public Iterator<Quad> findNG(Node g, Node s, Node p, Node o) {
+        throw new IllegalStateException("Illegal operation");
+    }
+
+
+    @Override
+    public Graph getDefaultGraph() {
+        logger.debug("Accessing default graph of DatasetGraphStar, was this intentional? Returning empty graph.");
+        return ModelFactory.createDefaultModel().getGraph();
+    }
+
+    @Override
+    public void add(Quad quad) {
         addQuad(quad);
     }
 
@@ -72,25 +99,11 @@ public class TimestampedGraph implements StreamRDF {
     }
 
     public void addToIndex(IdBasedQuad idBasedQuad) {
-        index.add(idBasedQuad);
+        GSPO.add(idBasedQuad);
     }
 
-
-    @Override
-    public void base(String s) {}
-
-    @Override
-    public void prefix(String s, String s1) {}
-
-    @Override
-    public void finish() {}
-
-    public void print(PrintStream out){
-        out.println("TG: " + time);
-        index.iterateAll().forEachRemaining(x -> { out.println(x); });
+    public Iterator<IdBasedQuad> iterateAll() {
+        return GSPO.iterateAll();
     }
 
-    public Iterator<IdBasedQuad> iterateAll(){
-        return index.iterateAll();
-    }
 }

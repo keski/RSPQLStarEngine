@@ -16,4 +16,6 @@ public interface NodeDictionary {
     long size();
 
     void print(PrintStream out, int limit);
+
+    void clear();
 }

@@ -54,23 +54,6 @@ public class WindowDatasetGraph extends DatasetGraphStar {
         return startTime + width + n * step;
     }
 
-    /**
-     * Search window dataset without re-materializing it first.
-     * @param time
-     * @param pattern
-     * @return
-     */
-    public Iterator<IdBasedQuad> find(long time, QuadStarPattern pattern){
-        final long upperBound = getUpperBound(time);
-
-        final IteratorChain<IdBasedQuad> iteratorChain = new IteratorChain<>();
-        rdfStream.iterateElements(upperBound - width, upperBound).forEach(x -> {
-            iteratorChain.addIterator(x.dgs.find(pattern));
-        });
-
-        return iteratorChain;
-    }
-
     public Iterator<IdBasedQuad> iterate(Date time){
         return getDataset(time.getTime()).iterateAll();
     }

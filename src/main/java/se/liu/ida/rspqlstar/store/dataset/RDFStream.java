@@ -30,7 +30,7 @@ public class RDFStream {
             final TimestampedGraph tg = timestampedGraphs.get(i);
             if(lowerBound > tg.time) continue;
             if(upperBound <= tg.time) break;
-            iteratorChain.addIterator(tg.dgs.iterateAll());
+            iteratorChain.addIterator(tg.iterateAll());
         }
         return iteratorChain;
     }

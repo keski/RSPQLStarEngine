@@ -59,4 +59,10 @@ public class HashReferenceDictionary implements ReferenceDictionary {
         }
         out.println(sb.toString());
     }
+
+    @Override
+    public void clear(){
+        idToNodeTriple.clear();
+        nodeTripleToId.clear();
+    }
 }
