@@ -75,7 +75,6 @@ public class DecodeBindingsIterator extends QueryIter {
             } else {
                 if (IdFactory.isReferenceId(key.id)) {
                     final IdBasedTriple idBasedTriple = rd.getIdBasedTriple(key.id);
-                    //System.err.println("------------ " + idBasedTriple);
                     final Node s = getNode(new Key(idBasedTriple.subject));
                     final Node p = getNode(new Key(idBasedTriple.predicate));
                     final Node o = getNode(new Key(idBasedTriple.object));

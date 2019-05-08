@@ -9,7 +9,7 @@ def make_tg(identifier, time, sensor, foi, value, confidence, reif):
     
     graph = "_:g{0}".format(identifier)
     observation = "<observation/{0}>".format(identifier)
-    timestamp = datetime.utcfromtimestamp(time + identifier).strftime('%Y-%m-%dT%H:%M:%S')
+    timestamp = datetime.utcfromtimestamp(time).strftime('%Y-%m-%dT%H:%M:%S')
     
     payload =  "   {0} a sosa:Observation ;\n".format(observation)
     payload += "      sosa:madeObservation {0} ;\n".format(sensor)
@@ -54,20 +54,21 @@ def main():
     for reif in [True, False]:
         random.seed(0)
 
-        # activity
+        # activity, every 30 seconds
         d = "reification/" if reif else "rdfstar/"
         myfile = open(d + "activity.trigs", "w")
         myfile.write(compress(prefixes) + "\n")
         time = 1556617861
-        for identifier in range(100):
-            confidence = 1 - (.2 * random.random())
+        for identifier in range(number_of_observations):
+            confidence = 1 - (.1 * random.random())
             tg = make_tg(identifier, time, "<sensor/system>", "<person1>", "activity:resting", confidence, reif)
+            time += 5
             myfile.write(compress(tg))
             myfile.write("\n")
         myfile.close()
 
 
-        # heart reate
+        # heart reate, every second
         d = "reification/" if reif else "rdfstar/"
         myfile = open(d + "heart.trigs", "w")
         myfile.write(compress(prefixes) + "\n")
@@ -78,11 +79,12 @@ def main():
             confidence = 1 - (.2 * random.random())
             heart_rate = base_heart_rate + 10 * random.random() # base plus 0 to 10 beats per minute
             tg = make_tg(identifier, time, "<sensor/heart_rate/1>", "<person1>", int(heart_rate), confidence, reif)
+            time += 1
             myfile.write(compress(tg))
             myfile.write("\n")
         myfile.close()
 
-        # breathing rate
+        # breathing rate, every second
         d = "reification/" if reif else "rdfstar/"
         myfile = open(d + "breathing.trigs", "w")
         myfile.write(compress(prefixes) + "\n")
@@ -93,11 +95,12 @@ def main():
             confidence = 1 - (.2 * random.random())
             breathing_rate = base_breathing_rate + 1 * random.random() # base plus 0 to 5 breaths per minute
             tg = make_tg(identifier, time, "<sensor/breathing_rate/1>", "<person1>", int(breathing_rate), confidence, reif)
+            time += 1
             myfile.write(compress(tg))
             myfile.write("\n")
         myfile.close()
 
-        # oxygen level
+        # oxygen level, every second
         d = "reification/" if reif else "rdfstar/"
         myfile = open(d + "oxygen.trigs", "w")
         myfile.write(compress(prefixes) + "\n")
@@ -107,11 +110,12 @@ def main():
             confidence = 1 - (.2 * random.random())
             oxygen = oxygen_level + 0.02 * random.random() # base plus 0 to 2 %
             tg = make_tg(identifier, time, "<sensor/oxygen/1>", "<person1>", oxygen, confidence, reif)
+            time += 1
             myfile.write(compress(tg))
             myfile.write("\n")
         myfile.close()
 
-        # location
+        # location, reported every 5 s
         d = "reification/" if reif else "rdfstar/"
         myfile = open(d + "location1.trigs", "w")
         myfile.write(compress(prefixes) + "\n")
@@ -120,11 +124,12 @@ def main():
         for identifier in range(number_of_observations):
             confidence = 1 - (.1 * random.random())
             tg = make_tg(identifier, time, "<sensor/location/1>", "<person1>", location, confidence, reif)
+            time += 10
             myfile.write(compress(tg))
             myfile.write("\n")
         myfile.close()
 
-                # location
+        # location, reported every 5 s
         d = "reification/" if reif else "rdfstar/"
         myfile = open(d + "location2.trigs", "w")
         myfile.write(compress(prefixes) + "\n")
@@ -134,6 +139,7 @@ def main():
             if identifier == trigger_after: location = "<away>"
             confidence = 1 - (.1 * random.random())
             tg = make_tg(identifier, time, "<sensor/location/2>", "<person2>", location, confidence, reif)
+            time += 10
             myfile.write(compress(tg))
             myfile.write("\n")
         myfile.close()

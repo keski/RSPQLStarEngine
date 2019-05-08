@@ -7,14 +7,12 @@ REGISTER STREAM <alert/lowEmergencyAbnormalState>
 
 COMPUTED EVERY PT10S AS
 
-SELECT ?activity ?hrMax ?brMin ?oxMin ?oxMax
-       (AVG(?hr) AS ?avgHr) (AVG(?br) AS ?avgBr) (AVG(?ox) AS ?avgOx)
-FROM NAMED WINDOW <w1> ON <s/location1> [RANGE PT3M STEP PT10S]
-FROM NAMED WINDOW <w2> ON <s/location2> [RANGE PT3M STEP PT10S]
-FROM NAMED WINDOW <w3> ON <s/activity>  [RANGE PT3M STEP PT10S]
-FROM NAMED WINDOW <w4> ON <s/heart>     [RANGE PT3M STEP PT10S]
-FROM NAMED WINDOW <w5> ON <s/breathing> [RANGE PT3M STEP PT10S]
-FROM NAMED WINDOW <w6> ON <s/oxygen>    [RANGE PT3M STEP PT10S]
+SELECT ?activity (AVG(?hr) AS ?avgHr) (AVG(?br) AS ?avgBr) (AVG(?ox) AS ?avgOx)
+FROM NAMED WINDOW <w1> ON <s/activity>  [RANGE PT10M STEP PT10S]
+FROM NAMED WINDOW <w2> ON <s/location>  [RANGE PT30S STEP PT10S]
+FROM NAMED WINDOW <w3> ON <s/heart>     [RANGE PT30S STEP PT10S]
+FROM NAMED WINDOW <w4> ON <s/breathing> [RANGE PT30S STEP PT10S]
+FROM NAMED WINDOW <w5> ON <s/oxygen>    [RANGE PT30S STEP PT10S]
 WHERE {
     # Rut
     ?person a foaf:Person ;
@@ -23,66 +21,56 @@ WHERE {
 
     # Context
     [] a ex:Context ;
-       ex:hasPerson ?person1 ;
+       ex:hasPerson ?person ;
        ex:forActivity ?activity ;
        ex:expectedHeartRate     [ ex:upperBound ?hrMax ] ;
        ex:expectedBreathingRate [ ex:lowerBound ?brMin ] ;
        ex:expectedOxygenLevel   [ ex:lowerBound ?oxMin ; ex:upperBound ?oxMax ] .
 
-    # Rut's location must match <person1/home>
+    # activity, reported by the system and assumed to be true
     WINDOW <w1> {
         GRAPH ?g1 {
-            ?o1 a sosa:Observation ;
-                sosa:featureOfInterest ?person .
-            <<?o1 sosa:hasSimpleResult ?loc1>> ex:confidence ?c1 .
-            FILTER(?c1 > 0.9 && ?loc1 = <person1/home>)
+            [ a sosa:Observation ;
+              sosa:featureOfInterest ?person ;
+              sosa:hasSimpleResult ?activity ] .
         }
     }
 
-    # Don't trigger alert if Rut's partner is at home
+    # Location of Rut's partner
     WINDOW <w2> {
         GRAPH ?g2 {
             ?o2 a sosa:Observation ;
                 sosa:featureOfInterest ?partner .
-            <<?o2 sosa:hasSimpleResult ?loc2>> ex:confidence ?c2 .
-            FILTER(?c2 > 0.9 && ?loc2 = ?loc2)
+            <<?o2 sosa:hasSimpleResult ?loc>> ex:confidence ?c2 .
+            FILTER(?c2 > 0.9 && ?loc != <person1/home>)
         }
     }
 
-    # Activity
+    # Heart rate
     WINDOW <w3> {
         GRAPH ?g3 {
             ?o3 a sosa:Observation ;
                 sosa:featureOfInterest ?person .
-            <<?o3 sosa:hasSimpleResult ?activity>> ex:confidence ?c3 .
-            FILTER(?c3 > 0.9)
+            <<?o3 sosa:hasSimpleResult ?hr>> ex:confidence ?c3 .
+            FILTER(?c3 > 0.95)
         }
     }
-    # Heart rate
+    # Breathing rate
     WINDOW <w4> {
         GRAPH ?g4 {
             ?o4 a sosa:Observation ;
                 sosa:featureOfInterest ?person .
-            <<?o2 sosa:hasSimpleResult ?hr>> ex:confidence ?c4 .
-            FILTER(?c4 > 0.9)
+            <<?o4 sosa:hasSimpleResult ?br>> ex:confidence ?c4 .
+            FILTER(?c4 > 0.95)
         }
     }
-    # Breathing rate
+    # Oxygen level
     WINDOW <w5> {
         GRAPH ?g5 {
             ?o5 a sosa:Observation ;
                 sosa:featureOfInterest ?person .
-            <<?o5 sosa:hasSimpleResult ?br>> ex:confidence ?c5 .
-            FILTER(?c5 > 0.9)
-        }
-    }
-    # Oxygen level
-    WINDOW <w6> {
-        GRAPH ?g6 {
-            ?o6 a sosa:Observation ;
-                sosa:featureOfInterest ?person .
-            <<?o6 sosa:hasSimpleResult ?ox>> ex:confidence ?c6 .
-            FILTER(?c6 > 0.9)
+            <<?o5 sosa:hasSimpleResult ?ox>> ex:confidence ?c5 .
+            FILTER(?c5 > 0.95)
         }
     }
 }

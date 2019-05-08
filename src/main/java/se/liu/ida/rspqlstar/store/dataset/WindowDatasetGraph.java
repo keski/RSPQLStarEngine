@@ -46,6 +46,7 @@ public class WindowDatasetGraph extends DatasetGraphStar {
         rdfStream.iterator(upperBound - width, upperBound).forEachRemaining(ds::addToIndex);
         cachedDatasetGraph = ds;
         cachedUpperBound = upperBound;
+
         return cachedDatasetGraph;
     }
 

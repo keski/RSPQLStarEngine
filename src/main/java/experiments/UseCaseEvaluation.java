@@ -28,7 +28,6 @@ public class UseCaseEvaluation {
         ARQ.init();
 
         TimeUtil.setOffset(new Date().getTime() - 1556617861000L);
-        System.err.println("Start at: " + TimeUtil.getTime());
 
         // Load query
         final String qString = Utils.readFile("use-case/rdfstar/query.rspqlstar");
@@ -38,8 +37,7 @@ public class UseCaseEvaluation {
         final RDFStream heart = new RDFStream("http://base/s/heart");
         final RDFStream breathing = new RDFStream("http://base/s/breathing");
         final RDFStream oxygen = new RDFStream("http://base/s/oxygen");
-        final RDFStream location1 = new RDFStream("http://base/s/location1");
-        final RDFStream location2 = new RDFStream("http://base/s/location2");
+        final RDFStream location = new RDFStream("http://base/s/location");
 
         // Create streaming dataset
         final StreamingDatasetGraph sdg = new StreamingDatasetGraph();
@@ -56,31 +54,28 @@ public class UseCaseEvaluation {
         sdg.registerStream(heart);
         sdg.registerStream(breathing);
         sdg.registerStream(oxygen);
-        sdg.registerStream(location1);
-        sdg.registerStream(location2);
+        sdg.registerStream(location);
 
         sdg.setTime(TimeUtil.getTime());
 
         // Start all streams
-        final StreamFromFile s1 = new StreamFromFile(activity, "use-case/rdfstar/activity.trigs", 1000);
-        final StreamFromFile s2 = new StreamFromFile(heart, "use-case/rdfstar/heart.trigs", 1000);
-        final StreamFromFile s3 = new StreamFromFile(breathing, "use-case/rdfstar/breathing.trigs", 1000);
-        final StreamFromFile s4 = new StreamFromFile(oxygen, "use-case/rdfstar/oxygen.trigs", 1000);
-        final StreamFromFile s5 = new StreamFromFile(location1, "use-case/rdfstar/location1.trigs", 1000);
-        final StreamFromFile s6 = new StreamFromFile(location2, "use-case/rdfstar/location2.trigs", 1000);
+        final StreamFromFile s1 = new StreamFromFile(activity, "use-case/rdfstar/activity.trigs", 1000, 5000);
+        final StreamFromFile s2 = new StreamFromFile(heart, "use-case/rdfstar/heart.trigs", 1000, 1000);
+        final StreamFromFile s3 = new StreamFromFile(breathing, "use-case/rdfstar/breathing.trigs", 1000, 1000);
+        final StreamFromFile s4 = new StreamFromFile(oxygen, "use-case/rdfstar/oxygen.trigs", 1000, 1000);
+        final StreamFromFile s5 = new StreamFromFile(location, "use-case/rdfstar/location2.trigs", 1000, 10000);
         s1.start();
         s2.start();
         s3.start();
         s4.start();
         s5.start();
-        s6.start();
 
         // Register query
         final RSPQLStarQueryExecution qexec = new RSPQLStarQueryExecution(query, sdg);
 
-        // stop gracefully after 10 s
+        // stop gracefully after 30 min
         new Thread(() -> {
-            TimeUtil.silentSleep(1000 * 30);
+            TimeUtil.silentSleep(1000 * 60 * 30);
             s1.stop();
             qexec.stopContinuousSelect();
         }).start();

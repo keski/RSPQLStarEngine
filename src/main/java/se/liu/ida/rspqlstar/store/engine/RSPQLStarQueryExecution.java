@@ -83,20 +83,25 @@ public class RSPQLStarQueryExecution extends QueryExecutionBase {
             sdg.setTime(TimeUtil.getTime());
             final RSPQLStarQueryExecution exec = new RSPQLStarQueryExecution(query, sdg);
             final ResultSet rs = exec.execSelect();
-            out.printf("\n### %s ###\n", TimeUtil.df.format(sdg.getTime()));
-            if(!rs.hasNext()) out.println("--- Empty result ---");
+
+            out.printf("Application time: %s\n", TimeUtil.df.format(sdg.getTime()));
+            if(!rs.hasNext()){
+                out.println("<EMPTY>");
+            }
             else {
                 ResultSetMgr.write(out, rs, ResultSetLang.SPARQLResultSetText);
             }
             exec.close();
 
             final long execTime = System.nanoTime() - t0;
-            out.printf("Query executed in %s ms\n", execTime/1_000_000);
+            out.printf("Query executed in %s ms\n\n", execTime/1_000_000);
 
             // save
             expResults.add(execTime);
 
-            busyWaitMillisecond(query.getComputedEvery().toMillis() - execTime/(1_000_000));
+            long delay = query.getComputedEvery().toMillis() - execTime/(1_000_000);
+            if(delay > 0) TimeUtil.silentSleep(delay);
+            //busyWaitMillisecond(query.getComputedEvery().toMillis() - execTime/(1_000_000));
         }
     }
 

@@ -77,7 +77,7 @@ public class PerformanceEvaluation {
 
         // Start all streams
         final String fileName = String.format("performance-eval/%s-meta-%s.trigs", x, suffix);
-        final StreamFromFile stream = new StreamFromFile(rdfStream, fileName, 100);
+        final StreamFromFile stream = new StreamFromFile(rdfStream, fileName, 0, 100);
         stream.start();
 
         // stop gracefully
@@ -110,7 +110,7 @@ public class PerformanceEvaluation {
         IdFactory.reset();
         VarDictionary.reset();
         // used make sure gc has been run
-        System.err.println("Memory allocated: " + getReallyUsedMemory() + " mb");
+        getReallyUsedMemory();
     }
 
     public static long[] asArray(ArrayList<Long> list){
