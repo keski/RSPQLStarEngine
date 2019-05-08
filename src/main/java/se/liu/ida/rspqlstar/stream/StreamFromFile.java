@@ -1,4 +1,4 @@
-package experiments;
+package se.liu.ida.rspqlstar.stream;
 
 import org.apache.jena.riot.RDFParser;
 import se.liu.ida.rdfstar.tools.parser.lang.LangTrigStar;
@@ -50,7 +50,7 @@ public class StreamFromFile extends RSPQLStarStream {
                 } else {
                     final TimestampedGraph tg = new TimestampedGraph(TimeUtil.getTime());
                     RDFParser.create()
-                            .base("http://base")
+                            .base("http://base/")
                             .source(new ByteArrayInputStream((prefixes + line).getBytes()))
                             .checking(false)
                             .lang(LangTrigStar.TRIGSTAR)

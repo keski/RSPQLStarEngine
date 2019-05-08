@@ -19,7 +19,7 @@ import java.util.*;
 public class StreamingDatasetGraph extends AbstractDatasetGraph {
     private DatasetGraphStar baseDataset = new DatasetGraphStar();
     private Map<String, WindowDatasetGraph> windows = new HashMap<>();
-    private Map<String, RDFStream> rdfStreams = new HashMap<>();
+    public Map<String, RDFStream> rdfStreams = new HashMap<>();
     private DatasetGraphStar activeDataset = baseDataset;
     private Date time = new Date();
     private boolean ready = false;

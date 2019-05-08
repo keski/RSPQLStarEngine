@@ -10,20 +10,20 @@ import se.liu.ida.rspqlstar.store.dataset.RDFStream;
 import se.liu.ida.rspqlstar.store.dataset.StreamingDatasetGraph;
 import se.liu.ida.rspqlstar.store.engine.RSPQLStarEngine;
 import se.liu.ida.rspqlstar.store.engine.RSPQLStarQueryExecution;
+import se.liu.ida.rspqlstar.stream.StreamFromFile;
 import se.liu.ida.rspqlstar.util.TimeUtil;
+import se.liu.ida.rspqlstar.util.Utils;
 
-import java.io.File;
 import java.io.IOException;
-import java.nio.file.Files;
 import java.util.Date;
 
-public class Main {
+public class UseCaseEvaluation {
     public static void main(String[] args) throws IOException {
         // Start all streams
-        test1();
+        run();
     }
 
-    public static void test1() throws IOException {
+    public static void run() throws IOException {
         RSPQLStarEngine.register();
         ARQ.init();
 
@@ -31,48 +31,56 @@ public class Main {
         System.err.println("Start at: " + TimeUtil.getTime());
 
         // Load query
-        final File file = new File(ClassLoader.getSystemClassLoader().getResource("query/query1.rspqlstar").getFile());
-        final String qString = new String(Files.readAllBytes(file.toPath()));
+        final String qString = Utils.readFile("use-case/rdfstar/query.rspqlstar");
         final RSPQLStarQuery query = (RSPQLStarQuery) QueryFactory.create(qString, RSPQLStar.syntax);
 
-
-        // Heart rate stream
-        final RDFStream activity = new RDFStream("http://stream/activity");
-        final RDFStream heartRate = new RDFStream("http://stream/heart_rate");
-        final RDFStream breathing = new RDFStream("http://stream/breathing_rate");
+        final RDFStream activity = new RDFStream("http://base/s/activity");
+        final RDFStream heart = new RDFStream("http://base/s/heart");
+        final RDFStream breathing = new RDFStream("http://base/s/breathing");
+        final RDFStream oxygen = new RDFStream("http://base/s/oxygen");
+        final RDFStream location1 = new RDFStream("http://base/s/location1");
+        final RDFStream location2 = new RDFStream("http://base/s/location2");
 
         // Create streaming dataset
         final StreamingDatasetGraph sdg = new StreamingDatasetGraph();
 
         // Load base data
         RDFParser.create()
-                .base("http://base")
-                .source("./data/ontology.trigs")
+                .base("http://base/")
+                .source("use-case/use-case-ontology.ttl")
                 .checking(false)
                 .lang(LangTrigStar.TRIGSTAR)
                 .parse(sdg.getBaseDataset());
-
         // Add data stream sources
         sdg.registerStream(activity);
-        sdg.registerStream(heartRate);
+        sdg.registerStream(heart);
         sdg.registerStream(breathing);
+        sdg.registerStream(oxygen);
+        sdg.registerStream(location1);
+        sdg.registerStream(location2);
 
         sdg.setTime(TimeUtil.getTime());
 
         // Start all streams
-        final StreamFromFile s1 = new StreamFromFile(activity, "data/activity.trigs", 1000);
-        final StreamFromFile s2 = new StreamFromFile(heartRate, "data/heart_rate.trigs", 1000);
-        final StreamFromFile s3 = new StreamFromFile(breathing, "data/breathing_rate.trigs", 1000);
+        final StreamFromFile s1 = new StreamFromFile(activity, "use-case/rdfstar/activity.trigs", 1000);
+        final StreamFromFile s2 = new StreamFromFile(heart, "use-case/rdfstar/heart.trigs", 1000);
+        final StreamFromFile s3 = new StreamFromFile(breathing, "use-case/rdfstar/breathing.trigs", 1000);
+        final StreamFromFile s4 = new StreamFromFile(oxygen, "use-case/rdfstar/oxygen.trigs", 1000);
+        final StreamFromFile s5 = new StreamFromFile(location1, "use-case/rdfstar/location1.trigs", 1000);
+        final StreamFromFile s6 = new StreamFromFile(location2, "use-case/rdfstar/location2.trigs", 1000);
         s1.start();
         s2.start();
         s3.start();
+        s4.start();
+        s5.start();
+        s6.start();
 
         // Register query
         final RSPQLStarQueryExecution qexec = new RSPQLStarQueryExecution(query, sdg);
 
-        // stop gracefully after 1 hour
+        // stop gracefully after 10 s
         new Thread(() -> {
-            TimeUtil.silentSleep(1000 * 60 * 60);
+            TimeUtil.silentSleep(1000 * 30);
             s1.stop();
             qexec.stopContinuousSelect();
         }).start();

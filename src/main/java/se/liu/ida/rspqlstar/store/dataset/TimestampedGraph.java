@@ -41,7 +41,8 @@ public class TimestampedGraph implements StreamRDF {
     }
 
     private IdBasedQuad addQuad(Quad quad) {
-        final Node graph = quad.getGraph();
+        Node graph = quad.getGraph();
+        graph = graph == null ? Quad.defaultGraphNodeGenerated : graph;
         final Node subject = quad.getSubject();
         final Node predicate = quad.getPredicate();
         final Node object = quad.getObject();
@@ -52,7 +53,7 @@ public class TimestampedGraph implements StreamRDF {
         final long s;
         if (subject instanceof Node_Triple) {
             final Quad q = new Quad(graph, ((Node_Triple) subject).get());
-            IdBasedQuad idBasedQuad = addQuad(q);
+            final IdBasedQuad idBasedQuad = addQuad(q);
             s = refT.addIfNecessary(idBasedQuad.getIdBasedTriple());
         } else {
             s = nd.addNodeIfNecessary(subject);
@@ -60,7 +61,7 @@ public class TimestampedGraph implements StreamRDF {
 
         final long o;
         if (object instanceof Node_Triple) {
-            IdBasedQuad idBasedQuad = addQuad(new Quad(graph, ((Node_Triple) object).get()));
+            final IdBasedQuad idBasedQuad = addQuad(new Quad(graph, ((Node_Triple) object).get()));
             o = refT.addIfNecessary(idBasedQuad.getIdBasedTriple());
         } else {
             o = nd.addNodeIfNecessary(object);

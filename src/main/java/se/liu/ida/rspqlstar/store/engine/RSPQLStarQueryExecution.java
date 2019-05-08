@@ -91,7 +91,7 @@ public class RSPQLStarQueryExecution extends QueryExecutionBase {
             exec.close();
 
             final long execTime = System.nanoTime() - t0;
-            out.printf("Query executed in %s ns\n", execTime);
+            out.printf("Query executed in %s ms\n", execTime/1_000_000);
 
             // save
             expResults.add(execTime);
