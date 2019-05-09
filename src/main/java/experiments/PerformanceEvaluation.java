@@ -38,8 +38,8 @@ public class PerformanceEvaluation {
         boolean warmup = false;
         if(warmup) {
             RSPQLStarTransform.putOpExtendFirst = false;
-            run(10, "rdfstar", 10_000);
-            run(10, "reification", 10_000);
+            run(10, "rdfstar", 10_000, false);
+            run(10, "reification", 10_000, false);
         }
 
         log = true;
@@ -48,21 +48,34 @@ public class PerformanceEvaluation {
 
         for(int i=1; i < 11; i++) {
             reset();
-            logger.info(String.format("Reification;%s;", i));
+            logger.info(String.format("Reification (optimized);%s;", i));
             TimeUtil.setOffset(new Date().getTime() - 1556617861000L);
-            run(i, "reification", timeOutAfter);
+            run(i, "reification", timeOutAfter, true);
+        }
+
+        for(int i=1; i < 11; i++) {
+            reset();
+            logger.info(String.format("Reification (naive);%s;", i));
+            TimeUtil.setOffset(new Date().getTime() - 1556617861000L);
+            run(i, "reification", timeOutAfter, false);
         }
 
         for(int i=1; i < 11; i++) {
             reset();
             logger.info(String.format("RDFStar;%s;", i));
             TimeUtil.setOffset(new Date().getTime() - 1556617861000L);
-            run(i, "rdfstar", timeOutAfter);
+            run(i, "rdfstar", timeOutAfter, false);
         }
     }
 
-    public static void run(int x, String suffix, long timeOutAfter) throws IOException {
-        final String queryFile = String.format("performance-eval/meta-query-%s.rspqlstar", suffix);
+    public static void run(int x, String suffix, long timeOutAfter, boolean optimized) throws IOException {
+        final String queryFile;
+        if(optimized){
+            queryFile = String.format("performance-eval/query-%s-optimized.rspqlstar", suffix);
+        } else {
+            queryFile = String.format("performance-eval/query-%s.rspqlstar", suffix);
+        }
+
         final String qString = readFile(queryFile);
         final RSPQLStarQuery query = (RSPQLStarQuery) QueryFactory.create(qString, RSPQLStar.syntax);
 
