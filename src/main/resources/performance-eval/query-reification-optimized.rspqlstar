@@ -1,0 +1,20 @@
+BASE <http://base/>
+PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
+
+REGISTER STREAM <output> COMPUTED EVERY PT1S AS
+SELECT ?s ?p ?o
+FROM NAMED WINDOW <w> ON <http://stream/meta> [RANGE PT10S STEP PT1S]
+WHERE {
+    WINDOW <w> {
+        GRAPH ?g {
+            [] a rdf:Statement ;
+               rdf:subject ?s ;
+               rdf:predicate ?p ;
+               rdf:object ?o ;
+               <confidence> ?confidence .
+            ?s ?p ?o .
+            FILTER(?confidence > 0.9)
+        }
+    }
+}

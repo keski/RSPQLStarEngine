@@ -2,6 +2,7 @@ BASE <http://base/>
 PREFIX ex: <http://www.example.org/ontology#>
 PREFIX foaf: <http://xmlns.com/foaf/0.1/>
 PREFIX sosa: <http://www.w3.org/ns/sosa/>
+PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
 
 REGISTER STREAM <alert/lowEmergencyAbnormalState>
 
@@ -46,24 +47,39 @@ WHERE {
     WINDOW <w3> { # Heart rate
         GRAPH ?g3 {
             ?o3 a sosa:Observation ;
-                sosa:featureOfInterest ?person .
-            <<?o3 sosa:hasSimpleResult ?hr>> ex:confidence ?c3 .
+                sosa:featureOfInterest ?person ;
+                sosa:hasSimpleResult ?hr .
+            ?x1 a rdf:Statement ;
+               rdf:subject ?o3 ;
+               rdf:predicate sosa:hasSimpleResult ;
+               rdf:object ?hr ;
+               ex:confidence ?c3 .
             FILTER(?c3 > 0.95)
         }
     }
     WINDOW <w4> { # Breathing rate
         GRAPH ?g4 {
             ?o4 a sosa:Observation ;
-                sosa:featureOfInterest ?person .
-            <<?o4 sosa:hasSimpleResult ?br>> ex:confidence ?c4 .
+                sosa:featureOfInterest ?person ;
+                sosa:hasSimpleResult ?br .
+            ?x2 a rdf:Statement ;
+               rdf:subject ?o4 ;
+               rdf:predicate sosa:hasSimpleResult ;
+               rdf:object ?br ;
+               ex:confidence ?c4 .
             FILTER(?c4 > 0.95)
         }
     }
     WINDOW <w5> { # Oxygen level
         GRAPH ?g5 {
             ?o5 a sosa:Observation ;
-                sosa:featureOfInterest ?person .
-            <<?o5 sosa:hasSimpleResult ?ox>> ex:confidence ?c5 .
+                sosa:featureOfInterest ?person ;
+                sosa:hasSimpleResult ?ox .
+            ?x3 a rdf:Statement ;
+               rdf:subject ?o5 ;
+               rdf:predicate sosa:hasSimpleResult ;
+               rdf:object ?ox ;
+               ex:confidence ?c5 .
             FILTER(?c5 > 0.95)
         }
     }
