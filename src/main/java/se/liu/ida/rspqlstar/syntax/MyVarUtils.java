@@ -43,6 +43,7 @@ public class MyVarUtils {
     public static void addVar(Collection<Var> acc, Node n) {
         if (n != null) {
             if (n.isVariable()) {
+                if(n.toString().startsWith("??")) return; // skip internal vars for bnodes
                 acc.add(Var.alloc(n));
             }  else if(n instanceof Node_Triple){
                 addVarsFromTriple(acc, ((Node_Triple) n).get());
