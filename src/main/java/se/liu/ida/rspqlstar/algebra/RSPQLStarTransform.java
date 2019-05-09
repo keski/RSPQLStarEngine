@@ -47,10 +47,21 @@ public class RSPQLStarTransform extends TransformCopy {
             if(op == null) {
                 op = op2;
             } else {
-                op = OpSequence.create(op, op2);
+                if(op2 instanceof OpSequence){
+                    op = mergeOpSequence(op, (OpSequence) op2);
+                } else {
+                    op = OpSequence.create(op, op2);
+                }
             }
         }
         return op;
+    }
+
+    public Op mergeOpSequence(Op op1, OpSequence op2){
+        for(Op el : op2.getElements()){
+            op1 = OpSequence.create(op1, el);
+        }
+        return op1;
     }
 
     public Op transform(final OpSequence opSequence) {
