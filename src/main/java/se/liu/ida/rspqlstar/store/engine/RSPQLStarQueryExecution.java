@@ -86,7 +86,7 @@ public class RSPQLStarQueryExecution extends QueryExecutionBase {
 
             out.printf("Application time: %s\n", TimeUtil.df.format(sdg.getTime()));
             if(!rs.hasNext()){
-                out.println("<EMPTY>");
+                out.println("| Empty result |");
             }
             else {
                 ResultSetMgr.write(out, rs, ResultSetLang.SPARQLResultSetText);
