@@ -45,16 +45,16 @@
             <version>f2ed07a463243018b1ed1e331fd955472f8eeea7</version>
         </dependency>
         <!-- Collection libs -->
-        <dependency>
+        <!--<dependency>
             <groupId>org.apache.commons</groupId>
             <artifactId>commons-collections4</artifactId>
             <version>4.1</version>
-        </dependency>
-        <dependency>
+        </dependency>-->
+        <!--<dependency>
             <groupId>it.unimi.dsi</groupId>
             <artifactId>fastutil</artifactId>
             <version>8.2.1</version>
-        </dependency>
+        </dependency>-->
 
 
     </dependencies>
