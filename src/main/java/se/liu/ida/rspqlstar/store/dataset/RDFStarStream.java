@@ -7,11 +7,11 @@ import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 
-public class RDFStream {
+public class RDFStarStream {
     final public String iri;
     final private List<RDFStarStreamElement> timestampedGraphs = new ArrayList<>();
 
-    public RDFStream(String iri){
+    public RDFStarStream(String iri){
         this.iri = iri;
     }
 

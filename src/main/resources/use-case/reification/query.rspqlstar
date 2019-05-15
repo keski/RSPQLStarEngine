@@ -23,10 +23,9 @@ WHERE {
     [] a ex:NormalSituation ;
        ex:forPerson ?person ;
        ex:forActivity ?activity ;
-       ex:expectedHeartRate     [ ex:upperBound ?hrMax ] ;
+       ex:expectedHeartRate [ ex:upperBound ?hrMax ] ;
        ex:expectedBreathingRate [ ex:lowerBound ?brMin ] ;
-       ex:expectedOxygenLevel   [ ex:lowerBound ?oxMin ;
-                                  ex:upperBound ?oxMax ] .
+       ex:expectedOxygenSaturation [ ex:lowerBound ?oxMin ; ex:upperBound ?oxMax ] .
 
     WINDOW <w1>
       { # Current activity, reported by the system
@@ -70,7 +69,7 @@ WHERE {
             FILTER(?c4 > 0.95)
         }
     }
-    WINDOW <w5> { # Oxygen level
+    WINDOW <w5> { # Oxygen saturation
         GRAPH ?g5 {
             ?o5 a sosa:Observation ;
                 sosa:featureOfInterest ?person ;

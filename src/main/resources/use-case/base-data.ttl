@@ -15,7 +15,7 @@
     ex:forActivity activity:resting ;
     ex:expectedHeartRate     [ ex:lowerBound 70 ; ex:upperBound 100 ] ;
     ex:expectedBreathingRate [ ex:lowerBound 12 ; ex:upperBound 25 ] ;
-    ex:expectedOxygenLevel   [ ex:lowerBound 0.95 ; ex:upperBound 1.00 ] ;
+    ex:expectedOxygenSaturation   [ ex:lowerBound 0.95 ; ex:upperBound 1.00 ] ;
     rdfs:comment "Context describing Rut's expected parameter values when resting"@en .
 
 [] a ex:Context ;
@@ -23,7 +23,7 @@
     ex:forActivity activity:tv ;
     ex:expectedHeartRate     [ ex:lowerBound 70 ; ex:upperBound 100 ] ;
     ex:expectedBreathingRate [ ex:lowerBound 16 ; ex:upperBound 28 ] ;
-    ex:expectedOxygenLevel   [ ex:lowerBound 0.95 ; ex:upperBound 1.00 ] ;
+    ex:expectedOxygenSaturation   [ ex:lowerBound 0.95 ; ex:upperBound 1.00 ] ;
     rdfs:comment "Context describing Rut's expected parameter values when watching TV"@en .
 
 [] a ex:Context ;
@@ -31,7 +31,7 @@
     ex:forActivity activity:exercising ;
     ex:expectedHeartRate     [ ex:lowerBound 100 ; ex:upperBound 125 ] ;
     ex:expectedBreathingRate [ ex:lowerBound 25 ; ex:upperBound 40 ] ;
-    ex:expectedOxygenLevel   [ ex:lowerBound 0.95 ; ex:upperBound 1.00 ] ;
+    ex:expectedOxygenSaturation   [ ex:lowerBound 0.95 ; ex:upperBound 1.00 ] ;
     rdfs:comment "Context describing Rut's expected parameter values when exercising"@en .
 
 [] a ex:Context ;
@@ -39,7 +39,7 @@
     ex:forActivity activity:sleeping ;
     ex:expectedHeartRate     [ ex:lowerBound 60 ; ex:upperBound 80 ] ;
     ex:expectedBreathingRate [ ex:lowerBound 12 ; ex:upperBound 20 ] ;
-    ex:expectedOxygenLevel   [ ex:lowerBound 0.95 ; ex:upperBound 1.00 ] ;
+    ex:expectedOxygenSaturation   [ ex:lowerBound 0.95 ; ex:upperBound 1.00 ] ;
     rdfs:comment "Context describing Rut's expected parameter values when sleeping"@en .
 
 
@@ -79,7 +79,7 @@
     a sosa:ObservableProperty ;
     sosa:isObservedBy <sensor/oxygen/1> ;
     ssn:isPropertyOf <person/1> ;
-    rdfs:label "Measure of a Rut's oxygen level"@en .
+    rdfs:label "Measure of a Rut's oxygen saturation"@en .
 
 <person/1/breathing_rate>
     a sosa:ObservableProperty ;
@@ -114,8 +114,8 @@
 
 <sensor/oxygen/1>
     a sosa:Sensor ;
-    sosa:observes <person/1/oxygen> ;
-    rdfs:comment "Sensor measuring the Rut's oxygen level" .
+    sosa:observes <person/1/oxygen_saturation> ;
+    rdfs:comment "Sensor measuring the Rut's oxygen saturation" .
 
 <sensor/breathing_rate/1>
     a sosa:Sensor ;

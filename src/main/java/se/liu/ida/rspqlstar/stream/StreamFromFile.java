@@ -2,9 +2,8 @@ package se.liu.ida.rspqlstar.stream;
 
 import org.apache.jena.riot.RDFParser;
 import se.liu.ida.rdfstar.tools.parser.lang.LangTrigStar;
-import se.liu.ida.rspqlstar.store.dataset.RDFStream;
-import se.liu.ida.rspqlstar.store.dataset.TimestampedGraph;
-import se.liu.ida.rspqlstar.stream.RSPQLStarStream;
+import se.liu.ida.rspqlstar.store.dataset.RDFStarStream;
+import se.liu.ida.rspqlstar.store.dataset.RDFStarStreamElement;
 import se.liu.ida.rspqlstar.util.TimeUtil;
 
 import java.io.ByteArrayInputStream;
@@ -12,7 +11,6 @@ import java.io.File;
 import java.io.IOException;
 import java.net.URL;
 import java.nio.file.Files;
-import java.util.Date;
 import java.util.Iterator;
 import java.util.stream.Stream;
 
@@ -29,7 +27,7 @@ public class StreamFromFile extends RSPQLStarStream {
      * @param initialDelay
      * @param totalDelay
      */
-    public StreamFromFile(RDFStream rdfStream, String fileName, long initialDelay, long totalDelay) {
+    public StreamFromFile(RDFStarStream rdfStream, String fileName, long initialDelay, long totalDelay) {
         super(rdfStream, totalDelay);
         this.fileName = fileName;
         this.initialDelay = initialDelay;
@@ -53,7 +51,7 @@ public class StreamFromFile extends RSPQLStarStream {
                 if(prefixes == null) {
                     prefixes = line;
                 } else {
-                    final TimestampedGraph tg = new TimestampedGraph(TimeUtil.getTime());
+                    final RDFStarStreamElement tg = new RDFStarStreamElement(TimeUtil.getTime());
                     RDFParser.create()
                             .base("http://base/")
                             .source(new ByteArrayInputStream((prefixes + line).getBytes()))

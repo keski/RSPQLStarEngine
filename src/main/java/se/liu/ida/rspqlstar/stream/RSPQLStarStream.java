@@ -1,22 +1,20 @@
 package se.liu.ida.rspqlstar.stream;
 
-import se.liu.ida.rspqlstar.store.dataset.RDFStream;
-import se.liu.ida.rspqlstar.store.dataset.TimestampedGraph;
+import se.liu.ida.rspqlstar.store.dataset.RDFStarStream;
+import se.liu.ida.rspqlstar.store.dataset.RDFStarStreamElement;
 import se.liu.ida.rspqlstar.util.TimeUtil;
-
-import java.text.SimpleDateFormat;
 
 public abstract class RSPQLStarStream implements Runnable {
     static public final String BASE = "http://base/";
     protected boolean stop = false;
-    protected final RDFStream rdfStream;
+    protected final RDFStarStream rdfStream;
     protected final long totalDelay;
 
     /**
      * @param rdfStream
      * @param totalDelay
      */
-    public RSPQLStarStream(RDFStream rdfStream, long totalDelay){
+    public RSPQLStarStream(RDFStarStream rdfStream, long totalDelay){
         this.rdfStream = rdfStream;
         this.totalDelay = totalDelay;
     }
@@ -26,7 +24,7 @@ public abstract class RSPQLStarStream implements Runnable {
      *
      * @param timestampedGraph
      */
-    public void push(TimestampedGraph timestampedGraph){
+    public void push(RDFStarStreamElement timestampedGraph){
         rdfStream.push(timestampedGraph);
     }
 
@@ -37,7 +35,7 @@ public abstract class RSPQLStarStream implements Runnable {
      * @param timestampedGraph
      * @param delay
      */
-    public void delayedPush(TimestampedGraph timestampedGraph, long delay){
+    public void delayedPush(RDFStarStreamElement timestampedGraph, long delay){
         push(timestampedGraph);
         TimeUtil.silentSleep(delay);
         //busyWaitMillisecond(delay);

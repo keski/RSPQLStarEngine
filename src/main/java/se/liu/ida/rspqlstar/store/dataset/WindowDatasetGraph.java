@@ -1,8 +1,6 @@
 package se.liu.ida.rspqlstar.store.dataset;
 
-import org.apache.commons.collections4.iterators.IteratorChain;
 import org.apache.log4j.Logger;
-import se.liu.ida.rspqlstar.store.engine.main.pattern.QuadStarPattern;
 import se.liu.ida.rspqlstar.store.index.IdBasedQuad;
 
 import java.time.Duration;
@@ -20,12 +18,12 @@ public class WindowDatasetGraph extends DatasetGraphStar {
     public long width;
     public long step;
     public long startTime;
-    public RDFStream rdfStream;
+    public RDFStarStream rdfStream;
 
     public long cachedUpperBound = -1;
     public DatasetGraphStar cachedDatasetGraph;
 
-    public WindowDatasetGraph(String name, Duration width, Duration step, Date startTime, RDFStream rdfStream){
+    public WindowDatasetGraph(String name, Duration width, Duration step, Date startTime, RDFStarStream rdfStream){
         this.name = name;
         this.width = width.toMillis();
         this.step = step.toMillis();

@@ -4,10 +4,9 @@ import org.apache.jena.query.ARQ;
 import org.apache.jena.query.QueryFactory;
 import org.apache.jena.riot.RDFParser;
 import se.liu.ida.rdfstar.tools.parser.lang.LangTrigStar;
-import se.liu.ida.rspqlstar.algebra.MyAlgebra;
 import se.liu.ida.rspqlstar.lang.RSPQLStar;
 import se.liu.ida.rspqlstar.query.RSPQLStarQuery;
-import se.liu.ida.rspqlstar.store.dataset.RDFStream;
+import se.liu.ida.rspqlstar.store.dataset.RDFStarStream;
 import se.liu.ida.rspqlstar.store.dataset.StreamingDatasetGraph;
 import se.liu.ida.rspqlstar.store.engine.RSPQLStarEngine;
 import se.liu.ida.rspqlstar.store.engine.RSPQLStarQueryExecution;
@@ -36,11 +35,11 @@ public class UseCaseEvaluation {
         final String qString = Utils.readFile(dir + "/query.rspqlstar");
         final RSPQLStarQuery query = (RSPQLStarQuery) QueryFactory.create(qString, RSPQLStar.syntax);
 
-        final RDFStream activity = new RDFStream("http://base/s/activity");
-        final RDFStream heart = new RDFStream("http://base/s/heart");
-        final RDFStream breathing = new RDFStream("http://base/s/breathing");
-        final RDFStream oxygen = new RDFStream("http://base/s/oxygen");
-        final RDFStream location = new RDFStream("http://base/s/location");
+        final RDFStarStream activity = new RDFStarStream("http://base/s/activity");
+        final RDFStarStream heart = new RDFStarStream("http://base/s/heart");
+        final RDFStarStream breathing = new RDFStarStream("http://base/s/breathing");
+        final RDFStarStream oxygen = new RDFStarStream("http://base/s/oxygen");
+        final RDFStarStream location = new RDFStarStream("http://base/s/location");
 
         // Create streaming dataset
         final StreamingDatasetGraph sdg = new StreamingDatasetGraph();

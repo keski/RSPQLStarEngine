@@ -103,7 +103,7 @@ def main():
             myfile.write("\n")
         myfile.close()
 
-        # oxygen level, every second
+        # oxygen saturation, every second
         d = "reification/" if reif else "rdfstar/"
         myfile = open(d + "oxygen.trigs", "w")
         myfile.write(compress(prefixes) + "\n")

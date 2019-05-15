@@ -6,7 +6,7 @@ import org.apache.log4j.Logger;
 import se.liu.ida.rspqlstar.algebra.RSPQLStarTransform;
 import se.liu.ida.rspqlstar.lang.RSPQLStar;
 import se.liu.ida.rspqlstar.query.RSPQLStarQuery;
-import se.liu.ida.rspqlstar.store.dataset.RDFStream;
+import se.liu.ida.rspqlstar.store.dataset.RDFStarStream;
 import se.liu.ida.rspqlstar.store.dataset.StreamingDatasetGraph;
 import se.liu.ida.rspqlstar.store.dictionary.IdFactory;
 import se.liu.ida.rspqlstar.store.dictionary.VarDictionary;
@@ -80,7 +80,7 @@ public class PerformanceEvaluation {
         final RSPQLStarQuery query = (RSPQLStarQuery) QueryFactory.create(qString, RSPQLStar.syntax);
 
         // Stream
-        final RDFStream rdfStream = new RDFStream("http://stream/meta");
+        final RDFStarStream rdfStream = new RDFStarStream("http://stream/meta");
         // Create streaming dataset
         final StreamingDatasetGraph sdg = new StreamingDatasetGraph();
         sdg.registerStream(rdfStream);

@@ -9,7 +9,6 @@ import se.liu.ida.rspqlstar.query.RSPQLStarQuery;
 import se.liu.ida.rspqlstar.store.index.IdBasedQuad;
 
 import java.time.Duration;
-import java.time.temporal.TemporalUnit;
 import java.util.*;
 
 /**
@@ -19,7 +18,7 @@ import java.util.*;
 public class StreamingDatasetGraph extends AbstractDatasetGraph {
     private DatasetGraphStar baseDataset = new DatasetGraphStar();
     private Map<String, WindowDatasetGraph> windows = new HashMap<>();
-    public Map<String, RDFStream> rdfStreams = new HashMap<>();
+    public Map<String, RDFStarStream> rdfStreams = new HashMap<>();
     private DatasetGraphStar activeDataset = baseDataset;
     private Date time = new Date();
     private boolean ready = false;
@@ -34,7 +33,7 @@ public class StreamingDatasetGraph extends AbstractDatasetGraph {
      * creates a WindowDatasetGraph for each named window mentioned in the query.
      */
 
-    public void registerStream(RDFStream rdfStream){
+    public void registerStream(RDFStarStream rdfStream){
         rdfStreams.put(rdfStream.iri, rdfStream);
     }
 
@@ -52,7 +51,7 @@ public class StreamingDatasetGraph extends AbstractDatasetGraph {
             final String name = w.getWindowName();
             final Duration range = w.getRange();
             final Duration step = w.getStep();
-            final RDFStream rdfStream = rdfStreams.get(w.getStreamName());
+            final RDFStarStream rdfStream = rdfStreams.get(w.getStreamName());
             if(rdfStream == null){
                 throw new IllegalStateException("The RDFStream " + w.getStreamName() + " has not been registered");
             }

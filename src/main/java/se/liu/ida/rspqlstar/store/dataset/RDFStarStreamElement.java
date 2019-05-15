@@ -16,13 +16,13 @@ import java.util.Date;
 import java.util.Iterator;
 
 
-public class TimestampedGraph implements StreamRDF {
+public class RDFStarStreamElement implements StreamRDF {
     public Index index;
     public long time;
     final NodeDictionary nd = NodeDictionaryFactory.get();
     final ReferenceDictionary refT = ReferenceDictionaryFactory.get();
 
-    public TimestampedGraph(Date time){
+    public RDFStarStreamElement(Date time){
         this.time = time.getTime();
         index = new HashIndex(Field.G, Field.S, Field.P, Field.O);
     }
