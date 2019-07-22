@@ -1,0 +1,83 @@
+BASE <http://base/>
+PREFIX ex: <http://www.example.org/ontology#>
+PREFIX foaf: <http://xmlns.com/foaf/0.1/>
+PREFIX sosa: <http://www.w3.org/ns/sosa/>
+
+REGISTER STREAM <alert/lowEmergencyAbnormalState> COMPUTED EVERY PT10S AS
+
+SELECT ?activity (AVG(?hr) AS ?avgHr) (AVG(?br) AS ?avgBr) (AVG(?ox) AS ?avgOx)
+FROM NAMED WINDOW <w/1> ON <s/activity>  [RANGE PT10M STEP PT10S]
+FROM NAMED WINDOW <w/2> ON <s/location>  [RANGE PT10M STEP PT10S]
+FROM NAMED WINDOW <w/3> ON <s/heart>     [RANGE PT1M STEP PT10S]
+FROM NAMED WINDOW <w/4> ON <s/breathing> [RANGE PT1M STEP PT10S]
+FROM NAMED WINDOW <w/5> ON <s/oxygen>    [RANGE PT1M STEP PT10S]
+WHERE {
+    ?person a foaf:Person ;
+       foaf:name "Rut" ;
+       ex:home ?home ;
+       ex:partner ?partner .
+
+    [] a ex:NormalSituation ;
+       ex:forPerson ?person ;
+       ex:forActivity ?activity ;
+       ex:expectedHeartRate [ ex:upperBound ?hrMax ] ;
+       ex:expectedBreathingRate [ ex:lowerBound ?brMin ] ;
+       ex:expectedOxygenSaturation [ ex:lowerBound ?oxMin ; ex:upperBound ?oxMax ] .
+
+    WINDOW <w/1> { # Current activity, reported by the system
+        GRAPH ?g1 {
+            [ a sosa:Observation ;
+              sosa:featureOfInterest ?person ;
+              sosa:hasSimpleResult ?activity ] .
+        }
+    }
+    WINDOW <w/2> { # Location of Rut's partner
+        GRAPH ?g2 {
+            [ a sosa:Observation ;
+              sosa:featureOfInterest ?partner ;
+              sosa:hasSimpleResult ?loc ] .
+            FILTER(?loc != ?home)
+        }
+    }
+    WINDOW <w/3> { # Heart rate
+        GRAPH ?g3 {
+            ?o3 a sosa:Observation ;
+                sosa:featureOfInterest ?person ;
+                sosa:hasSimpleResult ?hr .
+            [] a rdf:Statement ;
+               rdf:subject ?o3 ;
+               rdf:predicate sosa:hasSimpleResult ;
+               rdf:object ?hr ;
+               ex:confidence ?c3 .
+            FILTER(?c3 > 0.95)
+        }
+    }
+    WINDOW <w/4> { # Breathing rate
+        GRAPH ?g4 {
+            ?o4 a sosa:Observation ;
+                sosa:featureOfInterest ?person ;
+                sosa:hasSimpleResult ?br .
+            [] a rdf:Statement ;
+               rdf:subject ?o4 ;
+               rdf:predicate sosa:hasSimpleResult ;
+               rdf:object ?br ;
+               ex:confidence ?c4 .
+            FILTER(?c4 > 0.95)
+        }
+    }
+    WINDOW <w/5> { # Oxygen saturation
+        GRAPH ?g5 {
+            ?o5 a sosa:Observation ;
+                sosa:featureOfInterest ?person ;
+                sosa:hasSimpleResult ?ox .
+            [] a rdf:Statement ;
+               rdf:subject ?o5 ;
+               rdf:predicate sosa:hasSimpleResult ;
+               rdf:object ?ox ;
+               ex:confidence ?c5 .
+            FILTER(?c5 > 0.95)
+        }
+    }
+}
+GROUP BY ?activity ?hrMax ?brMin ?oxMin ?oxMax
+HAVING(?avgHr > ?hrMax && ?avgBr < ?brMin && ?oxMin <= ?avgOx && ?avgOx <= ?oxMax)
