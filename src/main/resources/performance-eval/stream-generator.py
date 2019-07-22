@@ -27,7 +27,6 @@ def make_tg(x, triples, f):
 
 
     tg = "_:g{0} {{\n{1}\n}}".format(x, payload)
-    print()
     return tg
 
 def as_reif(s, p, o):
@@ -41,12 +40,12 @@ def as_reif(s, p, o):
 def as_rdf_star(s, p, o):
     return "   <<{0} {1} {2}>>\n".format(s, p, o)
 
-def main():
+def generate_streams():
     prefixes = "@base <http://base/> . @prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> . @prefix xsd: <http://www.w3.org/2001/XMLSchema#> . "
     for f in ["reification", "rdfstar"]:
-        for meta in range(1, 11):
+        for meta in range(11):
             random.seed(0)
-            myfile = open("{0}-meta-{1}.trigs".format(meta, f), "w")
+            myfile = open("{0}-meta-{1}.trigs".format(meta+1, f), "w")
             myfile.write(prefixes + "\n")
             for x in range(1000):
                 tg = make_tg(x, meta, f)
@@ -55,7 +54,24 @@ def main():
                 myfile.write("\n")
             myfile.close()
 
+def compare_size():
+    myfile = open("overhead_compared.txt", "w")
+    prefixes = "@base <http://base/> . @prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> . @prefix xsd: <http://www.w3.org/2001/XMLSchema#> . "
+    for f in ["reification", "rdfstar"]:
+        myfile.write(f + "\n")
+        for meta in range(0, 31, 2):
+            random.seed(0)
+            tg = make_tg(0, meta, f)
+            compressed_tg = compress(prefixes + "\n" + tg)
+            myfile.write("({0},{1}) ".format(meta, utf8len(compressed_tg)/1024.0))
+        myfile.write("\n")
+    myfile.close()
+
 def compress(data):
     return re.sub("\s+", " ", data)
 
-main()
+def utf8len(s):
+    return len(s.encode('utf-8'))
+
+generate_streams()
+compare_size()
