@@ -1,5 +1,6 @@
 package se.liu.ida.rspqlstar.store.engine.main;
 
+import org.apache.commons.collections4.iterators.IteratorChain;
 import org.apache.jena.graph.Node;
 import org.apache.jena.graph.Node_Triple;
 import org.apache.jena.graph.Triple;
@@ -9,9 +10,11 @@ import org.apache.jena.sparql.core.Quad;
 import org.apache.jena.sparql.core.Var;
 import org.apache.jena.sparql.engine.ExecutionContext;
 import org.apache.jena.sparql.engine.QueryIterator;
+import org.apache.jena.sparql.engine.binding.Binding;
 import org.apache.jena.sparql.engine.main.OpExecutor;
 import org.apache.jena.sparql.engine.main.OpExecutorFactory;
 import org.apache.jena.sparql.expr.Expr;
+import org.apache.jena.sparql.expr.ExprFunction;
 import org.apache.jena.sparql.expr.ExprVar;
 import org.apache.jena.sparql.expr.NodeValue;
 import org.apache.log4j.Logger;
@@ -41,6 +44,7 @@ public class OpRSPQLStarExecutor extends OpExecutor {
     protected QueryIterator exec(final Op op, final QueryIterator input) {
         final QueryIterator iter = super.exec(op, input);
         if(!iter.hasNext()) input.close();
+        //System.out.println(op);
         return iter;
     }
 
@@ -75,8 +79,6 @@ public class OpRSPQLStarExecutor extends OpExecutor {
         return new DecodeBindingsIterator(execute(opSequence, iter), execCxt);
     }
 
-
-
     /**
      * Map to ID based OpQuad.
      * @param opQuad
@@ -104,6 +106,7 @@ public class OpRSPQLStarExecutor extends OpExecutor {
         final Iterator<SolutionMapping> iterator = executeIdBasedOp(opLeft, input);
         return executeIdBasedOp(opRight, iterator);
     }
+
     /**
      * ID based OpQuad.
      *
@@ -157,6 +160,10 @@ public class OpRSPQLStarExecutor extends OpExecutor {
 
         if(expr instanceof ExprVar){
             throw new IllegalStateException("Binding variable to variable is currently not supported.");
+        } else if(expr instanceof ExprFunction) {
+            encode(var);
+            QueryIterator iter = exec(opExtend, new DecodeBindingsIterator(input, execCxt));
+            return new EncodeBindingsIterator(iter, execCxt);
         } else {
             final Node node = ((NodeValue) expr).asNode();
             final Long id = encode(node);
@@ -210,15 +217,23 @@ public class OpRSPQLStarExecutor extends OpExecutor {
         } else if (op instanceof OpSequence) {
             iterator = execute((OpSequence) op, input);
         } else if (op instanceof OpExtend) {
-            iterator = execute((OpExtend) op, input);
+            OpExtend opExtend = (OpExtend) op;
+            if(opExtend.getSubOp() instanceof OpExtend){
+                iterator = executeIdBasedOp(opExtend.getSubOp(), execute((OpExtend) op, input));
+            } else {
+                iterator = execute((OpExtend) op, input);
+            }
         } else if (op instanceof OpExtendQuad) {
             iterator = execute((OpExtendQuad) op, input);
         } else if (op instanceof OpFilter) {
             iterator = execute((OpFilter) op, input);
         } else if(op instanceof OpTable) {
             iterator = execute((OpTable) op, input);
-        }  else if(op instanceof OpWindow) {
+        } else if(op instanceof OpWindow) {
             iterator = execute((OpWindow) op, input);
+        }  else if(op instanceof OpUnion) {
+            OpUnion opUnion = (OpUnion) op;
+            iterator = new IteratorChain<>(executeIdBasedOp(opUnion.getLeft(), input), executeIdBasedOp(opUnion.getRight(), input));
         } else {
             logger.info("There is no id-based iterator implemented for " + op + ", defaulting to decode/encode");
             QueryIterator iter = exec(op, new DecodeBindingsIterator(input, execCxt));

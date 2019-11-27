@@ -1,0 +1,4 @@
+Mako==1.0.13
+numpy==1.17.4
+matplotlib
+scikit-fuzzy

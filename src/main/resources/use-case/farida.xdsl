@@ -1,0 +1,123 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!--
+Note:
+The current network uses prefixes to help match nodes from the network with RDF nodes. Specifically, all outcomes
+prefixed with "B_" are assumed to represent boolean values, and all outcomes prefixed with "S_" are assumed to be
+represented as simple strings.
+-->
+
+<smile version="1.0" id="Network1" numsamples="10000" discsamples="10000">
+	<nodes>
+		<cpt id="Influenza_season">
+			<state id="B_true" />
+			<state id="B_false" />
+			<probabilities>0.1 0.9</probabilities>
+		</cpt>
+		<cpt id="Activity">
+			<state id="Resting" />
+			<state id="Exercising" />
+			<state id="Standing" />
+			<state id="Sleeping" />
+			<probabilities>0.43 0.01 0.16 0.4</probabilities>
+		</cpt>
+		<cpt id="Temperature">
+			<state id="Low" />
+			<state id="Normal" />
+			<state id="High" />
+			<parents>Activity</parents>
+			<probabilities>0.01 0.96 0.03 0.001 0.7 0.299 0.01 0.98 0.01 0.002 0.9399999999999999 0.058</probabilities>
+		</cpt>
+		<cpt id="Fever">
+			<state id="B_true" />
+			<state id="B_false" />
+			<parents>Temperature Activity</parents>
+			<probabilities>0 1 0 1 0 1 0 1 0 1 0 1 0 1 0 1 0.9 0.1 0.01 0.99 0.9 0.1 0.95 0.05</probabilities>
+		</cpt>
+		<cpt id="Influenza">
+			<state id="B_true" />
+			<state id="B_false" />
+			<parents>Influenza_season Fever</parents>
+			<probabilities>0.95 0.05 0.01 0.99 0.1 0.9 0.001 0.999</probabilities>
+		</cpt>
+		<cpt id="Heart_rate">
+			<state id="Low" />
+			<state id="Normal" />
+			<state id="High" />
+			<parents>Activity Influenza</parents>
+			<probabilities>0.01 0.8 0.19 0.01 0.98 0.01 0 0.4 0.6 0 0.7 0.3 0.01 0.7 0.29 0.01 0.95 0.04 0.01 0.8 0.19 0.01 0.98 0.01</probabilities>
+		</cpt>
+		<cpt id="Breathing">
+			<state id="Low" />
+			<state id="Normal" />
+			<state id="High" />
+			<parents>Activity Influenza</parents>
+			<probabilities>0.01 0.8 0.19 0.01 0.98 0.01 0.001 0.049 0.95 0.01 0.4 0.59 0.001 0.799 0.2 0.01 0.98 0.01 0.01 0.6899999999999999 0.3 0.001 0.99 0.008999999999999999</probabilities>
+		</cpt>
+		<cpt id="Medical_status">
+			<state id="Normal" />
+			<state id="Abnormal" />
+			<parents>Influenza Fever Heart_rate Breathing Activity</parents>
+			<probabilities>0 1 0 1 0 1 0 1 0 1 0 1 0 1 0 1 0 1 0 1 0 1 0 1 0 1 0 1 0 1 0 1 0 1 0 1 0 1 0 1 0 1 0 1 0 1 0 1 0 1 0 1 0 1 0 1 0 1 0 1 0 1 0 1 0 1 0 1 0 1 0 1 0 1 0 1 0 1 0 1 0 1 0 1 0 1 0 1 0 1 0 1 0 1 0 1 0 1 0 1 0 1 0 1 0 1 0 1 0 1 0 1 0 1 0 1 0 1 0 1 0 1 0 1 0 1 0 1 0 1 0 1 0 1 0 1 0 1 0 1 0 1 0 1 0 1 0 1 0 1 0 1 0 1 0 1 0 1 0 1 0 1 0 1 0 1 0 1 0 1 0 1 0 1 0 1 0 1 0 1 0 1 0 1 0 1 0 1 0 1 0 1 0 1 0 1 0 1 0 1 0 1 0 1 0 1 0 1 0 1 0 1 0 1 0 1 0.2 0.8 0.5 0.5 0.2 0.8 0.2 0.8 0.15 0.85 0.5 0.5 0.15 0.85 0.15 0.85 0.1 0.9 0.999 0.001 0.1 0.9 0.1 0.9 0.7 0.3 0.7 0.3 0.7 0.3 0.7 0.3 1 0 1 0 1 0 1 0 0.01 0.99 0.99 0.01 0.01 0.99 0.01 0.99 0.1 0.9 0.1 0.9 0.1 0.9 0.1 0.9 0.2 0.8 1 0 0.2 0.8 0.2 0.8 0.1 0.9 1 0 0.1 0.9 0.1 0.9</probabilities>
+		</cpt>
+	</nodes>
+	<extensions>
+		<genie version="1.0" app="GeNIe 2.4.4601.0 ACADEMIC" name="EcareFarida" faultnameformat="nodestate">
+			<node id="Influenza">
+				<name>Influenza</name>
+				<interior color="e5f6f7" />
+				<outline color="000080" />
+				<font color="000000" name="Arial" size="8" />
+				<position>50 230 109 266</position>
+			</node>
+			<node id="Influenza_season">
+				<name>Influenza season</name>
+				<interior color="e5f6f7" />
+				<outline color="000080" />
+				<font color="000000" name="Arial" size="8" />
+				<position>15 168 141 204</position>
+			</node>
+			<node id="Temperature">
+				<name>Temperature</name>
+				<interior color="e5f6f7" />
+				<outline color="000080" />
+				<font color="000000" name="Arial" size="8" />
+				<position>10 365 101 393</position>
+			</node>
+			<node id="Heart_rate">
+				<name>Heart rate</name>
+				<interior color="e5f6f7" />
+				<outline color="000080" />
+				<font color="000000" name="Arial" size="8" />
+				<position>209 259 271 297</position>
+			</node>
+			<node id="Activity">
+				<name>Activity</name>
+				<interior color="e5f6f7" />
+				<outline color="000080" />
+				<font color="000000" name="Arial" size="8" />
+				<position>311 301 363 333</position>
+			</node>
+			<node id="Fever">
+				<name>Fever</name>
+				<interior color="e5f6f7" />
+				<outline color="000080" />
+				<font color="000000" name="Arial" size="8" />
+				<position>84 298 130 326</position>
+			</node>
+			<node id="Medical_status">
+				<name>Medical status</name>
+				<interior color="e5f6f7" />
+				<outline color="000080" />
+				<font color="000000" name="Arial" size="8" />
+				<position>227 116 329 148</position>
+			</node>
+			<node id="Breathing">
+				<name>Breathing</name>
+				<interior color="e5f6f7" />
+				<outline color="000080" />
+				<font color="000000" name="Arial" size="8" />
+				<position>409 205 484 231</position>
+			</node>
+		</genie>
+	</extensions>
+</smile>

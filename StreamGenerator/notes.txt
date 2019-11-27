@@ -1,0 +1,5 @@
+observedProperty is a property of featureOfInterest
+
+<person/1> a :FeatureOfInterest .
+<person/1/heartrate> propertyOf <person/1> .
+

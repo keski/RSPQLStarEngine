@@ -35,6 +35,7 @@
             <id>jitpack.io</id>
             <url>https://jitpack.io</url>
         </repository>
+
     </repositories>
 
     <dependencies>
@@ -45,17 +46,19 @@
             <version>f2ed07a463243018b1ed1e331fd955472f8eeea7</version>
         </dependency>
         <!-- Collection libs -->
-        <!--<dependency>
-            <groupId>org.apache.commons</groupId>
-            <artifactId>commons-collections4</artifactId>
-            <version>4.1</version>
-        </dependency>-->
-        <!--<dependency>
-            <groupId>it.unimi.dsi</groupId>
-            <artifactId>fastutil</artifactId>
-            <version>8.2.1</version>
-        </dependency>-->
+        <dependency>
+            <groupId>com.bayesfusion</groupId>
+            <artifactId>jsmile</artifactId>
+            <version>1.4.0</version>
+            <scope>system</scope>
+            <systemPath>${project.basedir}/libs/jsmile-1.4.0-academic/jsmile-1.4.0.jar</systemPath>
+        </dependency>
 
+        <dependency>
+            <groupId>org.apache.commons</groupId>
+            <artifactId>commons-math3</artifactId>
+            <version>3.6.1</version>
+        </dependency>
 
     </dependencies>
 

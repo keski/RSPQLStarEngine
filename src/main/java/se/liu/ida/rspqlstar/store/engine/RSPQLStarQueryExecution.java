@@ -6,6 +6,7 @@ import org.apache.jena.riot.ResultSetMgr;
 import org.apache.jena.riot.resultset.ResultSetLang;
 import org.apache.jena.sparql.engine.*;
 import org.apache.log4j.Logger;
+import se.liu.ida.rspqlstar.function.BayesianNetwork;
 import se.liu.ida.rspqlstar.query.RSPQLStarQuery;
 import se.liu.ida.rspqlstar.store.dataset.StreamingDatasetGraph;
 import se.liu.ida.rspqlstar.util.TimeUtil;
@@ -70,6 +71,10 @@ public class RSPQLStarQueryExecution extends QueryExecutionBase {
     private void startQueryIterator() {
         execInit();
         queryIterator = getPlan().iterator();
+    }
+
+    protected void execInit() {
+        // reset things?
     }
 
     /**

@@ -71,9 +71,9 @@ public class PerformanceEvaluation {
     public static void run(int x, String suffix, long timeOutAfter, boolean optimized) throws IOException {
         final String queryFile;
         if(optimized){
-            queryFile = String.format("performance-eval/query-%s-optimized.rspqlstar", suffix);
+            queryFile = String.format("old/performance-eval/query-%s-optimized.rspqlstar", suffix);
         } else {
-            queryFile = String.format("performance-eval/query-%s.rspqlstar", suffix);
+            queryFile = String.format("old/performance-eval/query-%s.rspqlstar", suffix);
         }
 
         final String qString = readFile(queryFile);
@@ -89,7 +89,7 @@ public class PerformanceEvaluation {
         final RSPQLStarQueryExecution qexec = new RSPQLStarQueryExecution(query, sdg);
 
         // Start all streams
-        final String fileName = String.format("performance-eval/%s-meta-%s.trigs", x, suffix);
+        final String fileName = String.format("old/performance-eval/%s-meta-%s.trigs", x, suffix);
         final StreamFromFile stream = new StreamFromFile(rdfStream, fileName, 0, 100);
         stream.start();
 

@@ -38,11 +38,11 @@ public class StreamingDatasetGraph extends AbstractDatasetGraph {
     }
 
     /**
-     * Initialize the dataset for use with a given query. All streams stream on which the
-     * the query is dependent must be registered.
+     * Initialize the dataset for use with a given query. All streams on which the
+     * the query depends must be registered.
      *
      * Note: A single dataset can be used for multiple parallel queries; however, each named
-     * window must be unique, since  aA WindowDatasetGraph is created for each named window
+     * window must be unique, since a WindowDatasetGraph is created for each named window
      * mentioned in the query.
      */
 

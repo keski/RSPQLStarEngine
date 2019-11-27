@@ -1,0 +1,28 @@
+@base <http://base/> .
+
+<HeartRate> a <BNNode> ;
+            <hasPossibleState> <Low> ;
+            <hasPossibleState> <Normal> ;
+            <hasPossibleState> <High> .
+
+<Activity> a <BNNode> ;
+            <hasPossibleState> <Excercise> ;
+            <hasPossibleState> <Reading> ;
+            <hasPossibleState> <Sleeping> .
+
+<MedicalCondition> a <BNNode> ;
+            <hasPossibleState> <Abnormal> ;
+            <hasPossibleState> <Normal> .
+
+
+<HeartRate> <dependsOn> <Activity> .
+
+[] a <ProbabilityTable> ;
+    <for> <HeartRate> ;
+    <observation> _:o1 .
+
+_:o1 a <Observation> ;
+
+
+<MedicalCondition> <dependsOn> <Activity>, <HeartRate> .
+

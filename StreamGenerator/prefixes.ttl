@@ -1,0 +1,9 @@
+@base <http://example.org/> .
+@prefix bn: <http://w3id.org/rsp/rspu/bn#> .
+@prefix ecare: <http://ecareathome-ontology.mpi.aass.oru.se/patterns/SmartHome_Event.owl#> .
+@prefix : <http://www.example.org/ontology#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix rspu: <http://w3id.org/rsp/rspu#> .
+@prefix sosa: <http://www.w3.org/ns/sosa/> .
+@prefix prov: <http://www.w3.org/ns/prov#> .

@@ -1,0 +1,5 @@
+@prefix rspu: <http://w3id.org/rsp/rspu#> .
+
+<< <farida> <heartrate> 80 >> rspu:degree 0.7 .
+
+<< <farida> <temp> 37.9 >> rspu:degree 0.6 .

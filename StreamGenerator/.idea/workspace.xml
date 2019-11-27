@@ -1,0 +1,467 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ChangeListManager">
+    <list default="true" id="d7271a43-bae3-4c59-abbf-c0e473093420" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/../libs/jsmile-1.4.0-academic/jsmile-1.4.0.jar" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../libs/jsmile-1.4.0-academic/jsmile.dll" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../libs/jsmile-1.4.0-academic/libjsmile.jnilib" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../libs/jsmile-1.4.0-academic/libjsmile.so" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../libs/jsmile-1.4.0-academic/smile_license/License.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../src/main/java/experiments/PerformanceEvaluation.java" beforeDir="false" afterPath="$PROJECT_DIR$/../src/main/java/experiments/PerformanceEvaluation.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../src/main/java/experiments/UseCaseEvaluation.java" beforeDir="false" afterPath="$PROJECT_DIR$/../src/main/java/experiments/UseCaseEvaluation.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../src/main/java/se/liu/ida/rspqlstar/store/dataset/DatasetGraphStar.java" beforeDir="false" afterPath="$PROJECT_DIR$/../src/main/java/se/liu/ida/rspqlstar/store/dataset/DatasetGraphStar.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../src/main/java/se/liu/ida/rspqlstar/store/dataset/StreamingDatasetGraph.java" beforeDir="false" afterPath="$PROJECT_DIR$/../src/main/java/se/liu/ida/rspqlstar/store/dataset/StreamingDatasetGraph.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../src/main/java/se/liu/ida/rspqlstar/store/engine/RSPQLStarQueryExecution.java" beforeDir="false" afterPath="$PROJECT_DIR$/../src/main/java/se/liu/ida/rspqlstar/store/engine/RSPQLStarQueryExecution.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../src/main/java/se/liu/ida/rspqlstar/store/engine/main/OpRSPQLStarExecutor.java" beforeDir="false" afterPath="$PROJECT_DIR$/../src/main/java/se/liu/ida/rspqlstar/store/engine/main/OpRSPQLStarExecutor.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../src/main/java/se/liu/ida/rspqlstar/store/engine/main/iterator/EncodeBindingsIterator.java" beforeDir="false" afterPath="$PROJECT_DIR$/../src/main/java/se/liu/ida/rspqlstar/store/engine/main/iterator/EncodeBindingsIterator.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../src/main/resources/performance-eval/1-meta-rdfstar.trigs" beforeDir="false" afterPath="$PROJECT_DIR$/../src/main/resources/old/performance-eval/1-meta-rdfstar.trigs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../src/main/resources/performance-eval/1-meta-reification.trigs" beforeDir="false" afterPath="$PROJECT_DIR$/../src/main/resources/old/performance-eval/1-meta-reification.trigs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../src/main/resources/performance-eval/10-meta-rdfstar.trigs" beforeDir="false" afterPath="$PROJECT_DIR$/../src/main/resources/old/performance-eval/10-meta-rdfstar.trigs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../src/main/resources/performance-eval/10-meta-reification.trigs" beforeDir="false" afterPath="$PROJECT_DIR$/../src/main/resources/old/performance-eval/10-meta-reification.trigs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../src/main/resources/performance-eval/11-meta-rdfstar.trigs" beforeDir="false" afterPath="$PROJECT_DIR$/../src/main/resources/old/performance-eval/11-meta-rdfstar.trigs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../src/main/resources/performance-eval/11-meta-reification.trigs" beforeDir="false" afterPath="$PROJECT_DIR$/../src/main/resources/old/performance-eval/11-meta-reification.trigs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../src/main/resources/performance-eval/2-meta-rdfstar.trigs" beforeDir="false" afterPath="$PROJECT_DIR$/../src/main/resources/old/performance-eval/2-meta-rdfstar.trigs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../src/main/resources/performance-eval/2-meta-reification.trigs" beforeDir="false" afterPath="$PROJECT_DIR$/../src/main/resources/old/performance-eval/2-meta-reification.trigs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../src/main/resources/performance-eval/3-meta-rdfstar.trigs" beforeDir="false" afterPath="$PROJECT_DIR$/../src/main/resources/old/performance-eval/3-meta-rdfstar.trigs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../src/main/resources/performance-eval/3-meta-reification.trigs" beforeDir="false" afterPath="$PROJECT_DIR$/../src/main/resources/old/performance-eval/3-meta-reification.trigs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../src/main/resources/performance-eval/4-meta-rdfstar.trigs" beforeDir="false" afterPath="$PROJECT_DIR$/../src/main/resources/old/performance-eval/4-meta-rdfstar.trigs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../src/main/resources/performance-eval/4-meta-reification.trigs" beforeDir="false" afterPath="$PROJECT_DIR$/../src/main/resources/old/performance-eval/4-meta-reification.trigs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../src/main/resources/performance-eval/5-meta-rdfstar.trigs" beforeDir="false" afterPath="$PROJECT_DIR$/../src/main/resources/old/performance-eval/5-meta-rdfstar.trigs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../src/main/resources/performance-eval/5-meta-reification.trigs" beforeDir="false" afterPath="$PROJECT_DIR$/../src/main/resources/old/performance-eval/5-meta-reification.trigs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../src/main/resources/performance-eval/6-meta-rdfstar.trigs" beforeDir="false" afterPath="$PROJECT_DIR$/../src/main/resources/old/performance-eval/6-meta-rdfstar.trigs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../src/main/resources/performance-eval/6-meta-reification.trigs" beforeDir="false" afterPath="$PROJECT_DIR$/../src/main/resources/old/performance-eval/6-meta-reification.trigs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../src/main/resources/performance-eval/7-meta-rdfstar.trigs" beforeDir="false" afterPath="$PROJECT_DIR$/../src/main/resources/old/performance-eval/7-meta-rdfstar.trigs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../src/main/resources/performance-eval/7-meta-reification.trigs" beforeDir="false" afterPath="$PROJECT_DIR$/../src/main/resources/old/performance-eval/7-meta-reification.trigs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../src/main/resources/performance-eval/8-meta-rdfstar.trigs" beforeDir="false" afterPath="$PROJECT_DIR$/../src/main/resources/old/performance-eval/8-meta-rdfstar.trigs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../src/main/resources/performance-eval/8-meta-reification.trigs" beforeDir="false" afterPath="$PROJECT_DIR$/../src/main/resources/old/performance-eval/8-meta-reification.trigs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../src/main/resources/performance-eval/9-meta-rdfstar.trigs" beforeDir="false" afterPath="$PROJECT_DIR$/../src/main/resources/old/performance-eval/9-meta-rdfstar.trigs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../src/main/resources/performance-eval/9-meta-reification.trigs" beforeDir="false" afterPath="$PROJECT_DIR$/../src/main/resources/old/performance-eval/9-meta-reification.trigs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../src/main/resources/performance-eval/overhead_compared.txt" beforeDir="false" afterPath="$PROJECT_DIR$/../src/main/resources/old/performance-eval/overhead_compared.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../src/main/resources/performance-eval/query-rdfstar.rspqlstar" beforeDir="false" afterPath="$PROJECT_DIR$/../src/main/resources/old/performance-eval/query-rdfstar.rspqlstar" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../src/main/resources/performance-eval/query-reification-optimized.rspqlstar" beforeDir="false" afterPath="$PROJECT_DIR$/../src/main/resources/old/performance-eval/query-reification-optimized.rspqlstar" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../src/main/resources/performance-eval/query-reification.rspqlstar" beforeDir="false" afterPath="$PROJECT_DIR$/../src/main/resources/old/performance-eval/query-reification.rspqlstar" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../src/main/resources/performance-eval/stream-generator.py" beforeDir="false" afterPath="$PROJECT_DIR$/../src/main/resources/old/performance-eval/stream-generator.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../src/main/resources/use-case/base-data.ttl" beforeDir="false" afterPath="$PROJECT_DIR$/../src/main/resources/old/use-case/base-data.ttl" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../src/main/resources/use-case/rdfstar/activity.trigs" beforeDir="false" afterPath="$PROJECT_DIR$/../src/main/resources/old/use-case/rdfstar/activity.trigs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../src/main/resources/use-case/rdfstar/breathing.trigs" beforeDir="false" afterPath="$PROJECT_DIR$/../src/main/resources/old/use-case/rdfstar/breathing.trigs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../src/main/resources/use-case/rdfstar/heart.trigs" beforeDir="false" afterPath="$PROJECT_DIR$/../src/main/resources/old/use-case/rdfstar/heart.trigs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../src/main/resources/use-case/rdfstar/location.trigs" beforeDir="false" afterPath="$PROJECT_DIR$/../src/main/resources/old/use-case/rdfstar/location.trigs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../src/main/resources/use-case/rdfstar/oxygen.trigs" beforeDir="false" afterPath="$PROJECT_DIR$/../src/main/resources/old/use-case/rdfstar/oxygen.trigs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../src/main/resources/use-case/rdfstar/query.rspqlstar" beforeDir="false" afterPath="$PROJECT_DIR$/../src/main/resources/old/use-case/rdfstar/query.rspqlstar" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../src/main/resources/use-case/reification/activity.trigs" beforeDir="false" afterPath="$PROJECT_DIR$/../src/main/resources/old/use-case/reification/activity.trigs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../src/main/resources/use-case/reification/breathing.trigs" beforeDir="false" afterPath="$PROJECT_DIR$/../src/main/resources/old/use-case/reification/breathing.trigs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../src/main/resources/use-case/reification/heart.trigs" beforeDir="false" afterPath="$PROJECT_DIR$/../src/main/resources/old/use-case/reification/heart.trigs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../src/main/resources/use-case/reification/location.trigs" beforeDir="false" afterPath="$PROJECT_DIR$/../src/main/resources/old/use-case/reification/location.trigs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../src/main/resources/use-case/reification/oxygen.trigs" beforeDir="false" afterPath="$PROJECT_DIR$/../src/main/resources/old/use-case/reification/oxygen.trigs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../src/main/resources/use-case/reification/query.rspqlstar" beforeDir="false" afterPath="$PROJECT_DIR$/../src/main/resources/old/use-case/reification/query.rspqlstar" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../src/main/resources/use-case/stream-generator.py" beforeDir="false" afterPath="$PROJECT_DIR$/../src/main/resources/old/use-case/stream-generator.py" afterDir="false" />
+    </list>
+    <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FileEditorManager">
+    <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/activity.trigs">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="30">
+              <caret line="2" selection-start-line="2" selection-end-line="2" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/activity.template">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="90">
+              <caret line="6" column="66" selection-start-line="6" selection-start-column="66" selection-end-line="6" selection-end-column="66" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/prefixes.ttl">
+          <provider selected="true" editor-type-id="text-editor">
+            <state>
+              <caret column="29" lean-forward="true" selection-start-column="29" selection-end-column="29" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/main.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="200">
+              <caret line="27" column="48" selection-start-line="27" selection-start-column="48" selection-end-line="27" selection-end-column="48" />
+              <folding>
+                <element signature="e#595#604#0" expanded="true" />
+                <element signature="e#1003#2084#0" />
+                <element signature="e#3729#4330#0" />
+                <element signature="e#4726#5350#0" />
+                <element signature="e#5486#6119#0" />
+                <element signature="e#4298#4880#0" />
+                <element signature="e#4886#5443#0" />
+                <element signature="e#6143#6725#0" />
+                <element signature="e#6771#7363#0" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/temperature.template">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="210">
+              <caret line="14" column="22" lean-forward="true" selection-start-line="14" selection-start-column="22" selection-end-line="14" selection-end-column="22" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/breathing.template">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="15">
+              <caret line="1" column="55" selection-start-line="1" selection-start-column="55" selection-end-line="1" selection-end-column="55" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/requirements.txt">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="45">
+              <caret line="3" selection-start-line="3" selection-end-line="3" selection-end-column="12" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/heart.template">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="210">
+              <caret line="14" column="55" lean-forward="true" selection-start-line="14" selection-start-column="55" selection-end-line="14" selection-end-column="55" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/oxygen.template">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="60">
+              <caret line="4" column="41" selection-start-line="4" selection-start-column="41" selection-end-line="4" selection-end-column="41" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+    </leaf>
+  </component>
+  <component name="FindInProjectRecents">
+    <findStrings>
+      <find>d[</find>
+      <find>type</find>
+      <find>rdf:</find>
+      <find>ont</find>
+      <find>plt</find>
+    </findStrings>
+    <replaceStrings>
+      <replace>data[</replace>
+    </replaceStrings>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />
+  </component>
+  <component name="IdeDocumentHistory">
+    <option name="CHANGED_PATHS">
+      <list>
+        <option value="$PROJECT_DIR$/notes.txt" />
+        <option value="$PROJECT_DIR$/prefixes.ttl" />
+        <option value="$PROJECT_DIR$/requirements.txt" />
+        <option value="$PROJECT_DIR$/heart.template" />
+        <option value="$PROJECT_DIR$/oxygen.template" />
+        <option value="$PROJECT_DIR$/breathing.template" />
+        <option value="$PROJECT_DIR$/temperature.template" />
+        <option value="$PROJECT_DIR$/activity.template" />
+        <option value="$PROJECT_DIR$/main.py" />
+      </list>
+    </option>
+  </component>
+  <component name="ProjectConfigurationFiles">
+    <option name="files">
+      <list>
+        <option value="$PROJECT_DIR$/.idea/StreamGenerator.iml" />
+        <option value="$PROJECT_DIR$/.idea/misc.xml" />
+        <option value="$PROJECT_DIR$/.idea/vcs.xml" />
+        <option value="$PROJECT_DIR$/.idea/modules.xml" />
+        <option value="$PROJECT_DIR$/.idea/libraries/R_User_Library.xml" />
+      </list>
+    </option>
+  </component>
+  <component name="ProjectFrameBounds">
+    <option name="y" value="23" />
+    <option name="width" value="1440" />
+    <option name="height" value="877" />
+  </component>
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true">
+    <ConfirmationsSetting value="1" id="Add" />
+  </component>
+  <component name="ProjectView">
+    <navigator proportions="" version="1">
+      <foldersAlwaysOnTop value="true" />
+    </navigator>
+    <panes>
+      <pane id="ProjectPane">
+        <subPane>
+          <expand>
+            <path>
+              <item name="StreamGenerator" type="b2602c69:ProjectViewProjectNode" />
+              <item name="StreamGenerator" type="462c0819:PsiDirectoryNode" />
+            </path>
+          </expand>
+          <select />
+        </subPane>
+      </pane>
+      <pane id="Scope" />
+    </panes>
+  </component>
+  <component name="PropertiesComponent">
+    <property name="ASKED_SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="restartRequiresConfirmation" value="false" />
+  </component>
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$" />
+    </key>
+  </component>
+  <component name="RunDashboard">
+    <option name="ruleStates">
+      <list>
+        <RuleState>
+          <option name="name" value="ConfigurationTypeDashboardGroupingRule" />
+        </RuleState>
+        <RuleState>
+          <option name="name" value="StatusDashboardGroupingRule" />
+        </RuleState>
+      </list>
+    </option>
+  </component>
+  <component name="RunManager">
+    <configuration name="main" type="PythonConfigurationType" factoryName="Python" temporary="true">
+      <module name="StreamGenerator" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/main.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
+    <recent_temporary>
+      <list>
+        <item itemvalue="Python.main" />
+      </list>
+    </recent_temporary>
+  </component>
+  <component name="SvnConfiguration">
+    <configuration />
+  </component>
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="d7271a43-bae3-4c59-abbf-c0e473093420" name="Default Changelist" comment="" />
+      <created>1574176960424</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1574176960424</updated>
+    </task>
+    <servers />
+  </component>
+  <component name="ToolWindowManager">
+    <frame x="0" y="23" width="1440" height="877" extended-state="0" />
+    <editor active="true" />
+    <layout>
+      <window_info id="Favorites" order="0" side_tool="true" />
+      <window_info content_ui="combo" id="Project" order="1" visible="true" weight="0.14306152" />
+      <window_info id="Structure" order="2" side_tool="true" weight="0.25" />
+      <window_info anchor="bottom" id="GraphQL" order="0" />
+      <window_info anchor="bottom" id="Terminal" order="1" />
+      <window_info anchor="bottom" id="Event Log" order="2" side_tool="true" />
+      <window_info anchor="bottom" id="Python Console" order="3" />
+      <window_info anchor="bottom" id="Message" order="4" />
+      <window_info anchor="bottom" id="Find" order="5" />
+      <window_info anchor="bottom" id="Version Control" order="6" weight="0.3299363" />
+      <window_info active="true" anchor="bottom" id="Run" order="7" visible="true" weight="0.4089172" />
+      <window_info anchor="bottom" id="Debug" order="8" weight="0.4" />
+      <window_info anchor="bottom" id="Cvs" order="9" weight="0.25" />
+      <window_info anchor="bottom" id="Inspection" order="10" weight="0.4" />
+      <window_info anchor="bottom" id="TODO" order="11" />
+      <window_info anchor="right" id="R Graphics" order="0" />
+      <window_info anchor="right" id="Commander" internal_type="SLIDING" order="1" type="SLIDING" weight="0.4" />
+      <window_info anchor="right" id="R Packages" order="2" />
+      <window_info anchor="right" id="Ant Build" order="3" weight="0.25" />
+      <window_info anchor="right" content_ui="combo" id="Hierarchy" order="4" weight="0.25" />
+    </layout>
+  </component>
+  <component name="UnknownFeatures">
+    <option featureType="com.intellij.fileTypeFactory" implementationName="*.template" />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State>
+              <option name="RECENTLY_FILTERED_USER_GROUPS">
+                <collection />
+              </option>
+              <option name="RECENTLY_FILTERED_BRANCH_GROUPS">
+                <collection />
+              </option>
+              <option name="COLUMN_ORDER">
+                <list>
+                  <option value="0" />
+                  <option value="1" />
+                  <option value="2" />
+                  <option value="3" />
+                </list>
+              </option>
+            </State>
+          </value>
+        </entry>
+      </map>
+    </option>
+    <option name="RECENT_FILTERS">
+      <map>
+        <entry key="Branch">
+          <value>
+            <list />
+          </value>
+        </entry>
+        <entry key="User">
+          <value>
+            <list />
+          </value>
+        </entry>
+      </map>
+    </option>
+  </component>
+  <component name="editorHistoryManager">
+    <entry file="file://$PROJECT_DIR$/activity2.template" />
+    <entry file="file://$USER_HOME$/.virtualenvs/StreamGenerator/lib/python3.7/site-packages/mako/template.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="368">
+          <caret line="474" selection-start-line="474" selection-end-line="474" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$USER_HOME$/.virtualenvs/StreamGenerator/lib/python3.7/site-packages/skfuzzy/membership/__init__.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="270">
+          <caret line="18" column="51" selection-start-line="18" selection-start-column="45" selection-end-line="18" selection-end-column="51" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$USER_HOME$/.virtualenvs/StreamGenerator/lib/python3.7/site-packages/skfuzzy/membership/generatemf.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="5640">
+          <caret line="378" column="4" selection-start-line="378" selection-start-column="4" selection-end-line="378" selection-end-column="4" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/notes.txt">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="45">
+          <caret line="3" column="44" selection-start-line="3" selection-start-column="44" selection-end-line="3" selection-end-column="44" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/prefixes.ttl">
+      <provider selected="true" editor-type-id="text-editor">
+        <state>
+          <caret column="29" lean-forward="true" selection-start-column="29" selection-end-column="29" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/requirements.txt">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="45">
+          <caret line="3" selection-start-line="3" selection-end-line="3" selection-end-column="12" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/oxygen.template">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="60">
+          <caret line="4" column="41" selection-start-line="4" selection-start-column="41" selection-end-line="4" selection-end-column="41" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/heart.template">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="210">
+          <caret line="14" column="55" lean-forward="true" selection-start-line="14" selection-start-column="55" selection-end-line="14" selection-end-column="55" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/breathing.template">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="15">
+          <caret line="1" column="55" selection-start-line="1" selection-start-column="55" selection-end-line="1" selection-end-column="55" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/temperature.template">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="210">
+          <caret line="14" column="22" lean-forward="true" selection-start-line="14" selection-start-column="22" selection-end-line="14" selection-end-column="22" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/activity.trigs">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="30">
+          <caret line="2" selection-start-line="2" selection-end-line="2" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/activity.template">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="90">
+          <caret line="6" column="66" selection-start-line="6" selection-start-column="66" selection-end-line="6" selection-end-column="66" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/main.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="200">
+          <caret line="27" column="48" selection-start-line="27" selection-start-column="48" selection-end-line="27" selection-end-column="48" />
+          <folding>
+            <element signature="e#595#604#0" expanded="true" />
+            <element signature="e#1003#2084#0" />
+            <element signature="e#3729#4330#0" />
+            <element signature="e#4726#5350#0" />
+            <element signature="e#5486#6119#0" />
+            <element signature="e#4298#4880#0" />
+            <element signature="e#4886#5443#0" />
+            <element signature="e#6143#6725#0" />
+            <element signature="e#6771#7363#0" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+  </component>
+</project>

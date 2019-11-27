@@ -190,4 +190,7 @@ public class DatasetGraphStar extends AbstractDatasetGraph {
         return String.format("DatasetGraphStar(size: %s)", GSPO.size());
     }
 
+    public long size(){
+        return GSPO.size();
+    }
 }

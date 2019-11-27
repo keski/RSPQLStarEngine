@@ -20,7 +20,7 @@ import java.util.Date;
 public class UseCaseEvaluation {
     public static void main(String[] args) throws IOException {
         // Start all streams
-        run("use-case/rdfstar/");
+        run("old/use-case/rdfstar/");
         //run("use-case/reification/");
         //test();
     }
@@ -47,7 +47,7 @@ public class UseCaseEvaluation {
         // Load base data
         RDFParser.create()
                 .base("http://base/")
-                .source("use-case/base-data.ttl")
+                .source("old/use-case/base-data.ttl")
                 .checking(false)
                 .lang(LangTrigStar.TRIGSTAR)
                 .parse(sdg.getBaseDataset());

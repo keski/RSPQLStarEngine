@@ -1,0 +1,24 @@
+mode;#annotated;avg_time;error
+Reification (optimized);1;There is no id-based iterator implemented for (union
+  (join
+    (table unit)
+    (quadpattern (quad ?g ?a <http://base/b> ?c)))
+  (join
+    (table unit)
+    (quadpattern (quad ?g ?a <http://base/a> ?c))))
+, defaulting to decode/encodeThere is no id-based iterator implemented for (quadpattern (quad ?g ?a <http://base/b> ?c))
+, defaulting to decode/encodeThere is no id-based iterator implemented for (union
+  (join
+    (table unit)
+    (quadpattern (quad ?g ?a <http://base/b> ?c)))
+  (join
+    (table unit)
+    (quadpattern (quad ?g ?a <http://base/a> ?c))))
+, defaulting to decode/encodeThere is no id-based iterator implemented for (quadpattern (quad ?g ?a <http://base/b> ?c))
+, defaulting to decode/encodeThere is no id-based iterator implemented for (quadpattern (quad ?g ?a <http://base/b> ?c))
+, defaulting to decode/encodeThere is no id-based iterator implemented for (quadpattern (quad ?g ?a <http://base/b> ?c))
+, defaulting to decode/encodeThere is no id-based iterator implemented for (quadpattern (quad ?g ?a <http://base/b> ?c))
+, defaulting to decode/encodeThere is no id-based iterator implemented for (quadpattern (quad ?g ?a <http://base/b> ?c))
+, defaulting to decode/encodeThere is no id-based iterator implemented for (quadpattern (quad ?g ?a <http://base/b> ?c))
+, defaulting to decode/encodeThere is no id-based iterator implemented for (datasetnames ?g)
+, defaulting to decode/encode

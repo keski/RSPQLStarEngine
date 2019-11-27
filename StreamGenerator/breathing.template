@@ -1,0 +1,16 @@
+${data['graph']} {
+    ${data['observation']} rdf:type :BreathingRateEvent ;
+        sosa:madeObservation ${data['sensor']} ;
+        sosa:featureOfInterest ${data['feature_of_interest']} ;
+        sosa:observedProperty ${data['observed_property']} ;
+        sosa:resultTime ${data['time']} .
+    << ${data['observation']} sosa:hasSimpleResult ${data['value']} >> rspu:error ${data['value_error']} .
+    % for i in  data['unc_type']:
+    % if data['unc_type'][i] > 0:
+    << ${data['observation']} rdf:type ${i} >> rspu:degree ${data['unc_type'][i]} .
+    % endif
+    % endfor
+    << ${data['observation']} rdf:type ${data['state_type']} >> rspu:hasState ${data['state']} .
+}
+${data['graph']} prov:generatedAtTime ${data['time']} .
+
