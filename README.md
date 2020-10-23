@@ -1,6 +1,6 @@
-# RDFStarEngine
+# RSPQLStarEngine
 
-This document describes the current state of the RDFStarStar as of May, 2019, and
+This document describes the current state of the RSPQLStarEngine as of May, 2019, and
 clarifies some important terms and design decisions. The engine based on
 the RSP-QL semantics but implements the RDF\* and SPARQL\* extensions to represent and query
 statement-level metadata. The store is based primarily on Apache Jena 3.7.0.
